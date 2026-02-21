@@ -1,0 +1,130 @@
+---
+title: "&nbsp;"
+output:
+  html_document:
+    toc: false
+---
+
+<div class="hero-banner">
+<div class="hero-badge">&#9670; Gonzaga University School of Business</div>
+<h1 style="font-size:2.4rem;">Visual Analytics & Data Storytelling with R</h1>
+<p>An 8-week journey into the art and science of turning data into insight. Learn to see, design, code, and communicate with data — using R and the tidyverse — in the Jesuit tradition of rigorous inquiry in service of the common good.</p>
+<div class="hero-meta">
+&#128218; 8 Weeks &nbsp;|&nbsp;
+&#128187; R & Tidyverse &nbsp;|&nbsp;
+&#127891; MBA & MSBA Students &nbsp;|&nbsp;
+&#128205; Gonzaga University, Spokane WA
+</div>
+</div>
+
+## Seeing Clearly to Serve Justly {.tabset .tabset-fade}
+
+Rooted in the Ignatian tradition, this course teaches you to transform raw data into truthful, compelling visual stories that drive ethical decision-making and serve communities. No prior coding experience required — we'll build your skills step by step.
+
+<div class="jesuit-quote">
+<blockquote>"Go forth and set the world on fire."</blockquote>
+<span class="attribution">— St. Ignatius of Loyola</span>
+</div>
+
+<div class="concept-grid">
+<div class="concept-card">
+<h4>*Cura Personalis* — Care for the Whole Person</h4>
+<p>We design visualizations that respect the humanity behind every data point. Behind every number is a person, a community, a story.</p>
+</div>
+<div class="concept-card">
+<h4>*Magis* — The Pursuit of Excellence</h4>
+<p>We strive for the "more" — not just charts that work, but charts that illuminate. Every design choice should serve the truth.</p>
+</div>
+<div class="concept-card">
+<h4>*Men and Women for Others*</h4>
+<p>Data visualization is a tool for justice — from mapping air pollution to revealing healthcare disparities.</p>
+</div>
+<div class="concept-card">
+<h4>Discernment through Data</h4>
+<p>Visualization is a discipline of seeing — stripping away noise so the truth of the data can speak clearly.</p>
+</div>
+</div>
+
+## 8 Weeks of Mastery
+
+Each week builds on the last — from theory to code to practice. Click any module to dive in. Every page includes Common Errors boxes, progressive code walkthroughs, and fill-in-the-blank exercise templates designed for asynchronous learning.
+
+<div class="week-grid">
+<div class="week-card">
+<span class="week-num">1</span>
+<h4>[Introduction to Data Viz & R](week01.html)</h4>
+<p>Why visualize data? Anscombe's Quartet, Datasaurus Dozen, R & RStudio setup, R Markdown basics.</p>
+<span class="topic-tag">Anscombe</span> <span class="topic-tag">R Setup</span> <span class="topic-tag">R Markdown</span>
+</div>
+<div class="week-card">
+<span class="week-num">2</span>
+<h4>[Visual Perception & Design](week02.html)</h4>
+<p>How the brain sees data — preattentive attributes, Gestalt, Cleveland & McGill, Tufte's principles, data-ink ratio, ethics.</p>
+<span class="topic-tag">Preattentive</span> <span class="topic-tag">Gestalt</span> <span class="topic-tag">Tufte</span> <span class="topic-tag">Ethics</span>
+</div>
+<div class="week-card">
+<span class="week-num">3</span>
+<h4>[Grammar of Graphics & ggplot2](week03.html)</h4>
+<p>Wilkinson's grammar, data + aesthetics + geoms, facets, scales, themes, saving plots.</p>
+<span class="topic-tag">ggplot2</span> <span class="topic-tag">Aesthetics</span> <span class="topic-tag">Geoms</span>
+</div>
+<div class="week-card">
+<span class="week-num">4</span>
+<h4>[Chart Types & Variations](week04.html)</h4>
+<p>Lollipops, dumbbells, ridgelines, treemaps, bubble charts, heatmaps, violin plots.</p>
+<span class="topic-tag">Distributions</span> <span class="topic-tag">Treemaps</span> <span class="topic-tag">Heatmaps</span>
+</div>
+<div class="week-card">
+<span class="week-num">5</span>
+<h4>[Data Wrangling Essentials](week05.html)</h4>
+<p>Tidy data, the pipe, core dplyr verbs, basic pivoting — just enough to prepare data for plotting.</p>
+<span class="topic-tag">dplyr</span> <span class="topic-tag">tidyr</span> <span class="topic-tag">Pipelines</span>
+</div>
+<div class="week-card">
+<span class="week-num">6</span>
+<h4>[Interactive Visualizations](week06.html)</h4>
+<p>plotly, DT tables, heatmaply, plus a guided tour of Shiny — interactive data tools from R.</p>
+<span class="topic-tag">plotly</span> <span class="topic-tag">DT</span> <span class="topic-tag">Shiny Demo</span>
+</div>
+<div class="week-card">
+<span class="week-num">7</span>
+<h4>[Geographic Visualization](week07.html)</h4>
+<p>Leaflet interactive maps, choropleths, coordinate systems, spatial data with sf.</p>
+<span class="topic-tag">Leaflet</span> <span class="topic-tag">Choropleth</span> <span class="topic-tag">sf</span>
+</div>
+<div class="week-card">
+<span class="week-num">8</span>
+<h4>[Capstone: Viz in Practice](week08.html)</h4>
+<p>Business dashboards, social good, ethics, portfolio building, final project.</p>
+<span class="topic-tag">Capstone</span> <span class="topic-tag">Portfolio</span> <span class="topic-tag">Ethics</span>
+</div>
+</div>
+
+## Designed for You
+
+This course is built for busy MBA and MSBA students. Every week includes:
+
+| Feature | How It Helps You |
+|---------|-----------------|
+| **Progressive code walkthroughs** | Build plots one line at a time — run each chunk and see what changes |
+| **Common Errors boxes** | See the exact error messages you'll hit and how to fix them |
+| **Fill-in-the-blank templates** | Modify working code instead of writing from scratch |
+| **Pre-wrangled datasets** | Focus on visualization, not data cleaning (for later weeks) |
+| **Ignatian reflections** | Connect your technical skills to purpose and ethical practice |
+
+## Textbooks (All Free Online)
+
+| Book | Author | Link |
+|------|--------|------|
+| *Fundamentals of Data Visualization* | Claus O. Wilke (2019) | [clauswilke.com/dataviz](https://clauswilke.com/dataviz/) |
+| *Data Visualization: A Practical Introduction* | Kieran Healy (2019) | [socviz.co](https://socviz.co/) |
+| *ggplot2: Elegant Graphics for Data Analysis* | Hadley Wickham (3rd ed.) | [ggplot2-book.org](https://ggplot2-book.org/) |
+| *R for Data Science* (2nd ed.) | Wickham, Cetinkaya-Rundel & Grolemund | [r4ds.hadley.nz](https://r4ds.hadley.nz/) |
+| *Interactive Web-Based Data Viz with R* | Carson Sievert (2019) | [plotly-r.com](https://plotly-r.com/) |
+| *Data Visualization with R* | Rob Kabacoff (2018) | [rkabacoff.github.io/datavis](https://rkabacoff.github.io/datavis/) |
+
+## Instructor
+
+**Vivek H. Patil** — Professor of Marketing, Gonzaga University School of Business
+
+Office: Jepson 263 | Email: [patil@gonzaga.edu](mailto:patil@gonzaga.edu) | Web: [patilv.com](http://patilv.com)

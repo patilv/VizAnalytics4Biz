@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week 4: Chart Types &amp; Variations</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week 4: Chart Types &amp; Variations</h1>
+
+</div>
+
+
+<div class="hero-banner">
+<div class="week-badge">
+4
+</div>
+<h1>
+Chart Types &amp; Variations
+</h1>
+<p>
+Beyond bar charts — a field guide to the visualization zoo
+</p>
+</div>
+<div id="learning-objectives" class="section level2 objectives">
+<h2>Learning Objectives</h2>
+<p>By the end of this week, you will be able to:</p>
+<ul>
+<li>Choose the right chart type for a given data relationship</li>
+<li>Create lollipop charts, dumbbell charts, ridgeline plots, treemaps,
+bubble charts, heatmaps, and correlation matrices</li>
+<li>Understand when to use each chart type and articulate why one choice
+is better than another</li>
+<li>Apply the principle of matching visual encoding to the analytical
+question</li>
+</ul>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>Before we begin, load the core packages we will use throughout this
+week. Several chart types require specialized packages that extend
+ggplot2. If you have not installed them yet, see the Common Errors box
+below.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code></pre></div>
+<div class="callout-error">
+<p><strong>Common Errors You May Encounter This Week</strong></p>
+<p>This week uses several extension packages. If you run into errors,
+check this list first:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong><code>Error: could not find function "geom_density_ridges_gradient"</code></strong>
+This function lives in the <code>ggridges</code> package, which is not
+part of the tidyverse. You need to install it once and then load it:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggridges&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span></code></pre></div></li>
+<li><p><strong><code>Error: could not find function "geom_treemap"</code></strong>
+This function lives in the <code>treemapify</code> package. Install and
+load it:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;treemapify&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">library</span>(treemapify)</span></code></pre></div></li>
+<li><p><strong><code>ggpairs()</code> takes forever to run / R appears
+frozen</strong> The <code>ggpairs()</code> function computes pairwise
+plots for every combination of columns. If you pass a dataset with many
+columns, the computation time grows quadratically. Always use
+<code>select()</code> to pick only 4–5 numeric columns before passing to
+<code>ggpairs()</code>:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Good -- 5 columns = 10 pairs</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(mpg, disp, hp, wt, qsec) <span class="sc">%&gt;%</span> <span class="fu">ggpairs</span>()</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># Bad -- 11 columns = 55 pairs (slow!)</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggpairs</span>()</span></code></pre></div></li>
+<li><p><strong>Bubble chart sizes look wrong / small countries
+invisible</strong> Use <code>scale_size_area()</code> instead of
+<code>scale_size_continuous()</code>. The <code>scale_size_area()</code>
+function ensures that the <em>area</em> of each bubble is proportional
+to the data value, which is the perceptually correct mapping. With
+<code>scale_size_continuous()</code>, the <em>radius</em> is mapped
+linearly, causing larger values to appear disproportionately
+huge.</p></li>
+<li><p><strong>Heatmap text is unreadable / labels disappear into dark
+tiles</strong> Adjust the <code>size</code> parameter in
+<code>geom_text()</code> to make labels larger or smaller. On dark
+tiles, switch the text <code>color</code> to <code>"white"</code> or a
+light value. You can also use conditional coloring:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(value, <span class="dv">1</span>),</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>              <span class="at">color =</span> <span class="fu">after_stat</span>(value <span class="sc">&gt;</span> threshold)), <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p>Or simply pick a text color that contrasts well with your palette
+(e.g., <code>"white"</code> on dark sequential scales).</p></li>
+</ol>
+</div>
+</div>
+<div id="choosing-the-right-chart" class="section level2">
+<h2>Choosing the Right Chart</h2>
+<p>The single most important decision in data visualization is choosing
+the right chart type. A beautiful chart that uses the wrong encoding is
+worse than a plain chart that uses the right one. The chart type you
+select should be driven entirely by the <strong>relationship</strong>
+you want to show in your data.</p>
+<p>Here is a framework for thinking about chart selection:</p>
+<ul>
+<li><strong>Comparison</strong> of values across categories: bar chart,
+lollipop chart, dumbbell chart, dot plot</li>
+<li><strong>Distribution</strong> of a single variable or across groups:
+histogram, density plot, violin plot, ridgeline plot, boxplot</li>
+<li><strong>Relationship</strong> between two or more variables:
+scatterplot, bubble chart, heatmap, correlogram</li>
+<li><strong>Composition</strong> showing parts of a whole: stacked bar
+chart, treemap, waffle chart</li>
+<li><strong>Change over time</strong>: line chart, area chart,
+sparkline</li>
+</ul>
+<div class="callout-info">
+<p><strong>There is no universal “best” chart.</strong> The best chart
+is the one that most clearly communicates the specific insight you want
+your audience to take away. A bar chart is not inherently better or
+worse than a treemap – it depends on the question you are answering.</p>
+</div>
+<p>Each of the following sections introduces a chart type, explains when
+it is most useful, and provides working R code you can adapt for your
+own projects.</p>
+</div>
+<div id="lollipop-charts" class="section level2 tabset">
+<h2 class="tabset">Lollipop Charts</h2>
+<p>Lollipop charts are an elegant alternative to bar charts. They convey
+the same information – a categorical variable mapped to a quantitative
+value – but with far less ink. Edward Tufte would approve: the
+data-to-ink ratio is much higher.</p>
+<p>Use a lollipop chart when you have a <strong>ranked
+comparison</strong> of values across categories, especially when you
+have many categories where thick bars would feel heavy.</p>
+<div id="the-code" class="section level3">
+<h3>The Code</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">fct_reorder</span>(manufacturer, avg_hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_hwy, <span class="at">y =</span> manufacturer)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> avg_hwy, <span class="at">yend =</span> manufacturer),</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Average Highway MPG by Manufacturer&quot;</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Lollipop chart — less ink than a bar chart&quot;</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Average Highway MPG&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week04_files/figure-html/lollipop-chart-1.png" width="768" /></p>
+</div>
+<div id="how-it-works" class="section level3">
+<h3>How It Works</h3>
+<p>The lollipop chart is built from two geoms layered together:</p>
+<ol style="list-style-type: decimal">
+<li><code>geom_segment()</code> draws the thin line (the “stick”) from
+zero to the data value</li>
+<li><code>geom_point()</code> draws the dot (the “candy”) at the
+end</li>
+</ol>
+<p>Notice that we use <code>fct_reorder()</code> to sort the
+manufacturers by their average MPG. This is critical – an unsorted
+lollipop chart is much harder to read. Always sort by the quantitative
+variable unless there is a natural ordering (like months or rankings)
+that takes priority.</p>
+<div class="callout-tip">
+<p><strong>When to choose a lollipop over a bar chart:</strong> Lollipop
+charts shine when you have 8 or more categories. With fewer categories,
+a standard bar chart is fine. With many categories, the thin stems of a
+lollipop chart reduce visual clutter significantly.</p>
+</div>
+</div>
+</div>
+<div id="dumbbell-charts" class="section level2">
+<h2>Dumbbell Charts</h2>
+<p>Dumbbell charts (also called DNA charts or connected dot plots) show
+the <strong>difference between two values</strong> for each category.
+They are ideal for before/after comparisons, paired measurements, or
+showing the gap between two groups.</p>
+<p>The “dumbbell” shape – two dots connected by a line – naturally draws
+the eye to the distance between the two values, making it easy to
+compare gaps across categories.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>dumbbell_data <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">city =</span> <span class="fu">mean</span>(cty), <span class="at">highway =</span> <span class="fu">mean</span>(hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">fct_reorder</span>(manufacturer, highway))</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="fu">ggplot</span>(dumbbell_data) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">xend =</span> highway, <span class="at">y =</span> manufacturer, <span class="at">yend =</span> manufacturer),</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> city, <span class="at">y =</span> manufacturer), <span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> highway, <span class="at">y =</span> manufacturer), <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;City vs. Highway MPG by Manufacturer&quot;</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Red = City | Navy = Highway&quot;</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week04_files/figure-html/dumbbell-chart-1.png" width="768" /></p>
+<p>The segment connects the two values, and the colored dots mark each
+endpoint. The color legend is embedded in the subtitle to keep the chart
+clean. Notice how easy it is to see which manufacturers have the largest
+gap between city and highway fuel economy.</p>
+<div class="callout-tip">
+<p><strong>Dumbbell charts are underused.</strong> Many analysts default
+to grouped bar charts for paired comparisons, but dumbbell charts are
+almost always more readable. The connecting line makes the comparison
+explicit, while grouped bars force the viewer to mentally bridge the
+gap.</p>
+</div>
+</div>
+<div id="ridgeline-plots-joy-plots" class="section level2">
+<h2>Ridgeline Plots (Joy Plots)</h2>
+<p>Ridgeline plots display the <strong>distribution</strong> of a
+variable across multiple groups, stacked vertically with slight overlap.
+They are one of the most visually striking chart types in the ggplot2
+ecosystem, and they are remarkably effective at revealing distributional
+differences.</p>
+<p>The name “joy plot” comes from the iconic cover of Joy Division’s
+<em>Unknown Pleasures</em> album, which featured a similar stacked-ridge
+visualization of radio pulsar data.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy, <span class="at">y =</span> <span class="fu">fct_reorder</span>(class, hwy, <span class="at">.fun =</span> median), <span class="at">fill =</span> <span class="fu">after_stat</span>(x))) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">geom_density_ridges_gradient</span>(<span class="at">scale =</span> <span class="dv">2</span>, <span class="at">rel_min_height =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Highway MPG by Vehicle Class&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Ridgeline plot — compact display of many distributions&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Highway MPG&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="week04_files/figure-html/ridgeline-plot-1.png" width="768" /></p>
+<p>The <code>scale</code> parameter controls how much the ridges
+overlap. A value of 2 means each ridge can extend up to twice the
+allocated row height. The <code>rel_min_height</code> parameter trims
+the tails to avoid distracting wisps at the edges.</p>
+<p>The gradient fill using <code>after_stat(x)</code> maps the x-axis
+value to a color, reinforcing the positional encoding with a color
+encoding. This is a form of <strong>redundant encoding</strong> – using
+two visual channels for the same variable – which can improve
+readability.</p>
+<div class="callout-info">
+<p><strong>When to use ridgeline plots:</strong> They work best when you
+have 5–15 groups and want to compare the full shape of each
+distribution. With fewer groups, consider overlapping density plots or
+faceted histograms. With more groups, the overlap becomes too dense to
+read.</p>
+</div>
+</div>
+<div id="treemaps" class="section level2">
+<h2>Treemaps</h2>
+<p>Treemaps display <strong>hierarchical or part-to-whole</strong>
+relationships using nested rectangles. The area of each rectangle is
+proportional to a quantitative variable, making treemaps an effective
+way to show composition and relative size simultaneously.</p>
+<p>Treemaps are particularly useful when you have two levels of
+hierarchy (e.g., manufacturer and class, or department and team) and
+want to show how subcategories contribute to larger groups.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">count</span>(manufacturer, class) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">area =</span> n, <span class="at">fill =</span> manufacturer, <span class="at">subgroup =</span> manufacturer, <span class="at">label =</span> class)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="fu">geom_treemap</span>() <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="fu">geom_treemap_text</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">place =</span> <span class="st">&quot;centre&quot;</span>, <span class="at">size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="fu">geom_treemap_subgroup_border</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Vehicle Models: Manufacturer x Class&quot;</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Area represents number of models in the mpg dataset&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="week04_files/figure-html/treemap-chart-1.png" width="768" /></p>
+<p>The <code>treemapify</code> package provides ggplot2-compatible geoms
+for treemaps. <code>geom_treemap()</code> draws the filled rectangles,
+<code>geom_treemap_text()</code> adds labels inside each rectangle, and
+<code>geom_treemap_subgroup_border()</code> draws thicker borders around
+the top-level grouping (manufacturer) to make the hierarchy visible.</p>
+<div class="callout-tip">
+<p><strong>Treemaps vs. pie charts:</strong> Both show composition, but
+treemaps are far more effective because we can judge rectangular areas
+more accurately than circular arc lengths. Treemaps also scale to many
+more categories and support nested hierarchies.</p>
+</div>
+</div>
+<div id="bubble-charts" class="section level2">
+<h2>Bubble Charts</h2>
+<p>A bubble chart is a scatterplot where a <strong>third
+variable</strong> controls the size of each point. When done well,
+bubble charts can pack an impressive amount of information into a single
+graphic. The most famous example is Hans Rosling’s Gapminder
+visualization of global health and wealth.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp, <span class="at">size =</span> pop, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">15</span>, <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;Africa&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="st">&quot;Americas&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>                                <span class="st">&quot;Asia&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>, <span class="st">&quot;Europe&quot;</span> <span class="ot">=</span> <span class="st">&quot;#2563eb&quot;</span>, <span class="st">&quot;Oceania&quot;</span> <span class="ot">=</span> <span class="st">&quot;#10b981&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Wealth, Health, and Population (2007)&quot;</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Bubble size = population&quot;</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;GDP per Capita (log scale)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Life Expectancy&quot;</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Continent&quot;</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Source: Gapminder Foundation&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week04_files/figure-html/bubble-chart-gapminder-1.png" width="768" /></p>
+<p>Several design decisions make this chart work:</p>
+<ul>
+<li><strong>Log scale on x-axis</strong>: GDP per capita has an
+extremely skewed distribution. A log scale spreads the data out so that
+both poor and rich countries are visible.</li>
+<li><strong><code>scale_size_area()</code></strong>: This ensures that
+the area (not the radius) of each bubble is proportional to the
+population, which is the perceptually correct mapping.</li>
+<li><strong>Alpha transparency</strong>: With many overlapping bubbles,
+transparency prevents large countries from completely obscuring small
+ones.</li>
+<li><strong>Color by continent</strong>: This adds a fourth variable,
+creating a chart that encodes GDP, life expectancy, population, and
+continent in a single view.</li>
+</ul>
+<div class="callout-info">
+<p><strong>Caution with bubble charts:</strong> Do not use more than one
+size variable. Human perception of area is imprecise, so bubble charts
+work best when the size variable is used for rough comparisons (“China
+is much bigger than Norway”) rather than precise readings. If you need
+precision, use a different encoding.</p>
+</div>
+</div>
+<div id="heatmaps" class="section level2">
+<h2>Heatmaps</h2>
+<p>Heatmaps use <strong>color intensity</strong> to represent values in
+a matrix. They are excellent for spotting patterns, clusters, and
+outliers in data that has two categorical dimensions and one
+quantitative dimension.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, class) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> manufacturer, <span class="at">fill =</span> avg_hwy)) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_hwy, <span class="dv">0</span>)), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;mako&quot;</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">na.value =</span> <span class="st">&quot;#f1f5f9&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Average Highway MPG: Manufacturer x Class&quot;</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;Avg MPG&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="week04_files/figure-html/heatmap-chart-1.png" width="768" /></p>
+<p>Key elements of a good heatmap:</p>
+<ul>
+<li><strong>White borders</strong> between tiles create visual
+separation and prevent colors from blending together.</li>
+<li><strong>Text labels</strong> inside tiles let readers extract exact
+values, compensating for the imprecision of color perception.</li>
+<li><strong>A sequential color scale</strong> (like viridis “mako”) maps
+low values to light colors and high values to dark (or vice versa).
+Avoid rainbow color scales, which create false perceptual
+boundaries.</li>
+<li><strong>Missing data handling</strong> with <code>na.value</code>
+ensures that empty cells are visually distinct from low-value
+cells.</li>
+</ul>
+<p>The pattern of missing tiles (where no manufacturer makes a vehicle
+in that class) is itself informative – it reveals the market
+segmentation strategy of each brand.</p>
+</div>
+<div id="correlation-matrices" class="section level2">
+<h2>Correlation Matrices</h2>
+<p>A correlation matrix visualizes the <strong>pairwise
+relationships</strong> between all numeric variables in a dataset. The
+<code>GGally</code> package provides <code>ggpairs()</code>, which
+creates a matrix of scatterplots, correlation coefficients, and density
+curves in a single call.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">select</span>(mpg, disp, hp, wt, qsec) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">ggpairs</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>    <span class="at">upper =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;cor&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>)),</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>    <span class="at">lower =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;smooth&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>)),</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>    <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">&quot;densityDiag&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#eff6ff&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>))</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Correlation Matrix — mtcars&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span></code></pre></div>
+<p><img src="week04_files/figure-html/correlation-matrix-ggally-1.png" width="672" /></p>
+<p>The matrix has three regions:</p>
+<ul>
+<li><strong>Upper triangle</strong>: Correlation coefficients (numeric
+summaries)</li>
+<li><strong>Lower triangle</strong>: Scatterplots with smoothed trend
+lines (visual relationships)</li>
+<li><strong>Diagonal</strong>: Density plots (individual
+distributions)</li>
+</ul>
+<p>This layout is efficient because the upper and lower triangles are
+mirror images – they show the same pairs, just in different forms.
+Together, they give you both the number and the shape of each
+relationship.</p>
+<div class="callout-tip">
+<p><strong>Reading correlations:</strong> Look for the strongest
+relationships first. In the mtcars data, <code>wt</code> and
+<code>mpg</code> have a strong negative correlation (heavier cars get
+worse mileage), while <code>disp</code> and <code>hp</code> have a
+strong positive correlation (bigger engines tend to be more powerful).
+These are exactly the patterns you would expect from domain knowledge,
+which is reassuring.</p>
+</div>
+</div>
+<div id="violin-plots" class="section level2">
+<h2>Violin Plots</h2>
+<p>Violin plots combine the summary statistics of a boxplot with the
+distributional shape of a density plot. The “violin” shape shows where
+the data is concentrated, while the embedded boxplot marks the median
+and interquartile range.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(class, hwy, <span class="at">.fun =</span> median), <span class="at">y =</span> hwy, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="at">outlier.size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set3&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Highway MPG by Vehicle Class&quot;</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Violin + boxplot overlay&quot;</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="week04_files/figure-html/violin-plot-class-1.png" width="768" /></p>
+<p>The combination of violin and boxplot is more informative than either
+alone:</p>
+<ul>
+<li>The <strong>violin</strong> shows whether the distribution is
+unimodal, bimodal, or skewed – information that a boxplot hides
+entirely.</li>
+<li>The <strong>boxplot</strong> adds precise reference points (median,
+quartiles) that are difficult to read from a density shape alone.</li>
+</ul>
+<p>Notice that we set <code>color = NA</code> on the violin to remove
+the outline and <code>fill = "white"</code> on the boxplot so it sits
+cleanly inside the violin shape.</p>
+</div>
+<div id="a-decision-framework" class="section level2">
+<h2>A Decision Framework</h2>
+<p>When you are faced with a new dataset and need to choose a chart
+type, work through these questions:</p>
+<p><strong>“What is my primary question?”</strong></p>
+<table>
+<colgroup>
+<col width="41%" />
+<col width="58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">I want to…</th>
+<th align="left">Consider these chart types</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Compare values across groups</td>
+<td align="left">Bar chart, lollipop chart, dumbbell chart</td>
+</tr>
+<tr class="even">
+<td align="left">Show a distribution</td>
+<td align="left">Histogram, density plot, violin, ridgeline</td>
+</tr>
+<tr class="odd">
+<td align="left">Show a relationship</td>
+<td align="left">Scatterplot, bubble chart, heatmap</td>
+</tr>
+<tr class="even">
+<td align="left">Show composition / parts-whole</td>
+<td align="left">Stacked bar chart, treemap, waffle chart</td>
+</tr>
+<tr class="odd">
+<td align="left">Show change over time</td>
+<td align="left">Line chart, area chart, sparkline</td>
+</tr>
+</tbody>
+</table>
+<p><strong>“How many categories do I have?”</strong></p>
+<ul>
+<li>2–5 categories: Almost any chart type works</li>
+<li>6–15 categories: Lollipop, ridgeline, and heatmaps handle this range
+well</li>
+<li>15+ categories: Consider filtering, grouping, or using small
+multiples</li>
+</ul>
+<p><strong>“Who is my audience?”</strong></p>
+<ul>
+<li>General public: Stick to familiar types (bar, line, scatter)</li>
+<li>Technical audience: You can use more specialized types (ridgeline,
+correlogram, treemap)</li>
+<li>Decision makers: Prioritize clarity and annotate key takeaways
+directly on the chart</li>
+</ul>
+<div class="callout-info">
+<p><strong>The “one more chart” rule:</strong> If you have time, always
+try at least one alternative chart type for your data. You may discover
+that a different encoding reveals a pattern you missed. Visualization is
+an iterative process.</p>
+</div>
+</div>
+<div id="ignatian-reflection" class="section level2">
+<h2>Ignatian Reflection</h2>
+<div class="callout-ignatian">
+<p><strong>“Men and Women for Others” – Chart Choice as an Act of
+Service</strong></p>
+<p>Choosing the right chart type is not merely a technical skill – it is
+an act of service to your audience. When you select a visualization that
+clearly communicates a pattern, you empower others to understand and
+act. When you choose a chart that obscures or misleads, you fail in that
+responsibility.</p>
+<p>St. Ignatius spoke of <em>Cura Personalis</em> – care for the whole
+person. In the context of data visualization, this means considering
+your audience’s background, literacy, and needs. A ridgeline plot may be
+beautiful and information-rich, but if your audience has never seen one
+before, a simpler chart with careful annotation may serve them better.
+The goal is not to showcase your technical skills but to illuminate
+truth.</p>
+<p>The wrong chart can mislead; the right one illuminates. As you
+practice building different chart types this week, ask yourself: <em>Am
+I choosing this chart because it serves my audience, or because it looks
+impressive?</em> The answer to that question is the difference between
+decoration and communication.</p>
+</div>
+</div>
+<div id="exercises" class="section level2">
+<h2>Exercises</h2>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Week 4 Exercises</p>
+</div>
+<div class="exercise-body">
+<p><strong>Exercise 1: Lollipop Chart with Gapminder</strong></p>
+<p>Using the <code>gapminder</code> package, filter the data to the year
+2007 and a single continent of your choice. Create a lollipop chart
+showing life expectancy by country, sorted from highest to lowest. Use
+Gonzaga navy (<code>#002967</code>) for the dots and a light gray for
+the stems. Add a meaningful title and subtitle.</p>
+<p>Fill in the blanks in the starter code below:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>, continent <span class="sc">==</span> <span class="st">&quot;___&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">fct_reorder</span>(country, lifeExp)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> country)) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> ___, <span class="at">yend =</span> ___),</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;___&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Life Expectancy (years)&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The <code>xend</code> in <code>geom_segment()</code> should be the
+same variable mapped to the x-axis.</li>
+<li>The <code>yend</code> should be the same variable mapped to the
+y-axis.</li>
+<li>Gonzaga navy is <code>#002967</code>.</li>
+</ul>
+<hr />
+<p><strong>Exercise 2: Ridgeline Plot of Diamond Prices</strong></p>
+<p>Using the built-in <code>diamonds</code> dataset, create a ridgeline
+plot showing the distribution of <code>price</code> by <code>cut</code>
+quality. Use <code>fct_reorder()</code> to sort the cuts by median
+price. Experiment with the <code>scale</code> parameter and choose a
+color palette that works well.</p>
+<p>Fill in the blanks:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> <span class="fu">fct_reorder</span>(___, ___, <span class="at">.fun =</span> median),</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>                     <span class="at">fill =</span> <span class="fu">after_stat</span>(x))) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="fu">geom_density_ridges_gradient</span>(<span class="at">scale =</span> ___, <span class="at">rel_min_height =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;___&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Price (USD)&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The x aesthetic should be the variable whose distribution you want
+to show (<code>price</code>).</li>
+<li>The first argument to <code>fct_reorder()</code> is the factor
+variable (<code>cut</code>), and the second is the numeric variable to
+sort by (<code>price</code>).</li>
+<li>Try <code>scale</code> values between 1.5 and 3 to see how the
+overlap changes.</li>
+<li>Viridis options include <code>"magma"</code>, <code>"plasma"</code>,
+<code>"inferno"</code>, <code>"viridis"</code>, and
+<code>"mako"</code>.</li>
+</ul>
+<hr />
+<p><strong>Exercise 3: Dumbbell Chart – Before and After</strong></p>
+<p>Using the <code>gapminder</code> dataset, compare life expectancy in
+1952 vs. 2007 for countries in the Americas. Create a dumbbell chart
+that shows both values for each country, connected by a line. Use
+Gonzaga red (<code>#C41E3A</code>) for 1952 and Gonzaga navy
+(<code>#002967</code>) for 2007.</p>
+<p>Fill in the blanks:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>dumbbell_americas <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>, year <span class="sc">%in%</span> <span class="fu">c</span>(___, ___)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  <span class="fu">select</span>(country, year, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> year, <span class="at">values_from =</span> lifeExp,</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">&quot;year_&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">fct_reorder</span>(country, ___))</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="fu">ggplot</span>(dumbbell_americas) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> year_1952, <span class="at">xend =</span> ___, <span class="at">y =</span> country, <span class="at">yend =</span> ___),</span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> country), <span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> country), <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Red = 1952 | Navy = 2007&quot;</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Life Expectancy (years)&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Sort countries by their 2007 life expectancy
+(<code>year_2007</code>) for a clean visual ordering.</li>
+<li>The <code>xend</code> in <code>geom_segment()</code> should be
+<code>year_2007</code>.</li>
+<li>The first <code>geom_point()</code> maps x to the 1952 column; the
+second maps x to the 2007 column.</li>
+</ul>
+<hr />
+<p><strong>Exercise 4: Heatmap of mtcars Correlations</strong></p>
+<p>Compute the correlation matrix for the numeric columns in
+<code>mtcars</code>, then reshape it into a long format suitable for
+<code>geom_tile()</code>. Create a heatmap of the correlations with text
+labels inside each tile. Use a <strong>diverging</strong> color scale
+(e.g., blue for negative, white for zero, red for positive).</p>
+<p>Fill in the blanks:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">select</span>(mpg, cyl, disp, hp, drat, wt, qsec) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>cor_long <span class="ot">&lt;-</span> cor_matrix <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">&quot;var1&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>var1, <span class="at">names_to =</span> <span class="st">&quot;var2&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;correlation&quot;</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="fu">ggplot</span>(cor_long, <span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2, <span class="at">fill =</span> ___)) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(___, <span class="dv">2</span>)), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">&quot;___&quot;</span>, <span class="at">mid =</span> <span class="st">&quot;___&quot;</span>, <span class="at">high =</span> <span class="st">&quot;___&quot;</span>, <span class="at">midpoint =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;___&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Correlation&quot;</span>) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The <code>fill</code> aesthetic and the <code>label</code> value
+both use the <code>correlation</code> column.</li>
+<li>For <code>scale_fill_gradient2()</code>, a natural choice is
+<code>low = "#002967"</code> (navy for negative),
+<code>mid = "white"</code>, and <code>high = "#C41E3A"</code> (red for
+positive).</li>
+<li>Consider adding <code>panel.grid = element_blank()</code> to remove
+grid lines behind the tiles.</li>
+</ul>
+<hr />
+<p><strong>Exercise 5: Three Charts, One Dataset</strong></p>
+<p>Choose a dataset and a question. Then create <strong>three different
+chart types</strong> that attempt to answer the same question. For
+example, if your question is “How does highway MPG vary by vehicle
+class?”, you might create a boxplot, a violin plot, and a ridgeline
+plot.</p>
+<p>For each chart, write 2–3 sentences explaining what the chart reveals
+and what it hides. Then write a brief paragraph (4–5 sentences) arguing
+which of the three is the most effective for your specific question and
+audience. There is no single right answer – the point is to practice
+evaluating trade-offs.</p>
+<p>Here is a starter template to get you going:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co"># Choose your dataset and question:</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># Dataset: ___</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># Question: &quot;How does ___ vary by ___?&quot;</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># Chart 1: ___</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># (your code here)</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co"># Chart 2: ___</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co"># (your code here)</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># Chart 3: ___</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co"># (your code here)</span></span></code></pre></div>
+<p>Write your comparison paragraph below each chart in your R Markdown
+document.</p>
+</div>
+</div>
+<hr />
+<hr />
+</div>
+<div id="try-it-interactive-sandbox" class="section level2">
+<h2>Try It: Interactive Sandbox</h2>
+<div class="callout-ai">
+<p><strong>AI &amp; This Concept</strong> Effective AI prompting for
+charts means telling the tool <em>what question you’re answering</em>,
+not just what chart type you want. Instead of “make a bar chart,” try
+“show the distribution of highway MPG across vehicle classes,
+emphasizing spread.” The sandbox below helps you build the vocabulary to
+do that well.</p>
+</div>
+<div class="sandbox-section">
+<div class="sandbox-header">
+<p><span class="sandbox-icon">🧪</span> Chart Type Explorer — Find the
+Right Chart for Your Question</p>
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/84662c36-158f-47a8-ae95-5f9f7b0e4652/" height="600" allowfullscreen>
+</iframe>
+<div class="sandbox-footer">
+<p>Use the radio buttons to switch chart types. Read the “When to use
+this chart” tip for each. Try flipping coordinates and adjusting
+transparency. Notice how some chart types reveal patterns that others
+hide.</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="attributions" class="section level2">
+<h2>Attributions</h2>
+<p>This course material draws on and is inspired by the work of many
+scholars and practitioners:</p>
+<ul>
+<li><strong>Vivek H. Patil</strong> – foundational course design and
+materials for data visualization at Gonzaga University</li>
+<li><strong>Wilke, C.O.</strong> – <em>Fundamentals of Data
+Visualization</em> (O’Reilly, 2019), Chapters 6–12</li>
+<li><strong>Healy, K.</strong> – <em>Data Visualization: A Practical
+Introduction</em> (Princeton University Press, 2018)</li>
+<li><strong>Wickham, H.</strong> – <em>ggplot2: Elegant Graphics for
+Data Analysis</em> (Springer, 3rd edition)</li>
+<li><strong>Schwabish, J.</strong> (2014). “An Economist’s Guide to
+Visualizing Data.” <em>Journal of Economic Perspectives</em>, 28(1),
+209–234.</li>
+</ul>
+<div class="page-nav">
+<p><a href="week03.html">← Week 3</a> <a href="week05.html">Week 5
+→</a></p>
+</div>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

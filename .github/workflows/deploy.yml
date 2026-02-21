@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+# This workflow is kept for reference but GitHub Pages is configured to
+# deploy directly from the docs/ folder on the main branch (not via Actions).
+# To deploy: just push to main. GitHub Pages serves docs/ automatically.
+#
+# If you ever want to switch back to Actions-based deployment:
+#   1. Change this file to re-enable the workflow trigger
+#   2. In repo Settings > Pages, change Source to "GitHub Actions"
+
+on:
+  workflow_dispatch:   # manual trigger only — not automatic on push
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

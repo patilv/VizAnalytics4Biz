@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title> </title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore"> </h1>
+
+</div>
+
+
+<div class="hero-banner">
+<div class="hero-badge">
+◆ Gonzaga University School of Business
+</div>
+<h1 style="font-size:2.4rem;">
+Visual Analytics &amp; Data Storytelling with R
+</h1>
+<p>
+An 8-week journey into the art and science of turning data into insight.
+Learn to see, design, code, and communicate with data — using R and the
+tidyverse — in the Jesuit tradition of rigorous inquiry in service of
+the common good.
+</p>
+<div class="hero-meta">
+<p>📚 8 Weeks  |  💻 R &amp; Tidyverse  |  🎓 MBA &amp; MSBA Students
+ |  📍 Gonzaga University, Spokane WA</p>
+</div>
+</div>
+<div id="seeing-clearly-to-serve-justly"
+class="section level2 tabset tabset-fade">
+<h2 class="tabset tabset-fade">Seeing Clearly to Serve Justly</h2>
+<p>Rooted in the Ignatian tradition, this course teaches you to
+transform raw data into truthful, compelling visual stories that drive
+ethical decision-making and serve communities. No prior coding
+experience required — we’ll build your skills step by step.</p>
+<div class="jesuit-quote">
+<blockquote>
+“Go forth and set the world on fire.”
+</blockquote>
+<p><span class="attribution">— St. Ignatius of Loyola</span></p>
+</div>
+<div class="concept-grid">
+<div class="concept-card">
+<h4>
+<em>Cura Personalis</em> — Care for the Whole Person
+</h4>
+<p>
+We design visualizations that respect the humanity behind every data
+point. Behind every number is a person, a community, a story.
+</p>
+</div>
+<div class="concept-card">
+<h4>
+<em>Magis</em> — The Pursuit of Excellence
+</h4>
+<p>
+We strive for the “more” — not just charts that work, but charts that
+illuminate. Every design choice should serve the truth.
+</p>
+</div>
+<div class="concept-card">
+<h4>
+<em>Men and Women for Others</em>
+</h4>
+<p>
+Data visualization is a tool for justice — from mapping air pollution to
+revealing healthcare disparities.
+</p>
+</div>
+<div class="concept-card">
+<h4>
+Discernment through Data
+</h4>
+<p>
+Visualization is a discipline of seeing — stripping away noise so the
+truth of the data can speak clearly.
+</p>
+</div>
+</div>
+</div>
+<div id="weeks-of-mastery" class="section level2">
+<h2>8 Weeks of Mastery</h2>
+<p>Each week builds on the last — from theory to code to practice. Click
+any module to dive in. Every page includes Common Errors boxes,
+progressive code walkthroughs, and fill-in-the-blank exercise templates
+designed for asynchronous learning.</p>
+<div class="week-grid">
+<div class="week-card">
+<span class="week-num">1</span>
+<h4>
+<a href="week01.html">Introduction to Data Viz &amp; R</a>
+</h4>
+<p>
+Why visualize data? Anscombe’s Quartet, Datasaurus Dozen, R &amp;
+RStudio setup, R Markdown basics.
+</p>
+<p><span class="topic-tag">Anscombe</span> <span class="topic-tag">R
+Setup</span> <span class="topic-tag">R Markdown</span></p>
+</div>
+<div class="week-card">
+<span class="week-num">2</span>
+<h4>
+<a href="week02.html">Visual Perception &amp; Design</a>
+</h4>
+<p>
+How the brain sees data — preattentive attributes, Gestalt, Cleveland
+&amp; McGill, Tufte’s principles, data-ink ratio, ethics.
+</p>
+<p><span class="topic-tag">Preattentive</span> <span
+class="topic-tag">Gestalt</span> <span class="topic-tag">Tufte</span>
+<span class="topic-tag">Ethics</span></p>
+</div>
+<div class="week-card">
+<span class="week-num">3</span>
+<h4>
+<a href="week03.html">Grammar of Graphics &amp; ggplot2</a>
+</h4>
+<p>
+Wilkinson’s grammar, data + aesthetics + geoms, facets, scales, themes,
+saving plots.
+</p>
+<p><span class="topic-tag">ggplot2</span> <span
+class="topic-tag">Aesthetics</span> <span
+class="topic-tag">Geoms</span></p>
+</div>
+<div class="week-card">
+<span class="week-num">4</span>
+<h4>
+<a href="week04.html">Chart Types &amp; Variations</a>
+</h4>
+<p>
+Lollipops, dumbbells, ridgelines, treemaps, bubble charts, heatmaps,
+violin plots.
+</p>
+<p><span class="topic-tag">Distributions</span> <span
+class="topic-tag">Treemaps</span> <span
+class="topic-tag">Heatmaps</span></p>
+</div>
+<div class="week-card">
+<span class="week-num">5</span>
+<h4>
+<a href="week05.html">Data Wrangling Essentials</a>
+</h4>
+<p>
+Tidy data, the pipe, core dplyr verbs, basic pivoting — just enough to
+prepare data for plotting.
+</p>
+<p><span class="topic-tag">dplyr</span> <span
+class="topic-tag">tidyr</span> <span
+class="topic-tag">Pipelines</span></p>
+</div>
+<div class="week-card">
+<span class="week-num">6</span>
+<h4>
+<a href="week06.html">Interactive Visualizations</a>
+</h4>
+<p>
+plotly, DT tables, heatmaply, plus a guided tour of Shiny — interactive
+data tools from R.
+</p>
+<p><span class="topic-tag">plotly</span> <span
+class="topic-tag">DT</span> <span class="topic-tag">Shiny
+Demo</span></p>
+</div>
+<div class="week-card">
+<span class="week-num">7</span>
+<h4>
+<a href="week07.html">Geographic Visualization</a>
+</h4>
+<p>
+Leaflet interactive maps, choropleths, coordinate systems, spatial data
+with sf.
+</p>
+<p><span class="topic-tag">Leaflet</span> <span
+class="topic-tag">Choropleth</span> <span
+class="topic-tag">sf</span></p>
+</div>
+<div class="week-card">
+<span class="week-num">8</span>
+<h4>
+<a href="week08.html">Capstone: Viz in Practice</a>
+</h4>
+<p>
+Business dashboards, social good, ethics, portfolio building, final
+project.
+</p>
+<p><span class="topic-tag">Capstone</span> <span
+class="topic-tag">Portfolio</span> <span
+class="topic-tag">Ethics</span></p>
+</div>
+</div>
+</div>
+<div id="designed-for-you" class="section level2">
+<h2>Designed for You</h2>
+<p>This course is built for busy MBA and MSBA students. Every week
+includes:</p>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>How It Helps You</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Progressive code walkthroughs</strong></td>
+<td>Build plots one line at a time — run each chunk and see what
+changes</td>
+</tr>
+<tr class="even">
+<td><strong>Common Errors boxes</strong></td>
+<td>See the exact error messages you’ll hit and how to fix them</td>
+</tr>
+<tr class="odd">
+<td><strong>Fill-in-the-blank templates</strong></td>
+<td>Modify working code instead of writing from scratch</td>
+</tr>
+<tr class="even">
+<td><strong>Pre-wrangled datasets</strong></td>
+<td>Focus on visualization, not data cleaning (for later weeks)</td>
+</tr>
+<tr class="odd">
+<td><strong>Ignatian reflections</strong></td>
+<td>Connect your technical skills to purpose and ethical practice</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="textbooks-all-free-online" class="section level2">
+<h2>Textbooks (All Free Online)</h2>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="40%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Book</th>
+<th>Author</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Fundamentals of Data Visualization</em></td>
+<td>Claus O. Wilke (2019)</td>
+<td><a
+href="https://clauswilke.com/dataviz/">clauswilke.com/dataviz</a></td>
+</tr>
+<tr class="even">
+<td><em>Data Visualization: A Practical Introduction</em></td>
+<td>Kieran Healy (2019)</td>
+<td><a href="https://socviz.co/">socviz.co</a></td>
+</tr>
+<tr class="odd">
+<td><em>ggplot2: Elegant Graphics for Data Analysis</em></td>
+<td>Hadley Wickham (3rd ed.)</td>
+<td><a href="https://ggplot2-book.org/">ggplot2-book.org</a></td>
+</tr>
+<tr class="even">
+<td><em>R for Data Science</em> (2nd ed.)</td>
+<td>Wickham, Cetinkaya-Rundel &amp; Grolemund</td>
+<td><a href="https://r4ds.hadley.nz/">r4ds.hadley.nz</a></td>
+</tr>
+<tr class="odd">
+<td><em>Interactive Web-Based Data Viz with R</em></td>
+<td>Carson Sievert (2019)</td>
+<td><a href="https://plotly-r.com/">plotly-r.com</a></td>
+</tr>
+<tr class="even">
+<td><em>Data Visualization with R</em></td>
+<td>Rob Kabacoff (2018)</td>
+<td><a
+href="https://rkabacoff.github.io/datavis/">rkabacoff.github.io/datavis</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="instructor" class="section level2">
+<h2>Instructor</h2>
+<p><strong>Vivek H. Patil</strong> — Professor of Marketing, Gonzaga
+University School of Business</p>
+<p>Office: Jepson 263 | Email: <a
+href="mailto:patil@gonzaga.edu">patil@gonzaga.edu</a> | Web: <a
+href="http://patilv.com">patilv.com</a></p>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

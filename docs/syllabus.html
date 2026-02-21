@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Course Syllabus</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Course Syllabus</h1>
+
+</div>
+
+
+<div class="hero-banner">
+<h1>
+Course Syllabus
+</h1>
+<p>
+Visual Analytics &amp; Data Storytelling with R — Gonzaga University
+School of Business
+</p>
+</div>
+<hr />
+<div id="course-information" class="section level2">
+<h2>Course Information</h2>
+<div class="callout-info">
+<p><strong>Course:</strong> Visual Analytics &amp; Data Storytelling
+with R <strong>Schedule:</strong> 8 weeks</p>
+</div>
+<hr />
+</div>
+<div id="instructor" class="section level2">
+<h2>Instructor</h2>
+<p><strong>Vivek H. Patil</strong> Professor of Marketing, School of
+Business Administration</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>Office</strong></td>
+<td>Jepson 263</td>
+</tr>
+<tr class="even">
+<td><strong>Email</strong></td>
+<td><a href="mailto:patil@gonzaga.edu">patil@gonzaga.edu</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Web</strong></td>
+<td><a href="https://patilv.com">patilv.com</a></td>
+</tr>
+<tr class="even">
+<td><strong>Office Hours</strong></td>
+<td>By appointment</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="course-description" class="section level2">
+<h2>Course Description</h2>
+<p>A comprehensive introduction to visual analytics and data
+storytelling designed for MBA and MSBA students. This course teaches the
+principles of effective visual communication and the practical skills to
+create compelling data visualizations using R and the tidyverse
+ecosystem. Rooted in the Jesuit tradition of rigorous inquiry and
+ethical practice, students learn to see data clearly, design
+visualizations truthfully, and use their skills in service of the common
+good.</p>
+<div class="callout-tip">
+<p><strong>Why Data Visualization?</strong> In a world awash with data,
+the ability to communicate insights visually is one of the most valuable
+skills a business professional can develop. This course equips you with
+both the theory and the tools to turn raw data into clear, honest, and
+compelling stories.</p>
+</div>
+<hr />
+</div>
+<div id="learning-outcomes" class="section level2">
+<h2>Learning Outcomes</h2>
+<p>By the end of this course, students will be able to:</p>
+<ol style="list-style-type: decimal">
+<li>Explain the principles of visual perception that underlie effective
+data visualization</li>
+<li>Apply design principles (Tufte, Cleveland &amp; McGill) to create
+clear, honest graphics</li>
+<li>Write R code using ggplot2 and the tidyverse to produce
+publication-quality visualizations</li>
+<li>Choose appropriate chart types for different data relationships and
+audiences</li>
+<li>Wrangle, reshape, and clean data for visualization using dplyr and
+tidyr</li>
+<li>Create interactive visualizations using plotly, DT, and Leaflet</li>
+<li>Understand Shiny’s reactive framework and recognize when interactive
+applications add value</li>
+<li>Evaluate visualizations critically for accuracy, ethics, and
+effectiveness</li>
+<li>Communicate data-driven insights to diverse audiences</li>
+</ol>
+<hr />
+</div>
+<div id="required-materials" class="section level2">
+<h2>Required Materials</h2>
+<p>All textbooks are <strong>free and available online</strong>:</p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="40%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Book</th>
+<th>Author</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Fundamentals of Data Visualization</em></td>
+<td>Claus O. Wilke (2019)</td>
+<td><a
+href="https://clauswilke.com/dataviz/">clauswilke.com/dataviz</a></td>
+</tr>
+<tr class="even">
+<td><em>Data Visualization: A Practical Introduction</em></td>
+<td>Kieran Healy (2019)</td>
+<td><a href="https://socviz.co/">socviz.co</a></td>
+</tr>
+<tr class="odd">
+<td><em>ggplot2: Elegant Graphics for Data Analysis</em></td>
+<td>Hadley Wickham (3rd ed.)</td>
+<td><a href="https://ggplot2-book.org/">ggplot2-book.org</a></td>
+</tr>
+<tr class="even">
+<td><em>R for Data Science</em> (2nd ed.)</td>
+<td>Wickham, Cetinkaya-Rundel &amp; Grolemund</td>
+<td><a href="https://r4ds.hadley.nz/">r4ds.hadley.nz</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Software (all free):</strong></p>
+<ul>
+<li><strong>R</strong> — <a
+href="https://cran.r-project.org/">cran.r-project.org</a></li>
+<li><strong>RStudio</strong> — <a
+href="https://posit.co/download/rstudio-desktop/">posit.co/downloads</a></li>
+</ul>
+<div class="callout-info">
+<p><strong>Note:</strong> All required software is free and open-source.
+Installation guides will be provided during the first week. Please have
+R and RStudio installed on your computer before beginning Week 1
+materials.</p>
+</div>
+<div id="canvas-learning-management-system" class="section level3">
+<h3>Canvas (Learning Management System)</h3>
+<p>This course uses <strong>Canvas</strong> as the central hub for all
+course logistics. While you will read materials and follow code
+walkthroughs on this website, all graded work flows through Canvas:</p>
+<table>
+<colgroup>
+<col width="46%" />
+<col width="53%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>What</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Course materials &amp; code walkthroughs</strong></td>
+<td>This website (linked from Canvas)</td>
+</tr>
+<tr class="even">
+<td><strong>Assignment submissions</strong></td>
+<td>Publish to RPubs, submit the link on Canvas</td>
+</tr>
+<tr class="odd">
+<td><strong>Discussion boards &amp; peer critiques</strong></td>
+<td>Canvas Discussions</td>
+</tr>
+<tr class="even">
+<td><strong>Grades &amp; feedback</strong></td>
+<td>Canvas Gradebook</td>
+</tr>
+<tr class="odd">
+<td><strong>Announcements &amp; deadlines</strong></td>
+<td>Canvas Announcements</td>
+</tr>
+<tr class="even">
+<td><strong>Midterm &amp; capstone submissions</strong></td>
+<td>Publish to RPubs, submit the link on Canvas</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-tip">
+<p><strong>Submission workflow:</strong> For each assignment, you will
+write your code in an R Markdown (<code>.Rmd</code>) file, knit it to
+HTML, then click the <strong>Publish</strong> button in RStudio to
+publish it to <a href="https://rpubs.com/">RPubs</a> (free, one-click).
+Copy your RPubs URL and paste it into the corresponding Canvas
+assignment. This way your interactive charts (plotly, leaflet, DT) work
+perfectly for the reader, and you start building a public portfolio of
+your work.</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="course-schedule" class="section level2">
+<h2>Course Schedule</h2>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="30%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Week</th>
+<th>Topic</th>
+<th>Readings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td><a href="week01.html">Introduction to Data Viz &amp; R</a></td>
+<td>Healy Ch. 1; Wilke Ch. 1-2</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td><a href="week02.html">Visual Perception &amp; Design</a></td>
+<td>Wilke Ch. 1-4; Tufte Ch. 1-3</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td><a href="week03.html">Grammar of Graphics &amp; ggplot2</a></td>
+<td>Wickham ggplot2 Ch. 1-3; R4DS Ch. 3</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td><a href="week04.html">Chart Types &amp; Variations</a></td>
+<td>Wilke Ch. 6-12; Healy Ch. 4-5</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td><a href="week05.html">Data Wrangling Essentials</a></td>
+<td>R4DS Ch. 5; Wickham “Tidy Data” (2014)</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td><a href="week06.html">Interactive Visualizations</a></td>
+<td>Sievert Ch. 1-2; plotly-r.com</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td><a href="week07.html">Geographic Visualization</a></td>
+<td>Wilke Ch. 15; Healy Ch. 7</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td><a href="week08.html">Capstone: Viz in Practice</a></td>
+<td>Cairo, “How Charts Lie” Ch. 1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="grading" class="section level2">
+<h2>Grading</h2>
+<div id="components" class="section level3">
+<h3>Components</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th align="center">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Weekly Exercises</td>
+<td align="center">35%</td>
+</tr>
+<tr class="even">
+<td>Midterm Visualization Project</td>
+<td align="center">20%</td>
+</tr>
+<tr class="odd">
+<td>Peer Viz Review</td>
+<td align="center">15%</td>
+</tr>
+<tr class="even">
+<td>Final Capstone Project</td>
+<td align="center">30%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="grading-scale" class="section level3">
+<h3>Grading Scale</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Grade</th>
+<th align="center">Range</th>
+<th align="center">Grade</th>
+<th align="center">Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">A</td>
+<td align="center">93 – 100</td>
+<td align="center">C+</td>
+<td align="center">77 – 79</td>
+</tr>
+<tr class="even">
+<td align="center">A-</td>
+<td align="center">90 – 92</td>
+<td align="center">C</td>
+<td align="center">73 – 76</td>
+</tr>
+<tr class="odd">
+<td align="center">B+</td>
+<td align="center">87 – 89</td>
+<td align="center">C-</td>
+<td align="center">70 – 72</td>
+</tr>
+<tr class="even">
+<td align="center">B</td>
+<td align="center">83 – 86</td>
+<td align="center">D</td>
+<td align="center">60 – 69</td>
+</tr>
+<tr class="odd">
+<td align="center">B-</td>
+<td align="center">80 – 82</td>
+<td align="center">F</td>
+<td align="center">Below 60</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="assignment-descriptions" class="section level2">
+<h2>Assignment Descriptions</h2>
+<div id="weekly-exercises-35" class="section level3">
+<h3>Weekly Exercises (35%)</h3>
+<p>Each week includes hands-on exercises that reinforce the concepts and
+R skills covered in the module. Exercises are due before the next week’s
+materials are released. They are graded on completion and quality.
+Expect each exercise set to take approximately 2–3 hours. These
+exercises are designed to build skills incrementally, so staying current
+is essential. <strong>Submit:</strong> Knit your <code>.Rmd</code> to
+HTML, publish to <a href="https://rpubs.com/">RPubs</a>, and paste your
+RPubs link into the corresponding Canvas assignment.</p>
+</div>
+<div id="midterm-visualization-project-20" class="section level3">
+<h3>Midterm Visualization Project (20%)</h3>
+<p>Due at the end of <strong>Week 4</strong>. Choose a dataset, perform
+exploratory data analysis, and create a portfolio of 3–4 static
+visualizations with written narrative explaining your design choices.
+<strong>Submit:</strong> Publish your knitted HTML to <a
+href="https://rpubs.com/">RPubs</a> and paste the link into the Midterm
+assignment on Canvas. Your submission should demonstrate:</p>
+<ul>
+<li>Thoughtful data selection and preparation</li>
+<li>Appropriate use of chart types for the data relationships you are
+exploring</li>
+<li>Adherence to design principles covered in Weeks 1–4</li>
+<li>Clear, concise written narrative that connects visualizations to
+insights</li>
+</ul>
+</div>
+<div id="peer-viz-review-15" class="section level3">
+<h3>Peer Viz Review (15%)</h3>
+<p>Every post in this component is about an actual visualization —
+either one you found in the wild or one a classmate created. No abstract
+reading responses. Everything is visual, concrete, and useful.</p>
+<p><strong>Weeks 1–3: Viz in the Wild</strong></p>
+<p>Find one data visualization you encountered outside of class — in a
+news article, a company report, a social media post, an infographic, or
+a dashboard. Post it to the weekly <strong>Canvas Discussion</strong>
+thread with a short critique (3–5 sentences) using the design principles
+covered that week. What works? What could be improved? What would you
+change? Reply to one classmate’s post with your own take.</p>
+<p><strong>Weeks 4–7: Peer Exercise Review</strong></p>
+<p>After each weekly exercise, review <strong>2 classmates’ RPubs
+submissions</strong> using this structured feedback format:</p>
+<ul>
+<li><strong>Chart type:</strong> Is the chosen chart appropriate for the
+data relationship being shown?</li>
+<li><strong>Readability:</strong> Can you understand the main takeaway
+within 5 seconds?</li>
+<li><strong>One strength:</strong> What is one specific thing that works
+well?</li>
+<li><strong>One suggestion:</strong> What is one concrete improvement
+you would recommend?</li>
+</ul>
+<p>Post your reviews in the weekly Canvas Discussion thread. This is
+where you learn the most — evaluating others’ design choices sharpens
+your own eye.</p>
+<p><strong>Week 8: Capstone Draft Review</strong></p>
+<p>Review <strong>1 classmate’s capstone draft</strong> (published to
+RPubs in Week 7) and provide structured feedback on the full project:
+data choice, chart variety, narrative clarity, ethical reflection, and
+overall polish. Use the capstone rubric as your guide.</p>
+</div>
+<div id="final-capstone-project-30" class="section level3">
+<h3>Final Capstone Project (30%)</h3>
+<p>A comprehensive visualization project that demonstrates mastery of
+the course content. The capstone is your opportunity to bring together
+everything you have learned into a polished, professional deliverable.
+Your project must include:</p>
+<ul>
+<li>A meaningful dataset relevant to a question you care about</li>
+<li>At least <strong>4 visualizations</strong> using different
+techniques (e.g., bar, scatter, map, small multiples)</li>
+<li>At least <strong>1 interactive element</strong> (plotly, Leaflet, or
+DT)</li>
+<li>Written narrative with design rationale explaining why you made each
+choice</li>
+<li>An <strong>ethical reflection</strong> on the data, the audience,
+and the potential impact of your visualizations</li>
+<li>Presented in a polished R Markdown document or Shiny
+application</li>
+</ul>
+<p><strong>Submit:</strong> Publish your knitted HTML to <a
+href="https://rpubs.com/">RPubs</a> and paste the link into the Capstone
+assignment on Canvas. If your project includes a Shiny app, also include
+the deployed shinyapps.io URL.</p>
+<div class="callout-info">
+<p><strong>Capstone Timeline:</strong> Proposal due at the end of Week 6
+(Canvas). Draft due at the end of Week 7 (Canvas). Final submission
+during Week 8 (Canvas).</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="course-policies" class="section level2">
+<h2>Course Policies</h2>
+<div id="academic-integrity" class="section level3">
+<h3>Academic Integrity</h3>
+<p>All work must be your own. You may use online resources and AI tools
+for learning and debugging, but the visualization designs and analytical
+narrative must be original. Cite all data sources, code references, and
+design inspirations. Plagiarism or misrepresentation of authorship will
+be handled in accordance with the Gonzaga University Academic Integrity
+Policy and may result in a failing grade for the assignment or the
+course.</p>
+</div>
+<div id="late-work" class="section level3">
+<h3>Late Work</h3>
+<p>Assignments lose <strong>10% per day</strong> late, up to 3 days.
+After 3 days, assignments receive zero credit unless prior arrangements
+have been made with the instructor. If you anticipate difficulty meeting
+a deadline, please reach out as early as possible so we can discuss
+options.</p>
+</div>
+<div id="staying-on-track" class="section level3">
+<h3>Staying on Track</h3>
+<p>To succeed in this course, students are expected to:</p>
+<ul>
+<li><strong>Check Canvas and the course website weekly</strong> — New
+materials are posted at the start of each week. Canvas Announcements
+will notify you of deadlines and updates.</li>
+<li><strong>Participate in Peer Viz Review</strong> — Weekly critique
+posts and peer exercise reviews are a graded component of this course
+(15%). Post early in the week to allow time for peer replies.</li>
+<li><strong>Submit assignments on time via Canvas</strong> — Time
+management is critical. Use Canvas calendar reminders and plan your work
+across the week.</li>
+</ul>
+</div>
+<div id="accessibility" class="section level3">
+<h3>Accessibility</h3>
+<p>Gonzaga University is committed to providing equal access to
+educational opportunities. Students with disabilities should contact
+<strong>Disability Access Services (DAS)</strong> to arrange
+accommodations. Please share your accommodation letter with the
+instructor as early in the term as possible so we can ensure a
+supportive learning environment.</p>
+</div>
+<div id="communication" class="section level3">
+<h3>Communication</h3>
+<p>The instructor will communicate primarily through <strong>Canvas
+Announcements</strong> and email. Students are expected to check both
+regularly. For code questions, post to the <strong>Canvas Q&amp;A
+Discussion</strong> board so classmates can benefit from the answer.
+When asking about a coding issue, include a reproducible example (the
+code, the error message, and what you expected to happen).</p>
+<hr />
+</div>
+</div>
+<div id="jesuit-mission" class="section level2">
+<h2>Jesuit Mission</h2>
+<div class="callout-ignatian">
+<p><strong>Our Jesuit Foundation</strong></p>
+<p>This course is offered in the Jesuit tradition of Gonzaga University.
+We are committed to:</p>
+<ul>
+<li><strong>Cura Personalis</strong> — caring for the whole person. We
+design visualizations that respect the humanity behind every data
+point.</li>
+<li><strong>Magis</strong> — the pursuit of excellence. We strive not
+just for charts that work, but charts that illuminate.</li>
+<li><strong>Men and Women for Others</strong> — using our skills in
+service. Data visualization is a powerful tool for justice and
+advocacy.</li>
+<li><strong>Discernment</strong> — careful, reflective decision-making.
+Every design choice is an ethical choice.</li>
+</ul>
+<p>Data, at its core, represents people, communities, and the world we
+share. Throughout this course we will return to a central question:
+<strong>How can we use visualization not only to inform, but to
+serve?</strong> Whether we are mapping health outcomes, charting
+educational access, or revealing environmental patterns, we carry a
+responsibility to represent the truth with care and humility.</p>
+<p><em>Ad Majorem Dei Gloriam</em> — For the Greater Glory of God.</p>
+</div>
+<hr />
+</div>
+<div id="university-resources" class="section level2">
+<h2>University Resources</h2>
+<table>
+<colgroup>
+<col width="52%" />
+<col width="47%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Resource</th>
+<th>Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Writing Center</strong></td>
+<td><a
+href="mailto:writingcenter@gonzaga.edu">writingcenter@gonzaga.edu</a></td>
+</tr>
+<tr class="even">
+<td><strong>Disability Access Services</strong></td>
+<td><a href="mailto:das@gonzaga.edu">das@gonzaga.edu</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Counseling Services</strong></td>
+<td>(509) 313-4054</td>
+</tr>
+<tr class="even">
+<td><strong>Foley Library</strong></td>
+<td><a href="https://foley.gonzaga.edu">foley.gonzaga.edu</a></td>
+</tr>
+<tr class="odd">
+<td><strong>IT Help Desk</strong></td>
+<td>(509) 313-5550</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-tip">
+<p><strong>Library Support:</strong> Foley Library offers research
+consultations and access to data repositories. Librarians can help you
+locate datasets for your midterm and capstone projects.</p>
+</div>
+<hr />
+<div
+style="text-align: center; color: #999; margin-top: 2rem; font-size: 0.9em;">
+<p>Visual Analytics &amp; Data Storytelling with R | Gonzaga
+University</p>
+</div>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

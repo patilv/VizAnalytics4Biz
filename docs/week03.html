@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week 3: Grammar of Graphics &amp; ggplot2</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week 3: Grammar of Graphics &amp;
+ggplot2</h1>
+
+</div>
+
+
+<div class="hero-banner">
+<div class="week-badge">
+3
+</div>
+<h1>
+Grammar of Graphics &amp; ggplot2
+</h1>
+<p>
+A systematic framework for constructing visualizations layer by layer in
+R
+</p>
+</div>
+<div id="learning-objectives" class="section level2 objectives">
+<h2>Learning Objectives</h2>
+<p>By the end of this week, you will be able to:</p>
+<ul>
+<li>Explain the grammar of graphics framework and its seven
+components</li>
+<li>Build ggplot2 graphics layer by layer from data to finished
+visualization</li>
+<li>Distinguish between aesthetic mappings inside and outside
+<code>aes()</code></li>
+<li>Use a variety of geometries (points, lines, bars, histograms,
+boxplots)</li>
+<li>Apply faceting to create small multiples</li>
+<li>Customize scales, labels, and themes for publication-quality
+graphics</li>
+<li>Combine multiple plots into a single figure using the
+<code>patchwork</code> package</li>
+<li>Save plots at appropriate sizes and resolutions with
+<code>ggsave()</code></li>
+</ul>
+</div>
+<div id="the-grammar-of-graphics" class="section level2">
+<h2>The Grammar of Graphics</h2>
+<p>In 1999, statistician <strong>Leland Wilkinson</strong> published
+<em>The Grammar of Graphics</em>, a book that would fundamentally change
+how we think about building visualizations. Wilkinson’s central insight
+was that statistical graphics are not a collection of unrelated chart
+types – scatterplots, bar charts, histograms, and so on – but rather
+that every graphic can be described as a combination of a few underlying
+components, assembled according to a set of rules.</p>
+<p>Just as English grammar gives us rules for constructing sentences
+from nouns, verbs, and adjectives, the grammar of graphics gives us
+rules for constructing visualizations from data, aesthetics, and
+geometries. A sentence is not just a random collection of words; it
+follows a structure. A graphic is not just a random collection of marks
+on a page; it follows a structure too.</p>
+<p>In 2005, <strong>Hadley Wickham</strong> translated Wilkinson’s
+theoretical framework into a practical R package called
+<strong>ggplot2</strong> (the “gg” stands for “grammar of graphics”).
+Wickham’s implementation, described in his 2010 paper “A Layered Grammar
+of Graphics,” organizes every visualization into a series of layers.
+This is the system we will use for the rest of the course.</p>
+<div class="callout-info">
+<p><strong>The “gg” in ggplot2</strong> stands for <em>Grammar of
+Graphics</em>. The “2” indicates that this is the second iteration of
+Wickham’s package. The first version, <code>ggplot</code>, was never
+widely released. When we refer to “ggplot” in code, we mean the
+<code>ggplot()</code> function from the <code>ggplot2</code>
+package.</p>
+</div>
+<div id="the-seven-layers" class="section level3">
+<h3>The Seven Layers</h3>
+<p>Every ggplot2 graphic is constructed from up to seven layers. Not
+every plot uses all seven, but understanding each one gives you complete
+control over your visualizations:</p>
+<table>
+<colgroup>
+<col width="24%" />
+<col width="44%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Layer</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Data</strong></td>
+<td align="left">The dataset being visualized</td>
+<td align="left"><code>ggplot(mpg, ...)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Aesthetics</strong></td>
+<td align="left">Mappings from data variables to visual properties</td>
+<td
+align="left"><code>aes(x = displ, y = hwy, color = class)</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Geometries</strong></td>
+<td align="left">The visual marks that represent data points</td>
+<td align="left"><code>geom_point()</code>, <code>geom_line()</code>,
+<code>geom_col()</code></td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Facets</strong></td>
+<td align="left">Splitting the plot into panels by a variable</td>
+<td align="left"><code>facet_wrap(~class)</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Statistics</strong></td>
+<td align="left">Statistical transformations of the data</td>
+<td align="left"><code>stat_smooth()</code>, binning, counting</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Coordinates</strong></td>
+<td align="left">The coordinate system</td>
+<td align="left"><code>coord_flip()</code>,
+<code>coord_polar()</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Themes</strong></td>
+<td align="left">Non-data visual appearance</td>
+<td align="left"><code>theme_minimal()</code>, font sizes, grid
+lines</td>
+</tr>
+</tbody>
+</table>
+<p>Think of it this way: the <strong>data</strong> is your raw material.
+<strong>Aesthetics</strong> are the instructions for how to translate
+that material into visual form. <strong>Geometries</strong> are the
+shapes that appear on the page. <strong>Facets</strong> let you repeat
+the same plot for subsets of the data. <strong>Statistics</strong>
+transform your data before it reaches the geometry.
+<strong>Coordinates</strong> define the space in which everything is
+drawn. And <strong>themes</strong> control the final appearance of
+everything that is not data.</p>
+<div class="callout-ignatian">
+<p><strong>Ignatian Reflection: Intentional Design</strong></p>
+<p>The grammar of graphics is, at its heart, a discipline of
+intentionality. It asks you to be deliberate about every layer – to
+choose your data carefully, to map variables to aesthetics purposefully,
+to select geometries that reveal rather than obscure. This mirrors the
+Ignatian practice of discernment: every choice should be made with
+reflection, every element should serve the truth. When you build a
+ggplot, ask yourself at each layer: <em>Does this serve clarity? Does
+this help the viewer see what is real?</em></p>
+</div>
+<hr />
+</div>
+</div>
+<div id="common-ggplot2-errors" class="section level2">
+<h2>Common ggplot2 Errors</h2>
+<p>Before we start writing code, let us address the errors you are most
+likely to encounter. In an asynchronous course, you cannot raise your
+hand when something goes wrong – so study this box carefully and
+bookmark it. Nearly every student hits at least one of these during
+their first week with ggplot2.</p>
+<div class="callout-error">
+<p><strong>Troubleshooting ggplot2: The Six Most Common
+Errors</strong></p>
+<p><strong>1. <code>Error: unexpected '+'</code></strong></p>
+<p>You started a new line <em>before</em> the <code>+</code>. The
+<code>+</code> must be at the <strong>end</strong> of the previous line,
+not the beginning of the next.</p>
+<pre><code># WRONG -- R thinks line 1 is a complete command
+ggplot(mpg, aes(x = displ, y = hwy))
+  + geom_point()
+
+# RIGHT -- the + tells R &quot;there is more coming&quot;
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point()</code></pre>
+<p><strong>2. <code>Error: object 'displ' not found</code></strong></p>
+<p>Did you forget <code>aes()</code>? Column names must be wrapped
+inside <code>aes()</code> so that ggplot2 knows to look for them in the
+data frame, not in your global environment.</p>
+<pre><code># WRONG
+ggplot(mpg, x = displ, y = hwy) + geom_point()
+
+# RIGHT
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()</code></pre>
+<p><strong>3.
+<code>Error: could not find function "ggplot"</code></strong></p>
+<p>You forgot to load the package. Run <code>library(tidyverse)</code>
+(or <code>library(ggplot2)</code>) at the top of your script before
+calling any ggplot functions. This must be done every time you start a
+new R session.</p>
+<p><strong>4. Plot colors are not changing</strong></p>
+<p>Are you putting <code>color = "blue"</code> <em>inside</em> or
+<em>outside</em> <code>aes()</code>? Inside <code>aes()</code> maps a
+variable to color (each value gets a different color). Outside
+<code>aes()</code> sets a single fixed color for all points.</p>
+<pre><code># Maps the variable class to color (a legend appears)
+geom_point(aes(color = class))
+
+# Sets ALL points to blue (no legend)
+geom_point(color = &quot;blue&quot;)
+
+# COMMON MISTAKE -- puts a literal string inside aes()
+# This creates a legend with one entry labeled &quot;blue&quot;
+geom_point(aes(color = &quot;blue&quot;))</code></pre>
+<p><strong>5.
+<code>Error: stat_count() must not be used with a y aesthetic</code></strong></p>
+<p>You used <code>geom_bar()</code> but also provided a <code>y</code>
+aesthetic. <code>geom_bar()</code> counts rows for you – it creates its
+own y. If you already have pre-computed y values, use
+<code>geom_col()</code> instead.</p>
+<pre><code># WRONG -- geom_bar() tries to count, but you gave it y
+ggplot(df, aes(x = category, y = value)) + geom_bar()
+
+# RIGHT -- geom_col() uses the y values you provide
+ggplot(df, aes(x = category, y = value)) + geom_col()</code></pre>
+<p><strong>6. <code>Error: cannot open the connection</code> with
+<code>ggsave()</code></strong></p>
+<p>The file path you specified does not exist, or you do not have write
+permission. Check that the folder exists before saving. Use
+<code>dir.exists("my_folder")</code> to verify.</p>
+<pre><code># Check the folder exists first
+dir.exists(&quot;output&quot;)  # returns TRUE or FALSE
+
+# Save to an existing folder
+ggsave(&quot;output/my_plot.png&quot;, width = 8, height = 5, dpi = 300)</code></pre>
+</div>
+<hr />
+</div>
+<div id="building-a-plot-layer-by-layer" class="section level2">
+<h2>Building a Plot Layer by Layer</h2>
+<p>The best way to understand the grammar of graphics is to build a plot
+one layer at a time. We will use the <code>mpg</code> dataset, which is
+built into ggplot2 and contains fuel economy data for 234 cars.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Let us begin with nothing but the data and an aesthetic mapping, and
+then add layers one at a time. Each step below is a separately runnable
+code chunk – run them in order and watch the plot evolve.</p>
+<div id="step-1-data-and-aesthetic-mapping" class="section level3">
+<h3>Step 1: Data and Aesthetic Mapping</h3>
+<p>This creates an empty canvas. ggplot2 knows what data to use and
+which variables to map to the x and y axes, but it has no instructions
+for how to draw anything yet.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-layer-step1-1.png" width="768" /></p>
+</div>
+<div id="step-2-add-a-geometry" class="section level3">
+<h3>Step 2: Add a Geometry</h3>
+<p>Now we add <code>geom_point()</code>, and the data appears as a
+scatterplot. The geometry tells ggplot2 <em>how</em> to represent each
+observation – in this case, as a dot.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-layer-step2-1.png" width="768" /></p>
+</div>
+<div id="step-3-map-color-to-a-variable" class="section level3">
+<h3>Step 3: Map Color to a Variable</h3>
+<p>By adding <code>color = class</code> inside <code>aes()</code>, each
+vehicle class gets a distinct color. A legend is automatically
+generated.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-layer-step3-1.png" width="768" /></p>
+</div>
+<div id="step-4-add-a-statistical-layer" class="section level3">
+<h3>Step 4: Add a Statistical Layer</h3>
+<p>A linear smoother for each class reveals the group-level trends. The
+<code>se = FALSE</code> argument suppresses the confidence interval
+shading to keep the plot clean.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-layer-step4-1.png" width="768" /></p>
+</div>
+<div id="step-5-add-labels" class="section level3">
+<h3>Step 5: Add Labels</h3>
+<p>Good labels tell the reader what they are looking at. The
+<code>labs()</code> function sets the title, subtitle, axis labels, and
+legend title all in one call.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Engine Size vs. Highway Fuel Economy&quot;</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Larger engines tend to have lower fuel economy&quot;</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Vehicle Class&quot;</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-layer-step5-1.png" width="768" /></p>
+</div>
+<div id="step-6-apply-a-theme" class="section level3">
+<h3>Step 6: Apply a Theme</h3>
+<p>Finally, we replace the default gray background with a cleaner
+<code>theme_minimal()</code>. The <code>base_size</code> argument
+controls the overall font size.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Engine Size vs. Highway Fuel Economy&quot;</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Larger engines tend to have lower fuel economy&quot;</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Vehicle Class&quot;</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-layer-step6-1.png" width="768" /></p>
+<p>Notice how each layer adds something specific. The plot evolves from
+an empty coordinate system to a rich, informative graphic. This is the
+power of the layered grammar: you can think about one thing at a
+time.</p>
+</div>
+<div id="the-fluent-pipeline-style" class="section level3">
+<h3>The Fluent Pipeline Style</h3>
+<p>Here is the same final plot written as a single, fluent pipeline –
+the style you will typically use in practice:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Engine Size vs. Highway Fuel Economy&quot;</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Larger engines tend to have lower fuel economy&quot;</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Vehicle Class&quot;</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-single-pipeline-1.png" width="768" /></p>
+<div class="callout-tip">
+<p><strong>Tip:</strong> The <code>+</code> operator in ggplot2 is how
+you add layers. It is conceptually similar to the <code>%&gt;%</code>
+pipe, but ggplot2 was created before the pipe became standard in R, so
+it uses <code>+</code> instead. A common mistake is to use
+<code>%&gt;%</code> inside a ggplot chain – this will produce an error.
+Use <code>%&gt;%</code> to pipe <em>data into</em>
+<code>ggplot()</code>, then switch to <code>+</code> for adding
+layers.</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="aesthetic-mappings-aes" class="section level2">
+<h2>Aesthetic Mappings – <code>aes()</code></h2>
+<p>Aesthetics are the bridge between your data and the visual properties
+of your plot. The <code>aes()</code> function maps variables in your
+data to visual channels such as position (x, y), color, size, shape, and
+transparency (alpha).</p>
+<p>The critical distinction to understand is:</p>
+<ul>
+<li><strong>Inside <code>aes()</code></strong>: The visual property
+varies with the data. Each data value gets a different color, size, or
+position.</li>
+<li><strong>Outside <code>aes()</code></strong>: The visual property is
+fixed for all observations. Every point gets the same color, size, or
+shape.</li>
+</ul>
+<p>This is one of the most common sources of confusion for beginners, so
+let us see the difference side by side:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># Color MAPPED to a data variable (inside aes)</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class), <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Color mapped to data (inside aes)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co"># Color SET to a fixed value (outside aes)</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Color fixed (outside aes)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-aes-inside-outside-1.png" width="960" /></p>
+<p>In the left panel, each vehicle class gets its own color, and a
+legend is automatically generated. In the right panel, every point is
+Gonzaga red regardless of its class, and there is no legend because
+color is not encoding any information.</p>
+<p>Here is a summary of common aesthetic mappings:</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="39%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Aesthetic</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>x</code>, <code>y</code></td>
+<td align="left">Position on the axes</td>
+<td align="left"><code>aes(x = displ, y = hwy)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>color</code></td>
+<td align="left">Outline color (points, lines) or fill color (text)</td>
+<td align="left"><code>aes(color = class)</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>fill</code></td>
+<td align="left">Interior fill color (bars, boxes, areas)</td>
+<td align="left"><code>aes(fill = class)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>size</code></td>
+<td align="left">Size of points or width of lines</td>
+<td align="left"><code>aes(size = cyl)</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>shape</code></td>
+<td align="left">Shape of points (circle, triangle, square, etc.)</td>
+<td align="left"><code>aes(shape = drv)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>alpha</code></td>
+<td align="left">Transparency (0 = invisible, 1 = opaque)</td>
+<td align="left"><code>aes(alpha = year)</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>linetype</code></td>
+<td align="left">Type of line (solid, dashed, dotted)</td>
+<td align="left"><code>aes(linetype = drv)</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="geometries" class="section level2 tabset">
+<h2 class="tabset">Geometries</h2>
+<p>Geometries – or <strong>geoms</strong> – are the visual marks that
+represent your data. Choosing the right geom is one of the most
+important decisions you make when building a visualization. Each geom is
+suited to different types of data and different analytical
+questions.</p>
+<div id="points-geom_point" class="section level3">
+<h3>Points (geom_point)</h3>
+<p>Scatterplots are the workhorse of exploratory data analysis. Use
+<code>geom_point()</code> when you want to show the relationship between
+two continuous variables.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;4-wheel&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;Front&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;Rear&quot;</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Scatterplot with geom_point()&quot;</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Engine displacement vs. highway MPG by drive type&quot;</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Drive Type&quot;</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-geom-point-1.png" width="768" /></p>
+</div>
+<div id="lines-geom_line" class="section level3">
+<h3>Lines (geom_line)</h3>
+<p>Line charts are ideal for showing trends over time. Use
+<code>geom_line()</code> when you have a continuous x-axis (often a date
+or time) and want to emphasize the flow of values.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>economics <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> unemploy <span class="sc">/</span> <span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;U.S. Unemployment Over Time&quot;</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Monthly unemployment figures from 1967 to 2015&quot;</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Unemployed (millions)&quot;</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-geom-line-1.png" width="768" /></p>
+</div>
+<div id="bars-geom_col-geom_bar" class="section level3">
+<h3>Bars (geom_col / geom_bar)</h3>
+<p>Bar charts are excellent for comparing quantities across categories.
+Use <code>geom_col()</code> when your data already contains the values
+you want to plot; use <code>geom_bar()</code> when you want ggplot2 to
+count observations for you.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">count</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">fct_reorder</span>(class, n)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> class)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.3</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Vehicle Count by Class&quot;</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Number of vehicles in the mpg dataset by class&quot;</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Count&quot;</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="dv">70</span>) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-geom-col-1.png" width="768" /></p>
+</div>
+<div id="histogram-geom_histogram" class="section level3">
+<h3>Histogram (geom_histogram)</h3>
+<p>Histograms show the distribution of a single continuous variable by
+dividing it into bins and counting the number of observations in each
+bin.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>, <span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Distribution of Highway MPG&quot;</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Binwidth = 2 MPG&quot;</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Count&quot;</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-geom-histogram-1.png" width="768" /></p>
+</div>
+<div id="boxplot-geom_boxplot" class="section level3">
+<h3>Boxplot (geom_boxplot)</h3>
+<p>Boxplots summarize the distribution of a continuous variable across
+groups. They show the median, interquartile range, and outliers at a
+glance.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(class, hwy, <span class="at">.fun =</span> median), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;#eff6ff&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">outlier.color =</span> <span class="st">&quot;#C41E3A&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Highway MPG by Vehicle Class&quot;</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Classes ordered by median highway MPG&quot;</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-geom-boxplot-1.png" width="768" /></p>
+</div>
+</div>
+<div id="section" class="section level2 unnumbered">
+<h2 class="unnumbered"></h2>
+<div class="callout-tip">
+<p><strong>Choosing the Right Geom:</strong> The choice of geometry
+depends on the types of variables you have and the question you are
+asking. Two continuous variables? Start with <code>geom_point()</code>.
+One continuous variable? Try <code>geom_histogram()</code> or
+<code>geom_density()</code>. One categorical and one continuous?
+Consider <code>geom_boxplot()</code> or <code>geom_col()</code>. A trend
+over time? Use <code>geom_line()</code>. When in doubt, try several and
+see which one reveals the most about your data.</p>
+</div>
+<hr />
+</div>
+<div id="faceting" class="section level2">
+<h2>Faceting</h2>
+<p><strong>Faceting</strong> splits your data by one or more categorical
+variables and creates a separate panel for each level. This technique –
+sometimes called <strong>small multiples</strong> – is one of the most
+powerful tools in data visualization. It allows your viewer to compare
+patterns across groups while keeping a consistent scale.</p>
+<p>ggplot2 provides two faceting functions:</p>
+<ul>
+<li><code>facet_wrap(~variable)</code> – wraps panels into a rectangular
+layout. Best when you have a single faceting variable.</li>
+<li><code>facet_grid(row_variable ~ col_variable)</code> – creates a
+matrix of panels. Best when you want to cross two variables.</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>class, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Displacement vs. Highway MPG by Vehicle Class&quot;</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Each panel shows one vehicle class with a linear trend line&quot;</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-faceting-demo-1.png" width="960" /></p>
+<p>Notice how the faceted view reveals patterns that a single
+scatterplot obscures. For example, the relationship between displacement
+and fuel economy is very different for 2-seater sports cars (which are
+light despite large engines) compared to SUVs.</p>
+<div class="callout-info">
+<p><strong>Scales in facets:</strong> By default, all panels share the
+same x and y scales. This is usually what you want because it makes
+comparisons fair. If you need each panel to have its own scale (for
+example, when the ranges differ dramatically), use
+<code>scales = "free"</code>, <code>scales = "free_x"</code>, or
+<code>scales = "free_y"</code> inside <code>facet_wrap()</code>.</p>
+</div>
+<hr />
+</div>
+<div id="scales" class="section level2">
+<h2>Scales</h2>
+<p><strong>Scales</strong> control how data values are mapped to visual
+properties. Every aesthetic mapping has an associated scale, whether or
+not you specify one explicitly. When you write
+<code>aes(x = displ)</code>, ggplot2 automatically creates a continuous
+x scale. When you write <code>aes(color = class)</code>, it creates a
+discrete color scale.</p>
+<p>Customizing scales gives you control over:</p>
+<ul>
+<li><strong>Axis breaks and labels</strong> – where tick marks appear
+and what they say</li>
+<li><strong>Color palettes</strong> – which colors represent your
+data</li>
+<li><strong>Transformations</strong> – log scales, square root scales,
+reversed axes</li>
+<li><strong>Formatting</strong> – dollar signs, percentages, commas</li>
+</ul>
+<div id="common-scale-functions" class="section level3">
+<h3>Common Scale Functions</h3>
+<table>
+<colgroup>
+<col width="52%" />
+<col width="47%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>scale_x_continuous()</code> /
+<code>scale_y_continuous()</code></td>
+<td align="left">Customize continuous axes</td>
+</tr>
+<tr class="even">
+<td align="left"><code>scale_x_discrete()</code> /
+<code>scale_y_discrete()</code></td>
+<td align="left">Customize categorical axes</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>scale_color_manual()</code> /
+<code>scale_fill_manual()</code></td>
+<td align="left">Set specific colors by hand</td>
+</tr>
+<tr class="even">
+<td align="left"><code>scale_color_brewer()</code> /
+<code>scale_fill_brewer()</code></td>
+<td align="left">Use ColorBrewer palettes</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>scale_color_viridis_c()</code> /
+<code>scale_fill_viridis_c()</code></td>
+<td align="left">Perceptually uniform, colorblind-friendly</td>
+</tr>
+<tr class="even">
+<td align="left"><code>scale_x_log10()</code> /
+<code>scale_y_log10()</code></td>
+<td align="left">Log-transformed axes</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">5000</span>), <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">color =</span> cut)) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Diamond Price vs. Carat&quot;</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;5,000 randomly sampled diamonds from the diamonds dataset&quot;</span>,</span>
+<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Carat&quot;</span>,</span>
+<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Price (USD)&quot;</span>,</span>
+<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Cut Quality&quot;</span></span>
+<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-scales-demo-1.png" width="768" /></p>
+</div>
+<div id="gonzaga-color-palette" class="section level3">
+<h3>Gonzaga Color Palette</h3>
+<p>Throughout this course, we will frequently use Gonzaga’s official
+colors. Here is a reference palette you can use in your own plots:</p>
+<div class="figure">
+<img src="images/05/color_palette.png" alt="Gonzaga University brand colors for use in data visualization." width="60%" />
+<p class="caption">
+Gonzaga University brand colors for use in data visualization.
+</p>
+</div>
+<p>You can define a reusable vector of Gonzaga colors:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>gonzaga_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="at">navy =</span> <span class="st">&quot;#002967&quot;</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="at">red  =</span> <span class="st">&quot;#C41E3A&quot;</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>  <span class="at">gold =</span> <span class="st">&quot;#B4975A&quot;</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>  <span class="at">light_blue =</span> <span class="st">&quot;#4A90D9&quot;</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>  <span class="at">light_gray =</span> <span class="st">&quot;#eff6ff&quot;</span></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a>)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="themes" class="section level2">
+<h2>Themes</h2>
+<p><strong>Themes</strong> control all of the non-data visual elements
+of your plot: background colors, grid lines, font sizes, axis tick
+marks, legend placement, and more. A well-chosen theme can elevate a
+serviceable plot into a professional, publication-ready graphic.</p>
+<div id="built-in-themes" class="section level3">
+<h3>Built-in Themes</h3>
+<p>ggplot2 ships with several built-in themes:</p>
+<ul>
+<li><code>theme_gray()</code> – the default gray background with white
+grid lines</li>
+<li><code>theme_minimal()</code> – a clean, minimal design (our course
+default)</li>
+<li><code>theme_classic()</code> – a traditional look with axis lines
+and no grid</li>
+<li><code>theme_bw()</code> – black and white with a border</li>
+<li><code>theme_void()</code> – completely blank (useful for maps and
+diagrams)</li>
+</ul>
+<p>The <code>ggthemes</code> package adds many more, inspired by famous
+publications and designers:</p>
+<ul>
+<li><code>theme_economist()</code> – styled like <em>The Economist</em>
+magazine</li>
+<li><code>theme_fivethirtyeight()</code> – styled like
+FiveThirtyEight</li>
+<li><code>theme_tufte()</code> – inspired by Edward Tufte’s minimalist
+philosophy</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Displacement (L)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a>(base <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;theme_minimal()&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" tabindex="-1"></a>(base <span class="sc">+</span> <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;theme_classic()&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" tabindex="-1"></a>(base <span class="sc">+</span> <span class="fu">theme_economist</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;theme_economist()&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" tabindex="-1"></a>(base <span class="sc">+</span> <span class="fu">theme_tufte</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;theme_tufte()&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb23-11"><a href="#cb23-11" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">&quot;Theme Comparison&quot;</span>,</span>
+<span id="cb23-13"><a href="#cb23-13" tabindex="-1"></a>                  <span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)))</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-theme-comparison-1.png" width="960" /></p>
+</div>
+<div id="custom-theme-elements" class="section level3">
+<h3>Custom Theme Elements</h3>
+<p>You can override individual theme elements using the
+<code>theme()</code> function. Every element is controlled by one of
+four functions:</p>
+<ul>
+<li><code>element_text()</code> – controls text (size, color, face,
+family, angle)</li>
+<li><code>element_line()</code> – controls lines (color, linewidth,
+linetype)</li>
+<li><code>element_rect()</code> – controls rectangles (fill, color,
+linewidth)</li>
+<li><code>element_blank()</code> – removes the element entirely</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;A Custom-Themed Plot&quot;</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Demonstrating individual theme element overrides&quot;</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Vehicle Class&quot;</span></span>
+<span id="cb24-9"><a href="#cb24-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb24-11"><a href="#cb24-11" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb24-12"><a href="#cb24-12" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb24-13"><a href="#cb24-13" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb24-14"><a href="#cb24-14" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>),</span>
+<span id="cb24-15"><a href="#cb24-15" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb24-16"><a href="#cb24-16" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,</span>
+<span id="cb24-17"><a href="#cb24-17" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-custom-theme-1.png" width="768" /></p>
+<div class="callout-tip">
+<p><strong>Tip: Build a reusable theme.</strong> If you find yourself
+applying the same <code>theme()</code> overrides to every plot, create a
+custom theme function. You can then apply it with a single
+<code>+ theme_gonzaga()</code> call:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>theme_gonzaga <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">base_size =</span> <span class="dv">13</span>) {</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> base_size) <span class="sc">%+replace%</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> base_size <span class="sc">+</span> <span class="dv">3</span>),</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>),</span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>),</span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span></span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a>    )</span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="bonus-tuftes-redesigned-boxplot" class="section level3">
+<h3>Bonus: Tufte’s Redesigned Boxplot</h3>
+<p>Edward Tufte proposed a stripped-down version of the boxplot that
+removes the “box” entirely, replacing it with a thin line for the
+interquartile range and a point or gap for the median. This maximizes
+the data-ink ratio while preserving all essential information. The
+<code>ggthemes</code> package provides <code>geom_tufteboxplot()</code>
+for this purpose.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>  <span class="fu">geom_tufteboxplot</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Tufte-Style Boxplot&quot;</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Minimal ink, maximum data -- compare to the standard boxplot above&quot;</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Vehicle Class&quot;</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span></span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>  <span class="fu">theme_tufte</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">30</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-tufte-boxplot-1.png" width="768" /></p>
+<p>Compare this to the standard boxplot in the Geometries section above.
+The Tufte version conveys the same distributional information – median,
+spread, outliers – using far less ink. Every mark on the page is doing
+real work. This is the data-ink ratio in action.</p>
+<div class="callout-info">
+<p><strong>About ggthemes:</strong> The <code>ggthemes</code> package
+provides several Tufte-inspired elements including
+<code>theme_tufte()</code>, <code>geom_tufteboxplot()</code>, and
+<code>geom_rangeframe()</code>. These are excellent tools for applying
+design principles directly in ggplot2.</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="combining-multiple-plots-with-patchwork"
+class="section level2">
+<h2>Combining Multiple Plots with patchwork</h2>
+<p>The <code>patchwork</code> package makes it easy to combine multiple
+ggplot2 plots into a single figure. You have already seen it in action
+above. Here is a quick reference for its operators:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operator</th>
+<th align="left">Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>p1 + p2</code></td>
+<td align="left">Side by side</td>
+</tr>
+<tr class="even">
+<td align="left"><code>p1 / p2</code></td>
+<td align="left">Stacked vertically</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>p1 + p2 + plot_layout(ncol = 1)</code></td>
+<td align="left">Stacked with explicit layout</td>
+</tr>
+<tr class="even">
+<td align="left"><code>(p1 + p2) / p3</code></td>
+<td align="left">Two on top, one on bottom</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plot_annotation(title = "...")</code></td>
+<td align="left">Add an overall title</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>p_scatter <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scatterplot&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Displacement&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>p_hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>, <span class="at">fill =</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histogram&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Highway MPG&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a>p_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> drv, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;#B4975A&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Boxplot&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Drive Type&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a>p_scatter <span class="sc">+</span> p_hist <span class="sc">+</span> p_box <span class="sc">+</span></span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Three Views of the mpg Dataset&quot;</span>,</span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a>    <span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">14</span>))</span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-patchwork-demo-1.png" width="960" /></p>
+<hr />
+</div>
+<div id="saving-plots-with-ggsave" class="section level2">
+<h2>Saving Plots with ggsave()</h2>
+<p>Once you have created a publication-quality graphic, you need to save
+it at the right size and resolution. The <code>ggsave()</code> function
+makes this straightforward:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Save the last plot displayed</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;my_plot.png&quot;</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="co"># Save a specific plot object</span></span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>my_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;my_plot.png&quot;</span>, <span class="at">plot =</span> my_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" tabindex="-1"></a><span class="co"># Save as PDF (vector format -- great for print)</span></span>
+<span id="cb28-12"><a href="#cb28-12" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;my_plot.pdf&quot;</span>, <span class="at">plot =</span> my_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" tabindex="-1"></a><span class="co"># Save as SVG (vector format -- great for web)</span></span>
+<span id="cb28-15"><a href="#cb28-15" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;my_plot.svg&quot;</span>, <span class="at">plot =</span> my_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="callout-info">
+<p><strong>Resolution guidelines:</strong></p>
+<ul>
+<li><strong>Screen/web:</strong> 72–150 dpi is sufficient</li>
+<li><strong>Presentations:</strong> 150–200 dpi</li>
+<li><strong>Print/publication:</strong> 300 dpi or higher</li>
+<li><strong>Vector formats</strong> (PDF, SVG) are
+resolution-independent and are preferred for publications</li>
+</ul>
+</div>
+<hr />
+</div>
+<div id="putting-it-all-together" class="section level2">
+<h2>Putting It All Together</h2>
+<p>Let us build one more polished visualization that incorporates
+everything we have learned this week. We will use the
+<code>diamonds</code> dataset to create a comprehensive view of diamond
+characteristics:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&lt;=</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>  <span class="fu">geom_hex</span>(<span class="at">bins =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;#eff6ff&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">labels =</span> <span class="fu">comma_format</span>()) <span class="sc">+</span></span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cut, <span class="at">ncol =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Diamond Price vs. Carat by Cut Quality&quot;</span>,</span>
+<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Hexagonal binning reveals density patterns across 50,000+ diamonds&quot;</span>,</span>
+<span id="cb29-11"><a href="#cb29-11" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Carat&quot;</span>,</span>
+<span id="cb29-12"><a href="#cb29-12" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Price (USD)&quot;</span>,</span>
+<span id="cb29-13"><a href="#cb29-13" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;Count&quot;</span></span>
+<span id="cb29-14"><a href="#cb29-14" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb29-15"><a href="#cb29-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb29-16"><a href="#cb29-16" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb29-17"><a href="#cb29-17" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>),</span>
+<span id="cb29-18"><a href="#cb29-18" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>),</span>
+<span id="cb29-19"><a href="#cb29-19" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span></span>
+<span id="cb29-20"><a href="#cb29-20" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week03_files/figure-html/w3-putting-together-1.png" width="960" /></p>
+<p>This single plot uses data (diamonds), aesthetics (x, y, fill), a
+geometry (hexagonal bins), a scale (gradient fill, dollar-formatted
+y-axis), faceting (by cut), labels, and a customized theme. Every layer
+of the grammar of graphics is working together.</p>
+<div class="callout-ignatian">
+<p><strong>Ignatian Reflection: Magis in Visualization</strong></p>
+<p>The Ignatian principle of <em>magis</em> – the “more” – calls us not
+to settle for what is merely adequate but to pursue excellence for the
+greater good. In data visualization, <em>magis</em> means not settling
+for the default. The default gray theme, the default axis labels, the
+default color palette – these are starting points, not endpoints. Every
+design choice is an opportunity to communicate more clearly, more
+honestly, more beautifully. As Wickham himself wrote, “A good
+visualization shows you things you did not expect, or raises new
+questions about the data.” Pursue that <em>more</em>.</p>
+</div>
+<hr />
+</div>
+<div id="exercises" class="section level2">
+<h2>Exercises</h2>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Week 3 Exercises</p>
+</div>
+<div class="exercise-body">
+<p><strong>Exercise 1: Your First Layered Plot</strong></p>
+<p>Using the <code>mpg</code> dataset, build a scatterplot of
+<code>cty</code> (city MPG, x-axis) vs. <code>hwy</code> (highway MPG,
+y-axis). Fill in the blanks in the template below. Map the
+<code>drv</code> variable to color using Gonzaga colors, add axis labels
+and a title, and apply <code>theme_minimal()</code>.</p>
+<div class="template-code">
+<p><strong>Template – fill in the <code>___</code> blanks:</strong></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="fu">ggplot</span>(___, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___, <span class="at">color =</span> ___)) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;___&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;___&quot;</span>),</span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;4-wheel&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;Front&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;Rear&quot;</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb30-11"><a href="#cb30-11" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;City MPG&quot;</span>,</span>
+<span id="cb30-12"><a href="#cb30-12" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb30-13"><a href="#cb30-13" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Drive Type&quot;</span></span>
+<span id="cb30-14"><a href="#cb30-14" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-15"><a href="#cb30-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+</div>
+<p>After completing the template, write 1–2 sentences interpreting the
+relationship between city and highway fuel economy. Is there a pattern?
+Do the drive types cluster differently?</p>
+<p><strong>Exercise 2: Bar Chart with geom_col()</strong></p>
+<p>The code below summarizes the <code>diamonds</code> dataset by
+<code>cut</code>, calculating the average price for each cut quality.
+Fill in the blanks to create a horizontal bar chart with direct labels.
+Remember: <code>geom_col()</code> is for pre-computed values,
+<code>geom_bar()</code> is for counting.</p>
+<div class="template-code">
+<p><strong>Template – fill in the <code>___</code> blanks:</strong></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_price =</span> <span class="fu">mean</span>(price)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cut =</span> <span class="fu">fct_reorder</span>(cut, ___)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_price, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;___&quot;</span>) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(avg_price, <span class="dv">0</span>)), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Average price by cut quality&quot;</span>,</span>
+<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Average Price (USD)&quot;</span>,</span>
+<span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb31-14"><a href="#cb31-14" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> ___) <span class="sc">+</span></span>
+<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+</div>
+<p>After completing the template, answer: which cut has the highest
+average price? Is this what you expected? Why or why not? (Hint: think
+about the relationship between cut quality and carat size in the
+diamonds dataset.)</p>
+<p><strong>Exercise 3: Faceted Exploration</strong></p>
+<p>Install the <code>palmerpenguins</code> package
+(<code>install.packages("palmerpenguins")</code>) and create a faceted
+scatterplot. Fill in the blanks below.</p>
+<div class="template-code">
+<p><strong>Template – fill in the <code>___</code> blanks:</strong></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> ___, <span class="at">color =</span> ___)) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;___&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="st">&quot;male&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>___, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Penguin Bill Dimensions by Species and Sex&quot;</span>,</span>
+<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Bill Length (mm)&quot;</span>,</span>
+<span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Sex&quot;</span></span>
+<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+</div>
+<p>Write 2–3 sentences interpreting what the faceted view reveals. How
+do bill dimensions differ across species? Does the relationship between
+bill length and bill depth change by species?</p>
+<p><strong>Exercise 4: Theme Customization and patchwork</strong></p>
+<p>Create two plots of the <code>mpg</code> dataset – a scatterplot and
+a boxplot – and combine them side by side using <code>patchwork</code>.
+Fill in the blanks below. Then write a custom
+<code>theme_gonzaga()</code> function and apply it to both plots.</p>
+<div class="template-code">
+<p><strong>Template – fill in the <code>___</code> blanks:</strong></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="co"># Define the custom theme</span></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>theme_gonzaga <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">base_size =</span> <span class="dv">13</span>) {</span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> base_size) <span class="sc">%+replace%</span></span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;___&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> base_size <span class="sc">+</span> <span class="dv">3</span>),</span>
+<span id="cb33-8"><a href="#cb33-8" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>),</span>
+<span id="cb33-9"><a href="#cb33-9" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;___&quot;</span>),</span>
+<span id="cb33-10"><a href="#cb33-10" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb33-11"><a href="#cb33-11" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;___&quot;</span></span>
+<span id="cb33-12"><a href="#cb33-12" tabindex="-1"></a>    )</span>
+<span id="cb33-13"><a href="#cb33-13" tabindex="-1"></a>}</span>
+<span id="cb33-14"><a href="#cb33-14" tabindex="-1"></a></span>
+<span id="cb33-15"><a href="#cb33-15" tabindex="-1"></a><span class="co"># Plot 1: scatterplot</span></span>
+<span id="cb33-16"><a href="#cb33-16" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb33-17"><a href="#cb33-17" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb33-18"><a href="#cb33-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Engine Size vs. MPG&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Displacement (L)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>) <span class="sc">+</span></span>
+<span id="cb33-19"><a href="#cb33-19" tabindex="-1"></a>  <span class="fu">theme_gonzaga</span>()</span>
+<span id="cb33-20"><a href="#cb33-20" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="#cb33-21" tabindex="-1"></a><span class="co"># Plot 2: boxplot</span></span>
+<span id="cb33-22"><a href="#cb33-22" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb33-23"><a href="#cb33-23" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;#eff6ff&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb33-24"><a href="#cb33-24" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;MPG by Drive Type&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Drive Type&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>) <span class="sc">+</span></span>
+<span id="cb33-25"><a href="#cb33-25" tabindex="-1"></a>  <span class="fu">theme_gonzaga</span>()</span>
+<span id="cb33-26"><a href="#cb33-26" tabindex="-1"></a></span>
+<span id="cb33-27"><a href="#cb33-27" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span></span>
+<span id="cb33-28"><a href="#cb33-28" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb33-29"><a href="#cb33-29" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb33-30"><a href="#cb33-30" tabindex="-1"></a>    <span class="at">theme =</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>))</span>
+<span id="cb33-31"><a href="#cb33-31" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<p><strong>Exercise 5: Complete Visualization from Scratch</strong></p>
+<p>Using any built-in dataset (<code>mpg</code>, <code>diamonds</code>,
+<code>economics</code>, or <code>mtcars</code>), build a polished
+visualization entirely from scratch – no template. Your plot must
+include at least five of the seven grammar of graphics layers:</p>
+<ol style="list-style-type: decimal">
+<li>Data</li>
+<li>Aesthetics (at least two mapped variables)</li>
+<li>Geometry (your choice)</li>
+<li>Faceting OR a second geometry layer</li>
+<li>Labels (title, subtitle, axis labels)</li>
+<li>A customized scale (color, axis formatting, or both)</li>
+<li>A customized theme (modify at least two <code>theme()</code>
+elements)</li>
+</ol>
+<p>Save your final plot using <code>ggsave()</code> at 300 dpi, 8 inches
+wide and 5 inches tall. In a few sentences below your code, explain what
+story your visualization tells and which design choices you made to
+support that story.</p>
+</div>
+</div>
+<hr />
+<hr />
+</div>
+<div id="try-it-interactive-sandbox" class="section level2">
+<h2>Try It: Interactive Sandbox</h2>
+<div class="callout-ai">
+<p><strong>AI &amp; This Concept</strong> AI tools build
+<code>ggplot2</code> code in layers — exactly like this sandbox. When an
+AI-generated chart looks wrong, the most effective debugging question
+is: <em>which layer is broken?</em> Is the geometry wrong? The aesthetic
+mapping? The scale? Knowing the grammar makes you a better director of
+AI.</p>
+</div>
+<div class="sandbox-section">
+<div class="sandbox-header">
+<p><span class="sandbox-icon">🧪</span> Grammar of Graphics Layer
+Builder — Build a Plot Step by Step</p>
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/64046116-7100-479f-a200-f3e7aa34e4a9/" height="600" allowfullscreen>
+</iframe>
+<div class="sandbox-footer">
+<p>Check the boxes one by one in the sidebar. Watch both the plot and
+the generated code change simultaneously. This is exactly how ggplot2
+builds graphics — one layer at a time.</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="attributions" class="section level2">
+<h2>Attributions</h2>
+<p>This course material draws on and is inspired by the work of many
+scholars and practitioners:</p>
+<ul>
+<li><strong>Wilkinson, L.</strong> – <em>The Grammar of Graphics</em>
+(Springer, 1999; 2nd ed. 2005). The foundational theoretical framework
+for systematic visualization construction.</li>
+<li><strong>Wickham, H.</strong> – <em>ggplot2: Elegant Graphics for
+Data Analysis</em> (Springer, 3rd ed.). The definitive guide to the R
+implementation of the grammar of graphics.</li>
+<li><strong>Wickham, H.</strong> (2010). “A Layered Grammar of
+Graphics.” <em>Journal of Computational and Graphical Statistics</em>,
+19(1), 3–28. The academic paper describing ggplot2’s design
+philosophy.</li>
+<li><strong>Tufte, E.R.</strong> – <em>The Visual Display of
+Quantitative Information</em> (Graphics Press, 1983, 2001). Foundational
+design principles including the data-ink ratio and lie factor.</li>
+<li><strong>Vivek H. Patil</strong> – foundational course design and
+materials for data visualization at Gonzaga University.</li>
+</ul>
+<div class="page-nav">
+<p><a href="week02.html">← Week 2: Visual Perception</a>
+<a href="week04.html">Week 4: Chart Types →</a></p>
+</div>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

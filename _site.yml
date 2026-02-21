@@ -1,0 +1,48 @@
+name: "dataviz-gonzaga"
+output_dir: "docs"
+navbar:
+  title: "Visual Analytics & Data Storytelling with R"
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Syllabus"
+      href: syllabus.html
+    - text: "Weeks"
+      menu:
+        - text: "Week 1: Introduction to Data Viz & R"
+          href: week01.html
+        - text: "Week 2: Visual Perception & Design"
+          href: week02.html
+        - text: "Week 3: Grammar of Graphics & ggplot2"
+          href: week03.html
+        - text: "Week 4: Chart Types & Variations"
+          href: week04.html
+        - text: "Week 5: Data Wrangling Essentials"
+          href: week05.html
+        - text: "Week 6: Interactive Visualizations"
+          href: week06.html
+        - text: "Week 7: Geographic Visualization"
+          href: week07.html
+        - text: "Week 8: Capstone — Viz in Practice"
+          href: week08.html
+    - text: "Resources"
+      href: resources.html
+  right:
+    - icon: fa-github
+      href: https://github.com/patilv/VizAnalytics4Biz
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    css: styles.css
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    toc_depth: 3
+    number_sections: false
+    code_folding: show
+    code_download: true
+    includes:
+      after_body: _footer.html

@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week 5: Data Wrangling Essentials</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week 5: Data Wrangling Essentials</h1>
+
+</div>
+
+
+<div class="hero-banner">
+<div class="week-badge">
+5
+</div>
+<h1>
+Data Wrangling Essentials
+</h1>
+<p>
+Tidy data, the pipe operator, and the core dplyr verbs you need for
+every visualization
+</p>
+</div>
+<div id="learning-objectives" class="section level2 objectives">
+<h2>Learning Objectives</h2>
+<p>By the end of this week, you will be able to:</p>
+<ul>
+<li>Define tidy data and explain why it matters for ggplot2</li>
+<li>Use the pipe operator <code>%&gt;%</code> to chain operations into
+readable pipelines</li>
+<li>Apply the six core dplyr verbs: <code>filter()</code>,
+<code>select()</code>, <code>mutate()</code>, <code>summarise()</code>,
+<code>group_by()</code>, and <code>arrange()</code></li>
+<li>Reshape wide data to long format with
+<code>pivot_longer()</code></li>
+<li>Use <code>fct_reorder()</code> to control the order of categories in
+your charts</li>
+<li>Build a complete wrangle-then-plot pipeline from start to
+finish</li>
+</ul>
+</div>
+<div class="callout-info">
+<p><strong>A note about this week.</strong> This is the most technical
+week of the course. Data wrangling is the bridge between having data and
+being able to visualize it. If you have never written code that
+transforms data before, this week may feel challenging – and that is
+completely normal. Go slowly, run every code chunk one at a time, and
+focus on understanding what each step does before moving to the next.
+You do not need to memorize every function. You need to understand the
+<em>pattern</em> so you can look things up when you need them.</p>
+</div>
+<div class="callout-tip">
+<p><strong>Pre-Wrangled Data in Weeks 6–8</strong></p>
+<p>If data wrangling feels overwhelming this week, here is the most
+important thing to know: <strong>Weeks 6, 7, and 8 will provide
+pre-wrangled datasets</strong> ready for visualization. You will not
+need to wrangle raw data from scratch to complete those assignments.</p>
+<p>This week teaches you the foundations so you <em>understand</em> what
+is happening when data gets transformed. But struggling here will
+<strong>not</strong> cascade into failure on later weeks. Keep going, do
+your best, and know that the safety net is in place.</p>
+</div>
+<div id="tidy-data" class="section level2">
+<h2>1. Tidy Data</h2>
+<p>The single most important concept this week is <strong>tidy
+data</strong>. The term comes from Hadley Wickham’s influential 2014
+paper in the <em>Journal of Statistical Software</em>, and it provides
+the foundation for everything we do in the tidyverse.</p>
+<p>Tidy data follows three simple rules:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Each variable forms a column</strong></li>
+<li><strong>Each observation forms a row</strong></li>
+<li><strong>Each type of observational unit forms a table</strong></li>
+</ol>
+<p>These rules sound straightforward, but most data you encounter in the
+real world violates at least one of them. Spreadsheets designed for
+human reading often spread variables across column headers, merge cells
+for visual clarity, or mix multiple observational units in a single
+table.</p>
+<div id="why-does-this-matter-for-ggplot2" class="section level3">
+<h3>Why Does This Matter for ggplot2?</h3>
+<p>Remember from Week 4 that ggplot2 maps <strong>variables</strong> to
+<strong>aesthetics</strong>. If your variable is spread across multiple
+columns (like <code>2020</code>, <code>2021</code>, <code>2022</code> as
+separate columns), you cannot map it to a single aesthetic like
+<code>x = year</code>. Tidy data makes the mapping from data to visual
+properties direct and explicit.</p>
+<p>Here is a concrete example. Look at this “messy” (wide-format)
+population data:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Messy (wide) data — years are spread across columns</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>messy <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="at">country =</span> <span class="fu">c</span>(<span class="st">&quot;USA&quot;</span>, <span class="st">&quot;Canada&quot;</span>, <span class="st">&quot;Mexico&quot;</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="st">`</span><span class="at">2020</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">331</span>, <span class="dv">38</span>, <span class="dv">129</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="st">`</span><span class="at">2021</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">332</span>, <span class="dv">38</span>, <span class="dv">130</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="st">`</span><span class="at">2022</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">333</span>, <span class="dv">39</span>, <span class="dv">131</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>messy</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 4
+##   country `2020` `2021` `2022`
+##   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 USA        331    332    333
+## 2 Canada      38     38     39
+## 3 Mexico     129    130    131</code></pre>
+<p>This looks fine to a human eye. But try mapping it to ggplot2 – what
+would you put on the x-axis? There is no <code>year</code> column. The
+years are trapped inside column <em>names</em>, not inside column
+<em>values</em>.</p>
+<p>Now let us tidy it:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Tidy (long) data — each row is one country-year observation</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>tidy <span class="ot">&lt;-</span> messy <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="st">`</span><span class="at">2020</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2022</span><span class="st">`</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;population_millions&quot;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>tidy</span></code></pre></div>
+<pre><code>## # A tibble: 9 × 3
+##   country year  population_millions
+##   &lt;chr&gt;   &lt;chr&gt;               &lt;dbl&gt;
+## 1 USA     2020                  331
+## 2 USA     2021                  332
+## 3 USA     2022                  333
+## 4 Canada  2020                   38
+## 5 Canada  2021                   38
+## 6 Canada  2022                   39
+## 7 Mexico  2020                  129
+## 8 Mexico  2021                  130
+## 9 Mexico  2022                  131</code></pre>
+<p>The messy data had 3 rows and 4 columns. The tidy data has 9 rows and
+3 columns. Every combination of country and year is its own row, and
+<code>year</code> and <code>population_millions</code> are proper
+columns we can map to aesthetics.</p>
+<p>Now we can plot it directly:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>tidy <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population_millions, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;USA&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>                                <span class="st">&quot;Canada&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>                                <span class="st">&quot;Mexico&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Population Growth (2020\u20132022)&quot;</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Population (millions)&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week05_files/figure-html/w5-tidy-plot-1.png" width="768" /></p>
+<div class="callout-tip">
+<p><strong>Rule of thumb:</strong> If you want to map something to
+color, fill, or facet but the categories are stuck in column
+<em>names</em> rather than in a column of their own, you need
+<code>pivot_longer()</code>.</p>
+</div>
+</div>
+</div>
+<div id="the-pipe-operator" class="section level2">
+<h2>2. The Pipe Operator <code>%&gt;%</code></h2>
+<p>The pipe operator <code>%&gt;%</code> is the connective tissue of
+tidyverse code. Read it as <strong>“and then.”</strong> It takes the
+output of the expression on its left and passes it as the <strong>first
+argument</strong> to the function on its right.</p>
+<p>Without the pipe, code reads <em>inside-out</em>. With the pipe, code
+reads <em>top-to-bottom</em> like a recipe:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Without pipe: nested, hard to read — you must read inside-out</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">arrange</span>(<span class="fu">summarise</span>(<span class="fu">group_by</span>(<span class="fu">filter</span>(mpg, year <span class="sc">==</span> <span class="dv">2008</span>), class), <span class="at">avg =</span> <span class="fu">mean</span>(hwy)), <span class="fu">desc</span>(avg))</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   class        avg
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 compact     28.7
+## 2 midsize     28.0
+## 3 subcompact  27.1
+## 4 2seater     25  
+## 5 minivan     22.2
+## 6 suv         18.6
+## 7 pickup      16.9</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># With pipe: clear, readable — you read top to bottom</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2008</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg =</span> <span class="fu">mean</span>(hwy), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg))</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   class        avg
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 compact     28.7
+## 2 midsize     28.0
+## 3 subcompact  27.1
+## 4 2seater     25  
+## 5 minivan     22.2
+## 6 suv         18.6
+## 7 pickup      16.9</code></pre>
+<p>Both produce the exact same result. But the piped version tells a
+story: <em>start with mpg, then filter to 2008, then group by class,
+then calculate the average highway mpg, then arrange from highest to
+lowest.</em></p>
+<p>Think of it like giving directions:</p>
+<ul>
+<li><strong>Without pipe:</strong> “Go to the end of the street that is
+two blocks after the left turn you make after exiting the highway at
+exit 4.”</li>
+<li><strong>With pipe:</strong> “Take exit 4. Turn left. Go two blocks.
+It is at the end of the street.”</li>
+</ul>
+<p>Same destination. Very different readability.</p>
+<div class="callout-info">
+<p><strong>Base R pipe <code>|&gt;</code> vs. magrittr pipe
+<code>%&gt;%</code>:</strong> R 4.1+ introduced a native pipe operator
+<code>|&gt;</code>. It works similarly for most use cases. In this
+course we use <code>%&gt;%</code> because it is what you will encounter
+in most existing tidyverse code and tutorials. Both are fine. If you see
+<code>|&gt;</code> in online examples, know that it does essentially the
+same thing.</p>
+</div>
+</div>
+<div id="the-dplyr-verbs" class="section level2 tabset">
+<h2 class="tabset">3. The dplyr Verbs</h2>
+<p>The dplyr package provides a small set of <strong>verbs</strong> –
+functions that each do one thing well. Think of them as the building
+blocks of data transformation. When you chain them together with pipes,
+you can express sophisticated data transformations in clear, readable
+code.</p>
+<p>There are six verbs you need to know. Each one operates on a data
+frame and returns a new data frame.</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="35%" />
+<col width="48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Verb</th>
+<th align="left">What it does</th>
+<th align="left">Think of it as…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>filter()</code></td>
+<td align="left">Keeps rows that match a condition</td>
+<td align="left">“Show me only the rows where…”</td>
+</tr>
+<tr class="even">
+<td align="left"><code>select()</code></td>
+<td align="left">Keeps (or removes) specific columns</td>
+<td align="left">“I only need these columns…”</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mutate()</code></td>
+<td align="left">Creates new columns or modifies existing ones</td>
+<td align="left">“Calculate a new variable…”</td>
+</tr>
+<tr class="even">
+<td align="left"><code>summarise()</code></td>
+<td align="left">Collapses many rows into a summary</td>
+<td align="left">“Give me the average/count/max…”</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>group_by()</code></td>
+<td align="left">Sets up groups for summarise</td>
+<td align="left">“Do this separately for each…”</td>
+</tr>
+<tr class="even">
+<td align="left"><code>arrange()</code></td>
+<td align="left">Sorts rows</td>
+<td align="left">“Put these in order by…”</td>
+</tr>
+</tbody>
+</table>
+<div id="filter" class="section level3">
+<h3>filter()</h3>
+<p><code>filter()</code> selects <strong>rows</strong> based on
+conditions. Only rows where the condition evaluates to <code>TRUE</code>
+are kept. Everything else is removed.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Keep only Toyota vehicles from 2008</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">&quot;toyota&quot;</span>, year <span class="sc">==</span> <span class="dv">2008</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="fu">select</span>(model, year, cty, hwy)</span></code></pre></div>
+<pre><code>## # A tibble: 14 × 4
+##    model                   year   cty   hwy
+##    &lt;chr&gt;                  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+##  1 4runner 4wd             2008    16    20
+##  2 4runner 4wd             2008    14    17
+##  3 camry                   2008    21    31
+##  4 camry                   2008    21    31
+##  5 camry                   2008    19    28
+##  6 camry solara            2008    21    31
+##  7 camry solara            2008    22    31
+##  8 camry solara            2008    18    27
+##  9 corolla                 2008    28    37
+## 10 corolla                 2008    26    35
+## 11 land cruiser wagon 4wd  2008    13    18
+## 12 toyota tacoma 4wd       2008    17    22
+## 13 toyota tacoma 4wd       2008    15    18
+## 14 toyota tacoma 4wd       2008    16    20</code></pre>
+<p>Notice two things: we use <code>==</code> (double equals) to test for
+equality, not <code>=</code> (single equals). And when we list multiple
+conditions separated by commas, it means “AND” – both conditions must be
+true.</p>
+<p>Here are the most common operators you will use inside
+<code>filter()</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operator</th>
+<th align="left">Meaning</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>==</code></td>
+<td align="left">equals</td>
+<td align="left"><code>filter(year == 2008)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>!=</code></td>
+<td align="left">not equal</td>
+<td align="left"><code>filter(class != "suv")</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&gt;</code>, <code>&lt;</code>,
+<code>&gt;=</code>, <code>&lt;=</code></td>
+<td align="left">comparisons</td>
+<td align="left"><code>filter(hwy &gt; 30)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>%in%</code></td>
+<td align="left">value is in a set</td>
+<td align="left"><code>filter(class %in% c("suv", "pickup"))</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&amp;</code></td>
+<td align="left">and</td>
+<td
+align="left"><code>filter(year == 2008 &amp; hwy &gt; 25)</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>|</code></td>
+<td align="left">or</td>
+<td
+align="left"><code>filter(class == "suv" | class == "pickup")</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>is.na()</code></td>
+<td align="left">is missing</td>
+<td align="left"><code>filter(is.na(hwy))</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>!is.na()</code></td>
+<td align="left">is not missing</td>
+<td align="left"><code>filter(!is.na(hwy))</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="select" class="section level3">
+<h3>select()</h3>
+<p><code>select()</code> chooses <strong>columns</strong>. It is your
+tool for narrowing a wide dataset down to just the variables you need.
+This makes your data easier to work with and your output easier to
+read.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Keep only specific columns</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, year, hwy, cty) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 5
+##   manufacturer model       year   hwy   cty
+##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1 audi         a4          1999    29    18
+## 2 audi         a4          1999    29    21
+## 3 audi         a4          2008    31    20
+## 4 audi         a4          2008    30    21
+## 5 audi         a4          1999    26    16
+## 6 audi         a4          1999    26    18
+## 7 audi         a4          2008    27    18
+## 8 audi         a4 quattro  1999    26    18</code></pre>
+<p>You can also use helper functions inside <code>select()</code>:</p>
+<ul>
+<li><code>starts_with("h")</code> – all columns whose names start with
+“h”</li>
+<li><code>ends_with("y")</code> – all columns whose names end with
+“y”</li>
+<li><code>contains("mpg")</code> – all columns whose names contain
+“mpg”</li>
+<li><code>-column_name</code> – remove a column (keep everything
+else)</li>
+</ul>
+</div>
+<div id="mutate" class="section level3">
+<h3>mutate()</h3>
+<p><code>mutate()</code> creates <strong>new columns</strong> or
+modifies existing ones. The original columns are preserved; new columns
+are appended to the right side of the data frame.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Calculate average MPG and estimated annual fuel cost</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>    <span class="at">avg_mpg =</span> (cty <span class="sc">+</span> hwy) <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    <span class="at">fuel_cost_annual =</span> (<span class="dv">15000</span> <span class="sc">/</span> avg_mpg) <span class="sc">*</span> <span class="fl">3.50</span>  <span class="co"># 15k miles at $3.50/gal</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, avg_mpg, fuel_cost_annual) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 4
+##   manufacturer model      avg_mpg fuel_cost_annual
+##   &lt;chr&gt;        &lt;chr&gt;        &lt;dbl&gt;            &lt;dbl&gt;
+## 1 audi         a4            23.5            2234.
+## 2 audi         a4            25              2100 
+## 3 audi         a4            25.5            2059.
+## 4 audi         a4            25.5            2059.
+## 5 audi         a4            21              2500 
+## 6 audi         a4            22              2386.
+## 7 audi         a4            22.5            2333.
+## 8 audi         a4 quattro    22              2386.</code></pre>
+<p>Think of <code>mutate()</code> as adding a new column to a
+spreadsheet where the value in each cell is calculated from other
+columns in the same row.</p>
+</div>
+<div id="summarise-group_by" class="section level3">
+<h3>summarise() + group_by()</h3>
+<p><code>summarise()</code> (you can also spell it
+<code>summarize()</code>) collapses many rows into summary statistics.
+On its own, it gives you a single-row summary of the entire dataset. But
+when you pair it with <code>group_by()</code>, it computes summaries
+<strong>within each group</strong>.</p>
+<p>First, let us see <code>summarise()</code> without grouping:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># One summary for the entire dataset</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>    <span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>    <span class="at">max_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>    <span class="at">total_cars =</span> <span class="fu">n</span>()</span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   avg_hwy max_hwy total_cars
+##     &lt;dbl&gt;   &lt;int&gt;      &lt;int&gt;
+## 1    23.4      44        234</code></pre>
+<p>Now with <code>group_by()</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Summary statistics by vehicle class</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>    <span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>    <span class="at">best_hwy =</span> <span class="fu">max</span>(hwy),</span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_hwy))</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 4
+##   class          n avg_hwy best_hwy
+##   &lt;chr&gt;      &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;
+## 1 compact       47    28.3       44
+## 2 subcompact    35    28.1       44
+## 3 midsize       41    27.3       32
+## 4 2seater        5    24.8       26
+## 5 minivan       11    22.4       24
+## 6 suv           62    18.1       27
+## 7 pickup        33    16.9       22</code></pre>
+<p>Notice the <code>.groups = "drop"</code> argument. This tells R to
+remove the grouping after summarizing, which prevents surprising
+behavior in downstream operations. Always include it.</p>
+<p>Common summary functions you can use inside
+<code>summarise()</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">What it calculates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>mean(x)</code></td>
+<td align="left">Average</td>
+</tr>
+<tr class="even">
+<td align="left"><code>median(x)</code></td>
+<td align="left">Median</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sd(x)</code></td>
+<td align="left">Standard deviation</td>
+</tr>
+<tr class="even">
+<td align="left"><code>min(x)</code>, <code>max(x)</code></td>
+<td align="left">Minimum, maximum</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>n()</code></td>
+<td align="left">Count of rows</td>
+</tr>
+<tr class="even">
+<td align="left"><code>sum(x)</code></td>
+<td align="left">Total</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="arrange" class="section level3">
+<h3>arrange()</h3>
+<p><code>arrange()</code> sorts rows. By default it sorts in ascending
+order (smallest to largest). Wrap a column in <code>desc()</code> to
+sort in descending order (largest to smallest).</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># Rank manufacturers by average highway MPG (best to worst)</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_hwy))</span></code></pre></div>
+<pre><code>## # A tibble: 15 × 2
+##    manufacturer avg_hwy
+##    &lt;chr&gt;          &lt;dbl&gt;
+##  1 honda           32.6
+##  2 volkswagen      29.2
+##  3 hyundai         26.9
+##  4 audi            26.4
+##  5 pontiac         26.4
+##  6 subaru          25.6
+##  7 toyota          24.9
+##  8 nissan          24.6
+##  9 chevrolet       21.9
+## 10 ford            19.4
+## 11 mercury         18  
+## 12 dodge           17.9
+## 13 jeep            17.6
+## 14 lincoln         17  
+## 15 land rover      16.5</code></pre>
+</div>
+</div>
+<div id="section" class="section level2 unnumbered">
+<h2 class="unnumbered"></h2>
+</div>
+<div id="common-errors-and-how-to-fix-them"
+class="section level2 callout-error">
+<h2>Common Errors and How to Fix Them</h2>
+<p>When you are working through this week’s code, you will almost
+certainly encounter some of these errors. <strong>This is
+normal.</strong> Here is a quick reference for diagnosing and fixing
+them.</p>
+<p><strong>“Error: object ‘hwy’ not found”</strong></p>
+<p>Inside dplyr verbs, use <strong>bare column names</strong> (no
+quotes): <code>filter(hwy &gt; 30)</code>, not
+<code>filter("hwy" &gt; 30)</code>.</p>
+<p><strong>“Error in filter(): ! object ‘mpg’ not found”</strong></p>
+<p>Did you load the tidyverse? You need to run
+<code>library(tidyverse)</code> at the top of your script before using
+any dplyr functions or built-in datasets like <code>mpg</code>.</p>
+<p><strong>“Error: unexpected PIPE”</strong></p>
+<p>The <code>%&gt;%</code> pipe must go at the <strong>end</strong> of a
+line, not the start of the next line.</p>
+<pre><code># WRONG — pipe at the start of a line
+mpg
+  %&gt;% filter(year == 2008)
+
+# RIGHT — pipe at the end of a line
+mpg %&gt;%
+  filter(year == 2008)</code></pre>
+<p><strong>“.groups argument” warning</strong></p>
+<p>This is a warning, not an error – your code still runs. But to
+silence it and avoid unexpected behavior, add
+<code>.groups = "drop"</code> inside <code>summarise()</code>:</p>
+<pre><code>summarise(avg = mean(hwy), .groups = &quot;drop&quot;)</code></pre>
+<p><strong>“Column <code>___</code> doesn’t exist”</strong></p>
+<p>Check your spelling. <strong>R is case-sensitive.</strong>
+<code>Hwy</code> is not the same as <code>hwy</code>. Use
+<code>names(mpg)</code> or <code>glimpse(mpg)</code> to see the exact
+column names.</p>
+<p><strong>pivot_longer() does not seem to work</strong></p>
+<p>Make sure <code>cols =</code> specifies which columns to pivot. If
+your column names start with numbers (like <code>2020</code>), you must
+wrap them in backticks:</p>
+<pre><code>pivot_longer(cols = `2020`:`2022`,
+             names_to = &quot;year&quot;,
+             values_to = &quot;value&quot;)</code></pre>
+</div>
+<div id="reshaping-with-pivot_longer" class="section level2">
+<h2>4. Reshaping with pivot_longer()</h2>
+<p>Most data you download from the internet comes in <strong>wide
+format</strong> – designed for human reading, with categories spread
+across column headers. But ggplot2 needs <strong>long format</strong> –
+one row per observation, with categories in their own column.</p>
+<p><code>pivot_longer()</code> converts wide data to long data. It has
+three key arguments:</p>
+<table>
+<colgroup>
+<col width="35%" />
+<col width="32%" />
+<col width="32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Purpose</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>cols</code></td>
+<td align="left">Which columns to pivot</td>
+<td align="left"><code>cols = c(City, Highway)</code> or
+<code>cols =</code>2020<code>:</code>2022`<code>| |</code>names_to<code>| Name for the new column that will hold the old column names |</code>names_to
+=
+“type”<code>| |</code>values_to<code>| Name for the new column that will hold the values |</code>values_to
+= “mpg”`</td>
+</tr>
+</tbody>
+</table>
+<p>Let us walk through a complete example. We want to compare city and
+highway fuel economy by vehicle class, shown side by side in a grouped
+bar chart. To get two bars per class (one for city, one for highway), we
+need a column that says “City” or “Highway” – which means we need to
+pivot.</p>
+<p><strong>Step 1: Summarise the data</strong></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># Calculate average city and highway MPG by class</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>mpg_summary <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>    <span class="at">City =</span> <span class="fu">mean</span>(cty),</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>    <span class="at">Highway =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a>  )</span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>mpg_summary</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 3
+##   class       City Highway
+##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+## 1 2seater     15.4    24.8
+## 2 compact     20.1    28.3
+## 3 midsize     18.8    27.3
+## 4 minivan     15.8    22.4
+## 5 pickup      13      16.9
+## 6 subcompact  20.4    28.1
+## 7 suv         13.5    18.1</code></pre>
+<p>Notice that <code>City</code> and <code>Highway</code> are separate
+columns. We cannot map both to a single y-axis in ggplot2 while also
+coloring by type.</p>
+<p><strong>Step 2: Pivot to long format</strong></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Pivot so that &quot;City&quot; and &quot;Highway&quot; become values in a new column</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>mpg_long <span class="ot">&lt;-</span> mpg_summary <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(City, Highway),</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;mpg&quot;</span></span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a>  )</span>
+<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a>mpg_long</span></code></pre></div>
+<pre><code>## # A tibble: 14 × 3
+##    class      type      mpg
+##    &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt;
+##  1 2seater    City     15.4
+##  2 2seater    Highway  24.8
+##  3 compact    City     20.1
+##  4 compact    Highway  28.3
+##  5 midsize    City     18.8
+##  6 midsize    Highway  27.3
+##  7 minivan    City     15.8
+##  8 minivan    Highway  22.4
+##  9 pickup     City     13  
+## 10 pickup     Highway  16.9
+## 11 subcompact City     20.4
+## 12 subcompact Highway  28.1
+## 13 suv        City     13.5
+## 14 suv        Highway  18.1</code></pre>
+<p>Now we have a <code>type</code> column with values “City” and
+“Highway” and an <code>mpg</code> column with the corresponding values.
+This is tidy data: each row is one class-type combination.</p>
+<p><strong>Step 3: Plot</strong></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(class, mpg), <span class="at">y =</span> mpg, <span class="at">fill =</span> type)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;City&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="st">&quot;Highway&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Average City vs. Highway MPG by Vehicle Class&quot;</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>, <span class="at">fill =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week05_files/figure-html/w5-pivot-step3-1.png" width="768" /></p>
+<div class="callout-warning">
+<p><strong>Common pitfall:</strong> Forgetting to pivot before plotting.
+If you try to map both <code>cty</code> and <code>hwy</code> to the
+y-axis in a single ggplot call, you will run into trouble. The tidy
+approach is always: <strong>pivot first, then map</strong> the new
+category column to <code>fill</code> or <code>color</code>.</p>
+</div>
+</div>
+<div id="controlling-chart-order-with-forcats" class="section level2">
+<h2>5. Controlling Chart Order with forcats</h2>
+<p>By default, ggplot2 orders categorical axes
+<strong>alphabetically</strong>. This is almost never what you want. A
+bar chart ordered alphabetically makes it hard to compare values because
+the bars have no meaningful progression.</p>
+<p>The <strong>forcats</strong> package (part of the tidyverse – it
+loads automatically with <code>library(tidyverse)</code>) gives you
+functions to reorder factor levels. The three most useful for
+visualization:</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="35%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">What it does</th>
+<th align="left">When to use it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>fct_reorder(category, value)</code></td>
+<td align="left">Reorder by another variable</td>
+<td align="left">Bar charts sorted by value</td>
+</tr>
+<tr class="even">
+<td align="left"><code>fct_infreq(category)</code></td>
+<td align="left">Order by frequency</td>
+<td align="left">Bar charts of counts</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>fct_lump_n(category, n)</code></td>
+<td align="left">Keep top n, lump rest into “Other”</td>
+<td align="left">Too many categories</td>
+</tr>
+</tbody>
+</table>
+<p>The one you will use most often is <code>fct_reorder()</code>. Here
+is the difference it makes:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># WITHOUT fct_reorder — alphabetical order (hard to compare)</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_hwy, <span class="at">y =</span> manufacturer)) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Alphabetical Order (Default) -- Hard to Read&quot;</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Average Highway MPG&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+<p><img src="week05_files/figure-html/w5-fct-unsorted-1.png" width="768" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co"># WITH fct_reorder — sorted by value (easy to compare)</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">fct_reorder</span>(manufacturer, avg_hwy)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_hwy, <span class="at">y =</span> manufacturer)) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Sorted by Value -- Much Easier to Read&quot;</span>,</span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Average Highway MPG&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div>
+<p><img src="week05_files/figure-html/w5-fct-sorted-1.png" width="768" /></p>
+<p>The only difference between the two charts is one line:
+<code>mutate(manufacturer = fct_reorder(manufacturer, avg_hwy))</code>.
+That single line transforms the chart from confusing to clear.
+<strong>Always sort your bar charts by value</strong> unless there is a
+natural ordering (like months or rankings) that takes priority.</p>
+<div class="callout-tip">
+<p><strong><code>fct_reorder()</code> is your best friend for bar
+charts.</strong> The pattern is always the same:
+<code>fct_reorder(category_column, numeric_column)</code>. This reorders
+the categories so that they appear in order of the numeric value. It
+works with horizontal bars (<code>y = fct_reorder(...)</code>) and
+vertical bars (<code>x = fct_reorder(...)</code>).</p>
+</div>
+</div>
+<div id="a-brief-note-on-string-cleaning" class="section level2">
+<h2>6. A Brief Note on String Cleaning</h2>
+<p>Real-world data often has messy text: inconsistent capitalization,
+extra whitespace, typos. The <strong>stringr</strong> package (part of
+the tidyverse) provides functions for cleaning strings. All stringr
+functions start with <code>str_</code> for easy discovery.</p>
+<p>You do not need to master stringr this week, but here are the three
+functions you are most likely to need:</p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="42%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">What it does</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>str_trim()</code></td>
+<td align="left">Removes leading/trailing spaces</td>
+<td align="left"><code>"  hello  "</code> becomes
+<code>"hello"</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>str_to_lower()</code></td>
+<td align="left">Converts to lowercase</td>
+<td align="left"><code>"HELLO"</code> becomes <code>"hello"</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>str_to_title()</code></td>
+<td align="left">Converts to title case</td>
+<td align="left"><code>"hello world"</code> becomes
+<code>"Hello World"</code></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># Quick example: cleaning messy name data</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>messy_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;  John Smith  &quot;</span>, <span class="st">&quot;JANE DOE&quot;</span>, <span class="st">&quot;bob jones&quot;</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>  <span class="at">original =</span> messy_names,</span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>  <span class="at">cleaned =</span> messy_names <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>() <span class="sc">%&gt;%</span> <span class="fu">str_to_title</span>()</span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   original         cleaned   
+##   &lt;chr&gt;            &lt;chr&gt;     
+## 1 &quot;  John Smith  &quot; John Smith
+## 2 &quot;JANE DOE&quot;       Jane Doe  
+## 3 &quot;bob jones&quot;      Bob Jones</code></pre>
+<p>If you need more string manipulation in a future project, the <em>R
+for Data Science</em> chapter on strings is an excellent reference: <a
+href="https://r4ds.hadley.nz/strings">https://r4ds.hadley.nz/strings</a>.</p>
+</div>
+<div id="putting-it-all-together-a-complete-pipeline"
+class="section level2">
+<h2>7. Putting It All Together: A Complete Pipeline</h2>
+<p>This is the section where everything connects. We will build a
+complete pipeline step by step, showing the output after each operation
+so you can see exactly what each verb does to the data.</p>
+<p>Our goal: Create a polished visualization of U.S. unemployment trends
+from 2000 to 2015, starting from the raw <code>economics</code> dataset
+built into ggplot2.</p>
+<p><strong>Step 1: Look at the raw data</strong></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co"># What does the raw data look like?</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>economics <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 6
+##   date         pce    pop psavert uempmed unemploy
+##   &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+## 1 1967-07-01  507. 198712    12.6     4.5     2944
+## 2 1967-08-01  510. 198911    12.6     4.7     2945
+## 3 1967-09-01  516. 199113    11.9     4.6     2958
+## 4 1967-10-01  512. 199311    12.9     4.9     3143
+## 5 1967-11-01  517. 199498    12.8     4.7     3066</code></pre>
+<p>The <code>economics</code> dataset has columns for date, population
+(<code>pop</code>), unemployment count (<code>unemploy</code>), and
+others. But it does not have an unemployment <em>rate</em>. We need to
+compute that.</p>
+<p><strong>Step 2: Select the columns we need</strong></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="co"># Narrow down to just the columns we need</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>economics <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>  <span class="fu">select</span>(date, unemploy, pop) <span class="sc">%&gt;%</span></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   date       unemploy    pop
+##   &lt;date&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+## 1 1967-07-01     2944 198712
+## 2 1967-08-01     2945 198911
+## 3 1967-09-01     2958 199113
+## 4 1967-10-01     3143 199311
+## 5 1967-11-01     3066 199498</code></pre>
+<p>We only need <code>date</code>, <code>unemploy</code> (number of
+unemployed persons, in thousands), and <code>pop</code> (total
+population, in thousands). Everything else is clutter.</p>
+<p><strong>Step 3: Create the unemployment rate</strong></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co"># Compute unemployment rate as a percentage</span></span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>economics <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>  <span class="fu">select</span>(date, unemploy, pop) <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">unemploy_rate =</span> unemploy <span class="sc">/</span> pop <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 4
+##   date       unemploy    pop unemploy_rate
+##   &lt;date&gt;        &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;
+## 1 1967-07-01     2944 198712          1.48
+## 2 1967-08-01     2945 198911          1.48
+## 3 1967-09-01     2958 199113          1.49
+## 4 1967-10-01     3143 199311          1.58
+## 5 1967-11-01     3066 199498          1.54</code></pre>
+<p>Now we have an <code>unemploy_rate</code> column that we can plot on
+the y-axis.</p>
+<p><strong>Step 4: Filter to our time period</strong></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="co"># Keep only rows from 2000 onward</span></span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>economics <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a>  <span class="fu">select</span>(date, unemploy, pop) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">unemploy_rate =</span> unemploy <span class="sc">/</span> pop <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="#cb41-5" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="st">&quot;2000-01-01&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-6"><a href="#cb41-6" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 4
+##   date       unemploy    pop unemploy_rate
+##   &lt;date&gt;        &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;
+## 1 2000-01-01     5708 280976          2.03
+## 2 2000-02-01     5858 281190          2.08
+## 3 2000-03-01     5733 281409          2.04
+## 4 2000-04-01     5481 281653          1.95
+## 5 2000-05-01     5758 281877          2.04</code></pre>
+<p>We filter to January 2000 and later because we want to focus on the
+modern era, including the 2008 financial crisis.</p>
+<p><strong>Step 5: Save and plot</strong></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="co"># Store the wrangled data, then plot it</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>economics_clean <span class="ot">&lt;-</span> economics <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>  <span class="fu">select</span>(date, unemploy, pop) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">unemploy_rate =</span> unemploy <span class="sc">/</span> pop <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="st">&quot;2000-01-01&quot;</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a><span class="fu">ggplot</span>(economics_clean, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> unemploy_rate)) <span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb43-9"><a href="#cb43-9" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb43-10"><a href="#cb43-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(<span class="st">&quot;2008-09-15&quot;</span>),</span>
+<span id="cb43-11"><a href="#cb43-11" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>) <span class="sc">+</span></span>
+<span id="cb43-12"><a href="#cb43-12" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">&quot;2009-06-01&quot;</span>), <span class="at">y =</span> <span class="fl">6.5</span>,</span>
+<span id="cb43-13"><a href="#cb43-13" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">&quot;Financial</span><span class="sc">\n</span><span class="st">Crisis&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>,</span>
+<span id="cb43-14"><a href="#cb43-14" tabindex="-1"></a>           <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb43-15"><a href="#cb43-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;U.S. Unemployment Rate (2000\u20132015)&quot;</span>,</span>
+<span id="cb43-16"><a href="#cb43-16" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Pipeline: select \u2192 mutate \u2192 filter \u2192 plot&quot;</span>,</span>
+<span id="cb43-17"><a href="#cb43-17" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Unemployment Rate (%)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb43-18"><a href="#cb43-18" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week05_files/figure-html/w5-pipeline-step5-1.png" width="960" /></p>
+<p>Here is the pattern laid bare:</p>
+<ol style="list-style-type: decimal">
+<li><strong><code>select()</code></strong> narrows down to the columns
+we need</li>
+<li><strong><code>mutate()</code></strong> computes the unemployment
+<em>rate</em> from raw counts</li>
+<li><strong><code>filter()</code></strong> restricts to the time period
+of interest</li>
+<li><strong><code>ggplot()</code></strong> maps the wrangled data to
+visual form</li>
+</ol>
+<p>This is the pattern you will use again and again: <strong>wrangle
+first, then plot.</strong></p>
+<div class="callout-info">
+<p><strong>Why separate the wrangling from the plotting?</strong>
+Keeping them in distinct steps (even if you could combine them) makes
+your code easier to debug. If the plot looks wrong, you can inspect the
+intermediate data frame (<code>economics_clean</code>) to see whether
+the problem is in the wrangling or the visualization. Debug one thing at
+a time.</p>
+</div>
+</div>
+<div id="ignatian-reflection-data-as-human-stories"
+class="section level2 callout-ignatian">
+<h2>Ignatian Reflection: Data as Human Stories</h2>
+<p>Data wrangling is not merely a technical exercise. It is an
+<strong>act of care</strong>. Behind every row in a dataset is a person,
+a community, a lived experience. When we clean data, we make choices –
+what to keep, what to discard, what to transform. These choices shape
+the stories the data can tell.</p>
+<p>The Jesuit principle of <strong>Cura Personalis</strong> – care for
+the whole person – extends to how we handle data. Cleaning data
+respectfully means:</p>
+<ul>
+<li><strong>Not erasing outliers</strong> without understanding who they
+represent</li>
+<li><strong>Preserving context</strong> rather than reducing people to
+numbers</li>
+<li><strong>Questioning categories</strong> that may reflect bias or
+oversimplification</li>
+</ul>
+<p><strong>Discernment</strong> – a core Ignatian practice – applies
+directly to wrangling. When you filter rows, you decide whose stories
+are told. When you group and summarise, you decide what patterns are
+highlighted. Approach these decisions with the same thoughtfulness and
+ethical awareness that Ignatian spirituality calls us to bring to all
+our work.</p>
+<p>Ask yourself: <em>Who is included in this dataset? Who is excluded?
+What assumptions am I making when I clean and reshape this
+data?</em></p>
+</div>
+<div id="quick-reference" class="section level2">
+<h2>8. Quick Reference</h2>
+<p>Here is a one-page summary of everything covered this week. Bookmark
+this section for when you are working on assignments.</p>
+<p><strong>The six dplyr verbs:</strong></p>
+<pre><code>data %&gt;%
+  filter(condition)        # keep rows where condition is TRUE
+  select(col1, col2)       # keep only these columns
+  mutate(new = expr)       # create a new column
+  group_by(category)       # set up groups
+  summarise(stat = fn(x))  # collapse to summary statistics
+  arrange(desc(column))    # sort rows</code></pre>
+<p><strong>Pivoting:</strong></p>
+<pre><code>wide_data %&gt;%
+  pivot_longer(cols = columns_to_pivot,
+               names_to = &quot;new_category_column&quot;,
+               values_to = &quot;new_value_column&quot;)</code></pre>
+<p><strong>Reordering for plots:</strong></p>
+<pre><code>mutate(category = fct_reorder(category, numeric_value))</code></pre>
+<p><strong>The full pattern:</strong></p>
+<pre><code>data %&gt;%
+  # wrangle
+  filter(...) %&gt;%
+  mutate(...) %&gt;%
+  group_by(...) %&gt;%
+  summarise(..., .groups = &quot;drop&quot;) %&gt;%
+  # plot
+  ggplot(aes(...)) +
+  geom_...() +
+  labs(...) +
+  theme_minimal()</code></pre>
+<div class="callout-info">
+<p><strong>For future reference:</strong> Two advanced dplyr features
+you may encounter in online code examples are <code>across()</code>
+(which applies a function to multiple columns at once) and the
+<code>.by</code> argument (a modern alternative to
+<code>group_by()</code> that automatically ungroups the result). You do
+not need these for this course, but they are useful to recognize if you
+see them.</p>
+</div>
+</div>
+<div id="exercises" class="section level2">
+<h2>9. Exercises</h2>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Exercise 1: Storm Analysis with dplyr</p>
+</div>
+<div class="exercise-body">
+<p>Using the <code>storms</code> dataset (built into dplyr), complete
+the following pipeline. Fill in each blank (<code>___</code>) to make
+the code work.</p>
+<p><strong>Your task:</strong> Find the top 10 strongest hurricanes
+(Category 4 and above) and create a lollipop chart showing their maximum
+wind speeds.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>storms <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>  <span class="fu">filter</span>(___ <span class="sc">&gt;=</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">max_wind =</span> <span class="fu">max</span>(___), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a>  <span class="fu">slice_max</span>(max_wind, <span class="at">n =</span> ___) <span class="sc">%&gt;%</span></span>
+<span id="cb48-6"><a href="#cb48-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">fct_reorder</span>(name, max_wind)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-7"><a href="#cb48-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> max_wind, <span class="at">y =</span> name)) <span class="sc">+</span></span>
+<span id="cb48-8"><a href="#cb48-8" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> max_wind, <span class="at">y =</span> name, <span class="at">yend =</span> name),</span>
+<span id="cb48-9"><a href="#cb48-9" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">&quot;#B4975A&quot;</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb48-10"><a href="#cb48-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb48-11"><a href="#cb48-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Top 10 Strongest Hurricanes (Category 4+)&quot;</span>,</span>
+<span id="cb48-12"><a href="#cb48-12" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Maximum Wind Speed (knots)&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb48-13"><a href="#cb48-13" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The column for hurricane category is called
+<code>category</code></li>
+<li>Group by <code>name</code> to get one row per storm</li>
+<li>Use <code>max(wind)</code> to find the highest wind speed per
+storm</li>
+<li><code>slice_max()</code> keeps the top n rows by a given column</li>
+</ul>
+</div>
+</div>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Exercise 2: Pivoting Practice</p>
+</div>
+<div class="exercise-body">
+<p>The <code>table4a</code> dataset (built into tidyr) stores TB case
+counts in wide format, with years as column names. Your job: pivot it to
+tidy format and create a line chart.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="co"># Step 1: Look at the data</span></span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>table4a</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a><span class="co"># Step 2: Pivot and plot</span></span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>table4a <span class="sc">%&gt;%</span></span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">___</span><span class="st">`</span>, <span class="st">`</span><span class="at">___</span><span class="st">`</span>),</span>
+<span id="cb49-7"><a href="#cb49-7" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb49-8"><a href="#cb49-8" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;___&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-9"><a href="#cb49-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-10"><a href="#cb49-10" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___, <span class="at">color =</span> ___)) <span class="sc">+</span></span>
+<span id="cb49-11"><a href="#cb49-11" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb49-12"><a href="#cb49-12" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb49-13"><a href="#cb49-13" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;Afghanistan&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>,</span>
+<span id="cb49-14"><a href="#cb49-14" tabindex="-1"></a>                                <span class="st">&quot;Brazil&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>,</span>
+<span id="cb49-15"><a href="#cb49-15" tabindex="-1"></a>                                <span class="st">&quot;China&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb49-16"><a href="#cb49-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;TB Cases by Country&quot;</span>,</span>
+<span id="cb49-17"><a href="#cb49-17" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb49-18"><a href="#cb49-18" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><code>table4a</code> has columns named <code>1999</code> and
+<code>2000</code> – since they start with numbers, wrap them in
+backticks</li>
+<li><code>names_to</code> should be <code>"year"</code> and
+<code>values_to</code> should be <code>"cases"</code></li>
+<li>In the ggplot aesthetics, map <code>x = year</code>,
+<code>y = cases</code>, <code>color = country</code></li>
+</ul>
+</div>
+</div>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Exercise 3: Complete dplyr Pipeline</p>
+</div>
+<div class="exercise-body">
+<p>Build a complete pipeline that filters, summarises, reorders, and
+plots the <code>mpg</code> dataset.</p>
+<p><strong>Your task:</strong> Create a horizontal bar chart showing the
+average highway MPG for each manufacturer, using only 2008 vehicles,
+sorted from highest to lowest.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> ___) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_hwy =</span> <span class="fu">mean</span>(___), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">manufacturer =</span> <span class="fu">fct_reorder</span>(___, ___)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-6"><a href="#cb50-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb50-7"><a href="#cb50-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;___&quot;</span>) <span class="sc">+</span></span>
+<span id="cb50-8"><a href="#cb50-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Average Highway MPG by Manufacturer (2008 Models)&quot;</span>,</span>
+<span id="cb50-9"><a href="#cb50-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Highway MPG&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb50-10"><a href="#cb50-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>Filter <code>year == 2008</code></li>
+<li>Group by <code>manufacturer</code></li>
+<li><code>mean(hwy)</code> gives you the average highway MPG</li>
+<li><code>fct_reorder(manufacturer, avg_hwy)</code> reorders
+manufacturers by their average</li>
+<li>Map <code>x = avg_hwy</code> and <code>y = manufacturer</code> for a
+horizontal bar chart</li>
+<li>Gonzaga navy is <code>"#002967"</code></li>
+</ul>
+</div>
+</div>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Exercise 4: Reading and Reflection</p>
+</div>
+<div class="exercise-body">
+<p>Read <strong>Chapter 4: Data Transformation</strong> from <em>R for
+Data Science</em> (2nd edition) by Hadley Wickham, Mine
+Cetinkaya-Rundel, and Garrett Grolemund:</p>
+<p><a
+href="https://r4ds.hadley.nz/data-transform">https://r4ds.hadley.nz/data-transform</a></p>
+<p>As you read, pay attention to:</p>
+<ul>
+<li>The five key dplyr verbs and how they relate to what we covered this
+week</li>
+<li>The <code>|&gt;</code> (base R) pipe vs. the <code>%&gt;%</code>
+(magrittr) pipe – how are they similar and different?</li>
+<li>Any functions or patterns that were new to you</li>
+</ul>
+<p><strong>Write a short reflection (3–5 sentences)</strong> on one new
+thing you learned from the chapter that you did not already know from
+this week’s materials.</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="try-it-interactive-sandbox" class="section level2">
+<h2>Try It: Interactive Sandbox</h2>
+<div class="callout-ai">
+<p><strong>AI &amp; This Concept</strong> AI tools can write
+<code>dplyr</code> pipelines instantly — but you need to verify that
+each step transforms the data as expected. The most common AI data
+wrangling mistake is a <code>group_by()</code> that wasn’t cleared, or a
+<code>filter()</code> that removed more rows than intended. Use this
+sandbox to build the intuition to catch those errors.</p>
+</div>
+<div class="sandbox-section">
+<div class="sandbox-header">
+<p><span class="sandbox-icon">🧪</span> dplyr Pipeline Builder — Watch
+the Data Change at Each Step</p>
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/df058898-7f3a-4778-abb6-89ddd9271bf3/" height="600" allowfullscreen>
+</iframe>
+<div class="sandbox-footer">
+<p>Toggle each pipeline step on and off. Watch the table update — notice
+how many rows and columns you have at each stage. The assembled pipe
+code in the sidebar shows exactly what’s running.</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="attributions" class="section level2">
+<h2>10. Attributions</h2>
+<ul>
+<li>Wickham, H. (2014). “Tidy Data.” <em>Journal of Statistical
+Software</em>, 59(10). <a
+href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a></li>
+<li>Wickham, H., Cetinkaya-Rundel, M., &amp; Grolemund, G. – <em>R for
+Data Science</em> (2nd ed.). <a
+href="https://r4ds.hadley.nz">https://r4ds.hadley.nz</a></li>
+<li>Vivek H. Patil – foundational course materials</li>
+<li>Gonzaga University – Ignatian pedagogical framework</li>
+</ul>
+<div class="page-nav">
+<p><a href="week04.html">← Week 4</a> <a href="week06.html">Week 6
+→</a></p>
+</div>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

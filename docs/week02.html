@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week 2: Visual Perception &amp; Design Principles</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week 2: Visual Perception &amp; Design
+Principles</h1>
+
+</div>
+
+
+<div class="hero-banner">
+<div class="week-badge">
+2
+</div>
+<h1>
+Visual Perception &amp; Design Principles
+</h1>
+<p>
+How the brain processes visual information and how great designers have
+turned that knowledge into lasting principles
+</p>
+</div>
+<div id="learning-objectives" class="section level2 objectives">
+<h2>Learning Objectives</h2>
+<p>By the end of this week, you will be able to:</p>
+<ul>
+<li>Explain the two stages of visual processing (preattentive and
+attentive) and their design implications</li>
+<li>Identify and leverage preattentive attributes in visualization
+design</li>
+<li>Apply Gestalt principles of perception to organize visual
+elements</li>
+<li>Use Cleveland &amp; McGill’s perceptual hierarchy to choose
+appropriate chart types</li>
+<li>Select effective color palettes for sequential, diverging, and
+qualitative data</li>
+<li>Design visualizations that account for colorblindness and working
+memory limits</li>
+<li>Explain and apply Tufte’s data-ink ratio and lie factor
+concepts</li>
+<li>Identify common deceptive practices in data visualization and
+explain why they mislead</li>
+<li>Redesign a cluttered chart to maximize the data-ink ratio using
+ggplot2</li>
+</ul>
+</div>
+<div id="common-errors-you-may-encounter"
+class="section level2 callout-error">
+<h2>Common Errors You May Encounter</h2>
+<p><strong>“Error: could not find function
+‘display.brewer.pal’”</strong> This means the RColorBrewer package is
+not loaded. Add <code>library(RColorBrewer)</code> at the top of your
+script or chunk.</p>
+<p><strong>“Error in library(patchwork) : there is no package called
+‘patchwork’”</strong> You need to install the package first. Run
+<code>install.packages("patchwork")</code> in the console (not inside a
+code chunk), then try <code>library(patchwork)</code> again.</p>
+<p><strong>Plots look squished or overlapping</strong> Try adjusting
+<code>fig.width</code> and <code>fig.height</code> in your chunk
+options. For side-by-side plots using patchwork,
+<code>fig.width=10, fig.height=5</code> is a good starting point.
+Example: <code>```{r my-plot, fig.width=10, fig.height=5}</code></p>
+<p><strong>Colors look wrong or produce an error</strong> Make sure you
+are using quotes around hex color codes: <code>"#002967"</code> not
+<code>#002967</code>. Without quotes, R interprets the <code>#</code> as
+a comment and ignores the rest.</p>
+</div>
+<hr />
+<div id="part-1-how-the-brain-sees-data" class="section level2">
+<h2>Part 1: How the Brain Sees Data</h2>
+<p>Of all our senses, <strong>vision has by far the highest
+bandwidth</strong>. We take in more information through our eyes than
+through hearing, touch, taste, and smell combined. This is why
+visualization is such a powerful tool for understanding data – it
+leverages the sense we are best equipped to use.</p>
+<div class="figure">
+<img src="images/02/sensory_bandwidths.jpg" alt="Vision dominates our sensory bandwidth, making it the most effective channel for communicating complex data." width="70%" />
+<p class="caption">
+Vision dominates our sensory bandwidth, making it the most effective
+channel for communicating complex data.
+</p>
+</div>
+<p>But vision is not a simple camera. The brain processes visual
+information in <strong>two distinct stages</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Preattentive processing</strong> – fast, parallel, and
+automatic. This happens in under 250 milliseconds, before you are
+consciously aware of it. Your visual system detects certain features
+(color, size, orientation, motion) across the entire visual field
+simultaneously.</li>
+<li><strong>Attentive processing</strong> – slow, serial, and effortful.
+This is the deliberate, conscious examination of individual elements one
+at a time. It requires focused attention and cognitive effort.</li>
+</ol>
+<p>The distinction matters enormously for visualization design. If you
+encode important information using preattentive attributes, your viewer
+will grasp it instantly. If you require attentive processing for the key
+message, your viewer must work hard – and may miss it entirely.</p>
+<div class="figure">
+<img src="images/02/preattentive.png" alt="Preattentive processing allows us to detect certain visual features instantly, without conscious effort." width="70%" />
+<p class="caption">
+Preattentive processing allows us to detect certain visual features
+instantly, without conscious effort.
+</p>
+</div>
+<p>Here is a classic demonstration. In the first image below, the number
+5 is hidden among other digits in uniform grey. In the second, the 5s
+are highlighted in a contrasting color. Notice how effortlessly you
+detect them once color provides a preattentive cue.</p>
+<div class="figure">
+<img src="images/02/num5grey.jpg" alt="Without a preattentive cue, finding the 5s requires slow, serial search." width="45%" />
+<p class="caption">
+Without a preattentive cue, finding the 5s requires slow, serial search.
+</p>
+</div>
+<div class="figure">
+<img src="images/02/num5greyblack.jpg" alt="With color as a preattentive cue, the 5s pop out immediately." width="45%" />
+<p class="caption">
+With color as a preattentive cue, the 5s pop out immediately.
+</p>
+</div>
+</div>
+<div id="preattentive-attributes" class="section level2">
+<h2>Preattentive Attributes</h2>
+<p>Researchers have identified a set of visual properties that our
+brains process preattentively. These include:</p>
+<ul>
+<li><strong>Position</strong> – where something is located in space</li>
+<li><strong>Length</strong> – the extent of a line or bar</li>
+<li><strong>Size</strong> – the area of a mark</li>
+<li><strong>Shape</strong> – circles vs. squares vs. triangles,
+etc.</li>
+<li><strong>Color (hue)</strong> – red vs. blue vs. green</li>
+<li><strong>Color (intensity/saturation)</strong> – light vs. dark</li>
+<li><strong>Orientation</strong> – the angle or tilt of a mark</li>
+<li><strong>Enclosure</strong> – bounded regions</li>
+</ul>
+<div class="figure">
+<img src="images/02/Preattentive_3.JPG" alt="A visual catalog of preattentive attributes. Each of these features is detected automatically by the visual system." width="80%" />
+<p class="caption">
+A visual catalog of preattentive attributes. Each of these features is
+detected automatically by the visual system.
+</p>
+</div>
+<p>All of these are processed in <strong>under 250 milliseconds</strong>
+– before conscious attention kicks in. This is why a single red dot
+among grey dots “pops out” instantly, but finding a specific letter in a
+block of text requires careful scanning.</p>
+<div class="callout-tip">
+<p><strong>Design implication:</strong> When you want to draw attention
+to a specific data point or category, encode it with a preattentive
+attribute – a distinct color, a larger size, or a different shape. Do
+not rely on labels or legends alone for the most important
+comparisons.</p>
+</div>
+<div id="preattentive-processing-in-r-color-cue" class="section level3">
+<h3>Preattentive Processing in R: Color Cue</h3>
+<p>Let us demonstrate this principle step by step. First, we create a
+scatter plot where all points look the same:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>df_points <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">50</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">50</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;background&quot;</span>, <span class="dv">49</span>), <span class="st">&quot;target&quot;</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>)</span></code></pre></div>
+<p>Now we plot two versions – one with no cue, one with color:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>p_no_cue <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_points, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;No preattentive cue&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Find the different point&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>p_color_cue <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_points, <span class="fu">aes</span>(x, y, <span class="at">color =</span> group)) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;background&quot;</span> <span class="ot">=</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="st">&quot;target&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Color as preattentive cue&quot;</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;The target pops out instantly&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>p_no_cue <span class="sc">+</span> p_color_cue</span></code></pre></div>
+<p><img src="week02_files/figure-html/preattentive-color-demo-1.png" width="768" /></p>
+<p>In the left panel, every point is identical – finding the “target” is
+impossible without additional information. In the right panel, the
+single red point (Gonzaga red, <code>#C41E3A</code>) is detected
+immediately. This is preattentive processing at work.</p>
+</div>
+<div id="preattentive-processing-in-r-size-and-redundant-coding"
+class="section level3">
+<h3>Preattentive Processing in R: Size and Redundant Coding</h3>
+<p>We can extend this demonstration to show how <strong>size</strong>
+also serves as a preattentive cue, and how combining cues (redundant
+coding) is even more effective:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>p_size_cue <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_points, <span class="fu">aes</span>(x, y, <span class="at">size =</span> group)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">scale_size_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;background&quot;</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">&quot;target&quot;</span> <span class="ot">=</span> <span class="dv">8</span>)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Size as preattentive cue&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Larger size draws immediate attention&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>p_redundant <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_points, <span class="fu">aes</span>(x, y, <span class="at">color =</span> group, <span class="at">size =</span> group)) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;background&quot;</span> <span class="ot">=</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="st">&quot;target&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>  <span class="fu">scale_size_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;background&quot;</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">&quot;target&quot;</span> <span class="ot">=</span> <span class="dv">8</span>)) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Color + size (redundant coding)&quot;</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Multiple cues reinforce each other&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>p_size_cue <span class="sc">+</span> p_redundant</span></code></pre></div>
+<p><img src="week02_files/figure-html/preattentive-size-demo-1.png" width="768" /></p>
+<p>Notice how combining color and size – <strong>redundant
+coding</strong> – makes the target even more salient. This is a valuable
+technique when you need to ensure a data point is noticed.</p>
+</div>
+</div>
+<div id="gestalt-principles-of-perception" class="section level2">
+<h2>Gestalt Principles of Perception</h2>
+<p>In the early 20th century, German psychologists developed the
+<strong>Gestalt principles</strong> – a set of rules describing how the
+brain organizes visual elements into coherent groups. These principles
+operate automatically and have direct implications for chart design.</p>
+<div class="figure">
+<img src="images/02/gestaltcomplete6.png" alt="The Gestalt principles describe how we perceive groups, patterns, and wholes from individual visual elements." width="80%" />
+<p class="caption">
+The Gestalt principles describe how we perceive groups, patterns, and
+wholes from individual visual elements.
+</p>
+</div>
+<p>The key Gestalt principles for visualization are:</p>
+<ul>
+<li><strong>Proximity</strong> – Elements that are close together are
+perceived as belonging to the same group. In a grouped bar chart, the
+bars within each cluster are read as related because they are near one
+another.</li>
+<li><strong>Similarity</strong> – Elements that look alike (same color,
+shape, or size) are perceived as related. This is why we use consistent
+colors for the same category across multiple panels.</li>
+<li><strong>Enclosure</strong> – A boundary or shaded region around
+elements groups them together, even if they are otherwise dissimilar.
+This is the principle behind panel borders in faceted plots.</li>
+<li><strong>Closure</strong> – The brain completes incomplete shapes. We
+perceive a circle even when part of its outline is missing. Grid lines
+do not need to be continuous – subtle tick marks are often
+sufficient.</li>
+<li><strong>Continuity</strong> – Elements arranged along a smooth line
+or curve are perceived as more related. This is why connected line
+charts are so effective for showing trends over time.</li>
+<li><strong>Connection</strong> – Elements that are physically connected
+(by a line, for example) are perceived as related. This principle is
+stronger than color similarity.</li>
+</ul>
+<div class="callout-tip">
+<p><strong>Putting Gestalt to work:</strong> When designing a
+visualization, ask yourself: “What groupings do I want the viewer to
+perceive?” Then use proximity, similarity, enclosure, or connection to
+create those groupings. If the viewer is seeing groups you did not
+intend, one of these principles is likely working against you.</p>
+</div>
+<div id="gestalt-in-practice-with-ggplot2" class="section level3">
+<h3>Gestalt in Practice with ggplot2</h3>
+<p>Let us see how proximity and similarity work in a real chart. We will
+use the <code>mpg</code> dataset to create a grouped bar chart where
+Gestalt principles organize the visual information:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>mpg_summary <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;compact&quot;</span>, <span class="st">&quot;midsize&quot;</span>, <span class="st">&quot;suv&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">group_by</span>(class, drv) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="fu">ggplot</span>(mpg_summary, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> mean_hwy, <span class="at">fill =</span> drv)) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;4-Wheel&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;Front&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;Rear&quot;</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Gestalt Principles at Work&quot;</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Proximity groups bars by class; similarity (color) groups by drive type&quot;</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Vehicle Class&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Mean Highway MPG&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Drive Type&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week02_files/figure-html/gestalt-demo-1.png" width="864" /></p>
+<p>In this chart, <strong>proximity</strong> groups the bars within each
+vehicle class (compact, midsize, SUV), while <strong>similarity</strong>
+(color) lets you compare drive types across classes. The Gonzaga colors
+– navy (<code>#002967</code>), red (<code>#C41E3A</code>), and gold
+(<code>#B4975A</code>) – provide distinct, memorable hues.</p>
+</div>
+</div>
+<div id="cleveland-mcgills-perceptual-hierarchy" class="section level2">
+<h2>Cleveland &amp; McGill’s Perceptual Hierarchy</h2>
+<p>Not all visual encodings are created equal. In a landmark 1984 paper,
+William Cleveland and Robert McGill conducted experiments to determine
+which visual properties people judge most accurately. Their findings
+established a <strong>perceptual hierarchy</strong> that remains
+foundational to visualization design.</p>
+<div class="figure">
+<img src="images/02/cleveland_mcgill_cairo.jpg" alt="Cleveland and McGill's hierarchy of perceptual accuracy, as adapted by Alberto Cairo. Encodings at the top are judged most accurately." width="70%" />
+<p class="caption">
+Cleveland and McGill’s hierarchy of perceptual accuracy, as adapted by
+Alberto Cairo. Encodings at the top are judged most accurately.
+</p>
+</div>
+<p>From <strong>most accurate</strong> to <strong>least
+accurate</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Position on a common scale</strong> – comparing points along
+a shared axis (e.g., dot plot, scatter plot)</li>
+<li><strong>Position on unaligned scales</strong> – comparing across
+separate but similar axes (e.g., small multiples)</li>
+<li><strong>Length</strong> – comparing the extent of bars or lines
+(e.g., bar chart)</li>
+<li><strong>Angle / Slope</strong> – judging tilt or wedge size (e.g.,
+pie chart, slope graph)</li>
+<li><strong>Area</strong> – comparing the size of regions (e.g., bubble
+chart, treemap)</li>
+<li><strong>Volume</strong> – comparing 3D objects (generally poor;
+avoid 3D charts)</li>
+<li><strong>Color saturation / Density</strong> – comparing shading
+intensity (e.g., heatmap, choropleth)</li>
+</ol>
+<p>This hierarchy explains many best practices:</p>
+<ul>
+<li><strong>Bar charts beat pie charts</strong> because length (rank 3)
+is judged far more accurately than angle (rank 4).</li>
+<li><strong>Scatter plots are excellent</strong> because they encode
+data as position on common scales (rank 1).</li>
+<li><strong>3D charts are almost never appropriate</strong> because
+volume (rank 6) is the second-least accurate encoding.</li>
+</ul>
+<div class="figure">
+<img src="images/02/barbubbleheatmap.jpg" alt="The same data shown as a bar chart, bubble chart, and heatmap. Notice how precision decreases from left to right." width="80%" />
+<p class="caption">
+The same data shown as a bar chart, bubble chart, and heatmap. Notice
+how precision decreases from left to right.
+</p>
+</div>
+<div id="demonstrating-the-hierarchy-in-r" class="section level3">
+<h3>Demonstrating the Hierarchy in R</h3>
+<p>Let us compare a bar chart and a pie chart showing the same data –
+vehicle class distribution in the <code>mpg</code> dataset:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>class_counts <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">count</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">fct_reorder</span>(class, n))</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>p_bar <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(class_counts, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">color =</span> <span class="st">&quot;#333333&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Bar Chart (length encoding)&quot;</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Easy to compare precise values&quot;</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fu">max</span>(class_counts<span class="sc">$</span>n) <span class="sc">*</span> <span class="fl">1.1</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>p_pie <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(class_counts, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> n, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Pie Chart (angle encoding)&quot;</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Hard to compare similar slices&quot;</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;Class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a>  <span class="fu">theme_void</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a>p_bar <span class="sc">+</span> p_pie</span></code></pre></div>
+<p><img src="week02_files/figure-html/hierarchy-demo-1.png" width="960" /></p>
+<p>Which chart makes it easier to compare the number of compact
+vs. midsize vehicles? The bar chart wins decisively because
+<strong>length</strong> (rank 3) is far more accurately perceived than
+<strong>angle</strong> (rank 4).</p>
+</div>
+</div>
+<div id="color-theory-for-visualization" class="section level2">
+<h2>Color Theory for Visualization</h2>
+<p>Color is one of the most powerful and most misused tools in data
+visualization. To use it effectively, we need to understand its three
+components.</p>
+<div class="figure">
+<img src="images/02/munsellhsl.gif" alt="Color can be described by three properties: hue, saturation, and lightness." width="60%" />
+<p class="caption">
+Color can be described by three properties: hue, saturation, and
+lightness.
+</p>
+</div>
+<ul>
+<li><strong>Hue</strong> – what we colloquially call “color”: red, blue,
+green, orange, etc.</li>
+<li><strong>Saturation</strong> (chroma) – the intensity or purity of
+the color, from vivid to muted grey</li>
+<li><strong>Lightness</strong> (value) – how light or dark the color is,
+from white to black</li>
+</ul>
+<p>Different types of data call for different types of color
+palettes:</p>
+<p><strong>Sequential palettes:</strong> A single hue that varies in
+lightness. Use for ordered, continuous data (e.g., temperature,
+population density). Light = low values; dark = high values.</p>
+<p><strong>Diverging palettes:</strong> Two contrasting hues with a
+neutral midpoint. Use for data with a meaningful center (e.g.,
+deviations from average, profit/loss).</p>
+<p><strong>Qualitative palettes:</strong> Distinct hues at similar
+saturation and lightness. Use for categorical data with no natural
+ordering (e.g., country, department).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">display.brewer.pal</span>(<span class="dv">7</span>, <span class="st">&quot;Blues&quot;</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Sequential: Blues&quot;</span>, <span class="at">line =</span> <span class="dv">1</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="fu">display.brewer.pal</span>(<span class="dv">7</span>, <span class="st">&quot;RdYlBu&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Diverging: RdYlBu&quot;</span>, <span class="at">line =</span> <span class="dv">1</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">display.brewer.pal</span>(<span class="dv">7</span>, <span class="st">&quot;Set2&quot;</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Qualitative: Set2&quot;</span>, <span class="at">line =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="week02_files/figure-html/color-palettes-1.png" width="960" /></p>
+<div id="colorblindness-and-the-viridis-palette" class="section level3">
+<h3>Colorblindness and the Viridis Palette</h3>
+<p>Approximately <strong>8% of men and 0.5% of women</strong> have some
+form of color vision deficiency, most commonly red-green colorblindness.
+Any visualization that relies solely on the difference between red and
+green will be unreadable for roughly 1 in 12 male viewers.</p>
+<p>Practical recommendations:</p>
+<ul>
+<li>Use <strong>colorblind-friendly palettes</strong> such as viridis,
+which varies in both hue and lightness</li>
+<li><strong>Avoid red-green contrasts</strong> as the sole
+distinguishing feature</li>
+<li>Use <strong>redundant coding</strong> – combine color with shape,
+pattern, or direct labels</li>
+<li>Test your plots with a colorblind simulator</li>
+</ul>
+<p>The <code>viridis</code> palettes are specifically designed to be
+<strong>perceptually uniform</strong>,
+<strong>colorblind-friendly</strong>, and <strong>readable in
+greyscale</strong>. They are an excellent default choice.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">ggplot</span>(faithfuld, <span class="fu">aes</span>(waiting, eruptions, <span class="at">fill =</span> density)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;magma&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Viridis &#39;magma&#39; palette&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Perceptually uniform and colorblind-friendly&quot;</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Waiting Time (min)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Eruption Duration (min)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div>
+<p><img src="week02_files/figure-html/viridis-demo-1.png" width="768" /></p>
+<div class="figure">
+<img src="images/02/context.png" alt="Context effects: identical colors appear different depending on their surroundings. This is why consistent backgrounds matter in visualization." width="60%" />
+<p class="caption">
+Context effects: identical colors appear different depending on their
+surroundings. This is why consistent backgrounds matter in
+visualization.
+</p>
+</div>
+<div class="callout-tip">
+<p><strong>Rule of thumb for color:</strong> Use color purposefully. If
+a color does not encode data or serve a grouping function, consider
+whether it is adding unnecessary visual noise. Default to a muted
+palette and reserve vivid colors for the elements you want to
+emphasize.</p>
+</div>
+</div>
+</div>
+<div id="working-memory-and-direct-labeling" class="section level2">
+<h2>Working Memory and Direct Labeling</h2>
+<p>Our visual working memory is remarkably limited. Research shows we
+can hold approximately <strong>3 to 4 items</strong> in visual working
+memory at any given time. This has profound consequences for chart
+design.</p>
+<div class="figure">
+<img src="images/02/memory.gif" alt="Visual working memory is limited to about 3-4 items. Exceeding this limit forces viewers to look back and forth between the legend and the chart." width="70%" />
+<p class="caption">
+Visual working memory is limited to about 3-4 items. Exceeding this
+limit forces viewers to look back and forth between the legend and the
+chart.
+</p>
+</div>
+<p>If your chart has a legend with 8 categories mapped to 8 colors, the
+viewer must constantly shuttle between the legend and the data. This is
+slow, error-prone, and exhausting. Better approaches include:</p>
+<ul>
+<li><strong>Direct labeling</strong> – place category labels directly
+next to or on the data elements</li>
+<li><strong>Limit categories</strong> – show only the 3-4 most important
+groups; collapse the rest into “Other”</li>
+<li><strong>Use facets</strong> – create small multiples so color does
+not carry the full burden</li>
+<li><strong>Highlight and grey out</strong> – show all data in muted
+grey and highlight only 1-2 categories of interest</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>econ_data <span class="ot">&lt;-</span> economics_long <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pop&quot;</span>, <span class="st">&quot;unemploy&quot;</span>, <span class="st">&quot;uempmed&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value_scaled =</span> (value <span class="sc">-</span> <span class="fu">min</span>(value)) <span class="sc">/</span> (<span class="fu">max</span>(value) <span class="sc">-</span> <span class="fu">min</span>(value))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>label_data <span class="ot">&lt;-</span> econ_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">max</span>(date))</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="fu">ggplot</span>(econ_data, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value_scaled, <span class="at">color =</span> variable)) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>    <span class="at">data =</span> label_data,</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> variable),</span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>    <span class="at">nudge_x =</span> <span class="dv">300</span>, <span class="at">direction =</span> <span class="st">&quot;y&quot;</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>    <span class="at">segment.color =</span> <span class="st">&quot;grey70&quot;</span>, <span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;pop&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>, <span class="st">&quot;unemploy&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="st">&quot;uempmed&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Direct Labeling Reduces Cognitive Load&quot;</span>,</span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Labels on the lines eliminate the need to look up a legend&quot;</span>,</span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Scaled Value (0-1)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">&quot;off&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">40</span>, <span class="dv">5</span>, <span class="dv">5</span>))</span></code></pre></div>
+<p><img src="week02_files/figure-html/direct-label-demo-1.png" width="864" /></p>
+<p>By placing labels directly on the lines, the viewer never needs to
+consult a legend. This is faster, less effortful, and reduces the
+demands on visual working memory.</p>
+<hr />
+</div>
+<div id="part-2-design-principles-and-the-history-of-great-charts"
+class="section level2">
+<h2>Part 2: Design Principles and the History of Great Charts</h2>
+<p>Now that we understand how the brain processes visual information,
+let us turn to the design principles that great visualization
+practitioners have developed over the past two centuries. These
+principles translate perceptual science into practical guidelines.</p>
+</div>
+<div id="landmarks-in-visualization-history" class="section level2">
+<h2>Landmarks in Visualization History</h2>
+<p>The craft of data visualization has deep roots. Three landmark
+examples illustrate why design principles matter – and why some of the
+best advice is over two centuries old.</p>
+<p><strong>William Playfair (1786)</strong> invented the bar chart, line
+chart, and pie chart in his book <em>The Commercial and Political
+Atlas</em>. At a time when tables of numbers were the norm, Playfair’s
+insight was radical: a well-drawn picture could convey trends and
+comparisons far more quickly than rows of figures. Even by modern
+standards, his charts are readable and elegant.</p>
+<div class="figure">
+<img src="images/03/playfairbartimeseries.png" alt="William Playfair's time series and bar chart from The Commercial and Political Atlas (1786) -- the earliest known examples of these chart forms." width="80%" />
+<p class="caption">
+William Playfair’s time series and bar chart from The Commercial and
+Political Atlas (1786) – the earliest known examples of these chart
+forms.
+</p>
+</div>
+<p><strong>John Snow (1854)</strong> challenged the prevailing “bad air”
+theory of cholera by plotting deaths on a map of London’s Soho district.
+The resulting visualization – one of the most famous in the history of
+science – revealed a striking cluster of deaths around the Broad Street
+water pump, pointing to contaminated water as the source. The pump
+handle was removed, and the outbreak subsided. This is visualization as
+a tool for saving lives.</p>
+<div class="figure">
+<img src="images/03/snow-cholera.gif" alt="John Snow's cholera map of the Soho district, London (1854). Each small bar represents a death. The cluster around the Broad Street pump is unmistakable." width="70%" />
+<p class="caption">
+John Snow’s cholera map of the Soho district, London (1854). Each small
+bar represents a death. The cluster around the Broad Street pump is
+unmistakable.
+</p>
+</div>
+<p><strong>Charles Joseph Minard (1869)</strong> created what Edward
+Tufte called “the best statistical graphic ever drawn.” His depiction of
+Napoleon’s 1812 Russian campaign encodes six variables in a single
+image: the size of the army, its location (latitude and longitude),
+direction of movement, temperature during the retreat, and dates of key
+events. The shrinking band tells the story of catastrophic loss more
+powerfully than any table of casualty figures could.</p>
+<div class="figure">
+<img src="images/03/Minardfrench.png" alt="Minard's map of Napoleon's march to and from Moscow (1869). The width of the band represents army size -- from 422,000 soldiers at the start to a mere 10,000 returning." width="100%" />
+<p class="caption">
+Minard’s map of Napoleon’s march to and from Moscow (1869). The width of
+the band represents army size – from 422,000 soldiers at the start to a
+mere 10,000 returning.
+</p>
+</div>
+<p>The thread connecting Playfair, Snow, and Minard to modern
+practitioners is a commitment to <strong>honesty, clarity, and
+efficiency</strong> in visual communication. These are the design
+principles we now turn to.</p>
+</div>
+<div id="tuftes-data-ink-ratio" class="section level2">
+<h2>Tufte’s Data-Ink Ratio</h2>
+<p>Edward Tufte is arguably the most influential thinker in data
+visualization design. His core concept is the <strong>data-ink
+ratio</strong>:</p>
+<p><span class="math display">\[\text{Data-ink ratio} =
+\frac{\text{Data-ink}}{\text{Total ink used in the
+graphic}}\]</span></p>
+<p>The principle is simple: <strong>maximize the share of ink (or
+pixels) devoted to displaying actual data</strong>. Everything else –
+unnecessary gridlines, heavy borders, decorative shading, redundant
+labels, 3D effects – is “non-data-ink” that should be eliminated or
+minimized. Tufte calls excessive non-data-ink
+<strong>chartjunk</strong>.</p>
+<p>This does not mean charts should be ugly or austere. It means every
+visual element should earn its place by communicating something useful.
+If an element can be removed without losing information, it probably
+should be.</p>
+<div id="data-ink-demo-setting-up-the-data" class="section level3">
+<h3>Data-Ink Demo: Setting Up the Data</h3>
+<p>Let us see this in practice step by step. First we create a simple
+dataset:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>df_budget <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  <span class="at">category =</span> <span class="fu">c</span>(<span class="st">&quot;Product A&quot;</span>, <span class="st">&quot;Product B&quot;</span>, <span class="st">&quot;Product C&quot;</span>, <span class="st">&quot;Product D&quot;</span>, <span class="st">&quot;Product E&quot;</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">72</span>, <span class="dv">38</span>, <span class="dv">61</span>, <span class="dv">53</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="data-ink-demo-the-cluttered-version" class="section level3">
+<h3>Data-Ink Demo: The Cluttered Version</h3>
+<p>Now we create a bar chart heavy with chartjunk – unnecessary
+gridlines, a filled background, and no direct labels:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>p_cluttered <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_budget, <span class="fu">aes</span>(<span class="at">x =</span> category, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_line</span>()) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Before: Low data-ink ratio&quot;</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Category&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Value&quot;</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>p_cluttered</span></code></pre></div>
+<p><img src="week02_files/figure-html/data-ink-before-1.png" width="480" /></p>
+</div>
+<div id="data-ink-demo-the-clean-version" class="section level3">
+<h3>Data-Ink Demo: The Clean Version</h3>
+<p>Now we strip away the chartjunk and add direct labels. Compare the
+two:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>p_clean <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_budget, <span class="fu">aes</span>(<span class="at">x =</span> category, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> value), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;After: High data-ink ratio&quot;</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>p_cluttered <span class="sc">+</span> p_clean</span></code></pre></div>
+<p><img src="week02_files/figure-html/data-ink-after-1.png" width="960" /></p>
+<p>The “after” version communicates the same data more effectively. The
+gridlines are gone because the direct labels make them unnecessary. The
+axis title is removed because the category labels are self-explanatory.
+Every remaining element serves a purpose.</p>
+<div class="callout-tip">
+<p><strong>Practical rule of thumb:</strong> After creating a chart, ask
+yourself: “Can I remove this element without losing information?” If the
+answer is yes, remove it. Repeat until the answer is no for every
+remaining element.</p>
+</div>
+</div>
+</div>
+<div id="the-lie-factor" class="section level2">
+<h2>The Lie Factor</h2>
+<p>The <strong>lie factor</strong> measures the degree to which a
+graphic distorts the underlying data:</p>
+<p><span class="math display">\[\text{Lie factor} = \frac{\text{Size of
+effect shown in the graphic}}{\text{Size of effect in the
+data}}\]</span></p>
+<p>A lie factor of 1.0 means the graphic faithfully represents the data.
+Tufte argues that lie factors above 1.05 or below 0.95 represent
+significant distortions.</p>
+<div id="distorted-proportions" class="section level3">
+<h3>Distorted Proportions</h3>
+<p>When graphical representations of quantities use area or volume
+rather than length, distortion often follows:</p>
+<div class="figure">
+<img src="images/03/lieshrinkingdoctor.png" alt="The 'shrinking doctor' -- the figure shrinks faster than the underlying data warrants, dramatically exaggerating the decline." width="60%" />
+<p class="caption">
+The ‘shrinking doctor’ – the figure shrinks faster than the underlying
+data warrants, dramatically exaggerating the decline.
+</p>
+</div>
+<div class="figure">
+<img src="images/03/lieshrinkingdollar.png" alt="The 'shrinking dollar' -- the visual shrinkage far exceeds the actual decline in purchasing power, producing a lie factor well above 1." width="60%" />
+<p class="caption">
+The ‘shrinking dollar’ – the visual shrinkage far exceeds the actual
+decline in purchasing power, producing a lie factor well above 1.
+</p>
+</div>
+</div>
+<div id="truncated-axes" class="section level3">
+<h3>Truncated Axes</h3>
+<p>One of the most common forms of deception is truncating the y-axis of
+a bar chart. Because bars encode quantity through their
+<strong>length</strong> (from zero to the data value), starting the axis
+at a non-zero value can make small differences appear enormous.</p>
+<p>Let us see this with R code. First, the data:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>df_sales <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="at">quarter =</span> <span class="fu">c</span>(<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;Q4&quot;</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="at">revenue =</span> <span class="fu">c</span>(<span class="dv">98</span>, <span class="dv">101</span>, <span class="dv">103</span>, <span class="dv">105</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>)</span></code></pre></div>
+<p>Now the side-by-side comparison:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>p_misleading <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_sales, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> revenue)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#C41E3A&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">96</span>, <span class="dv">106</span>)) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Misleading: Truncated axis&quot;</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Looks like revenue tripled!&quot;</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Revenue ($M)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>p_honest <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_sales, <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> revenue)) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>)) <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Honest: Full axis&quot;</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Revenue grew modestly (~7%)&quot;</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Revenue ($M)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>p_misleading <span class="sc">+</span> p_honest</span></code></pre></div>
+<p><img src="week02_files/figure-html/truncated-axis-demo-1.png" width="960" /></p>
+<p>The left panel makes it look like revenue tripled from Q1 to Q4. The
+right panel reveals the truth: revenue grew by about 7%. Same data,
+radically different impressions.</p>
+<div class="callout-warning">
+<p><strong>Important nuance:</strong> Truncated axes are not
+<em>always</em> deceptive. For line charts showing change over time, a
+non-zero baseline can be appropriate because the visual encoding is
+position/slope, not length. The rule is: <strong>bar charts must start
+at zero; line charts can sometimes justify a non-zero baseline</strong>
+– but always label your axes clearly.</p>
+</div>
+<div class="figure">
+<img src="images/03/liefactorhighway.png" alt="Lie factor in a highway fuel standards graphic. The visual impression exaggerates the actual data change." width="60%" />
+<p class="caption">
+Lie factor in a highway fuel standards graphic. The visual impression
+exaggerates the actual data change.
+</p>
+</div>
+</div>
+</div>
+<div id="slopegraphs" class="section level2">
+<h2>Slopegraphs</h2>
+<p>A <strong>slopegraph</strong> is a chart designed to show change
+between two (or occasionally more) time points for multiple categories.
+It consists of two vertical axes connected by lines, where the slope and
+direction of each line immediately convey whether a category increased,
+decreased, or remained stable.</p>
+<div class="figure">
+<img src="images/03/slopegraph.png" alt="A slopegraph showing change across two time periods. The slope of each line immediately communicates the direction and magnitude of change." width="60%" />
+<p class="caption">
+A slopegraph showing change across two time periods. The slope of each
+line immediately communicates the direction and magnitude of change.
+</p>
+</div>
+<p>Slopegraphs are a beautifully minimalist design. They use direct
+labeling (no legend needed), and the visual encoding – slope – is one of
+the most intuitive for the human eye. They are especially effective
+for:</p>
+<ul>
+<li>Comparing rankings across two time points</li>
+<li>Showing which categories improved and which declined</li>
+<li>Highlighting the magnitude of change through the steepness of the
+line</li>
+</ul>
+</div>
+<div id="designing-for-clarity" class="section level2">
+<h2>Designing for Clarity</h2>
+<p>Beyond Tufte’s specific principles, several broader guidelines help
+produce clear, effective visualizations:</p>
+<p><strong>Label directly.</strong> Whenever possible, label data
+elements directly on the chart rather than relying on a separate legend.
+Legends force the viewer to look back and forth between the plot and the
+key, increasing cognitive load.</p>
+<p><strong>Use color purposefully.</strong> Color should encode meaning,
+not serve as decoration. Reserve color for distinguishing groups,
+highlighting a key finding, or encoding a variable. Avoid “rainbow”
+color schemes that have no natural ordering.</p>
+<p><strong>Order data meaningfully.</strong> Default alphabetical
+ordering is rarely the best choice. Order bars by value. Order time
+series chronologically. <strong>The order of data in a chart is a design
+decision</strong>, and it should serve the viewer’s understanding.</p>
+<p><strong>Reduce cognitive load.</strong> Every unnecessary element
+adds to the viewer’s cognitive burden. Gridlines, borders, background
+shading, tick marks, redundant axis labels – each demands a small amount
+of attention. Individually they are trivial, but collectively they can
+obscure the data.</p>
+<div class="figure">
+<img src="images/03/gelmanvouchermap.png" alt="Andrew Gelman's redesigned voucher map -- a clear example of thoughtful design choices serving the data." width="70%" />
+<p class="caption">
+Andrew Gelman’s redesigned voucher map – a clear example of thoughtful
+design choices serving the data.
+</p>
+</div>
+<hr />
+<div class="callout-ignatian">
+<p><strong>Ignatian Reflection: Seeing Clearly and Designing
+Honestly</strong></p>
+<p>The Ignatian tradition places great emphasis on
+<strong>discernment</strong> – the practice of perceiving reality as it
+truly is, free from distortion and self-deception. This week’s material
+reveals how easily our perception can be manipulated. A 3D pie chart
+exploits our poor ability to judge volume. A rainbow color scale
+obscures the true magnitude of differences. A truncated axis exaggerates
+a modest change into a dramatic one.</p>
+<p>At Gonzaga, we are guided by the Ignatian principle of <em>magis</em>
+– the relentless pursuit of the greater good, of doing things not just
+adequately but with excellence and integrity. In data visualization,
+magis means stripping away the unnecessary so that truth can emerge
+clearly. It means choosing honest scales, faithful representations, and
+designs that serve the viewer rather than the designer’s agenda.</p>
+<p>The principle of <strong>Cura Personalis</strong> (care for the whole
+person) calls us to consider our audience’s needs: Can a colorblind
+viewer read this chart? Does this encoding accurately represent the
+underlying data? Am I making the truth easier to see, or harder?</p>
+<p>A lie factor greater than 1 is, in a very real sense, a lie told with
+data. As you develop your visualization skills, commit to a simple
+standard: <strong>let the data speak truthfully, and design your charts
+to amplify that truth, not distort it.</strong></p>
+</div>
+<hr />
+</div>
+<div id="summary-a-perception-and-design-checklist"
+class="section level2">
+<h2>Summary: A Perception and Design Checklist</h2>
+<p>When designing or evaluating a visualization, run through this
+checklist:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Principle</th>
+<th>Question to Ask</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Preattentive attributes</strong></td>
+<td>Does the most important information pop out immediately?</td>
+</tr>
+<tr class="even">
+<td><strong>Gestalt grouping</strong></td>
+<td>Are visual groups aligned with data groups?</td>
+</tr>
+<tr class="odd">
+<td><strong>Cleveland &amp; McGill</strong></td>
+<td>Am I using the most accurate encoding for the key comparison?</td>
+</tr>
+<tr class="even">
+<td><strong>Color palette</strong></td>
+<td>Is my palette appropriate for the data type (sequential, diverging,
+qualitative)?</td>
+</tr>
+<tr class="odd">
+<td><strong>Colorblindness</strong></td>
+<td>Would a colorblind viewer get the same message?</td>
+</tr>
+<tr class="even">
+<td><strong>Working memory</strong></td>
+<td>Can the viewer understand the chart without constantly consulting a
+legend?</td>
+</tr>
+<tr class="odd">
+<td><strong>Data-ink ratio</strong></td>
+<td>Can I remove any element without losing information?</td>
+</tr>
+<tr class="even">
+<td><strong>Lie factor</strong></td>
+<td>Does the visual impression match the magnitude of the data?</td>
+</tr>
+<tr class="odd">
+<td><strong>Axis integrity</strong></td>
+<td>Do bar charts start at zero? Are scales labeled clearly?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="exercises" class="section level2">
+<h2>Exercises</h2>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Week 2 Exercises</p>
+</div>
+<div class="exercise-body">
+<p><strong>Exercise 1: Preattentive Attributes and the Perceptual
+Hierarchy</strong></p>
+<p>Using the <code>diamonds</code> dataset, create two charts of the
+distribution of diamond <code>cut</code> quality – a bar chart and a pie
+chart. Fill in the blanks in the code below, then write 2-3 sentences
+comparing which chart makes it easier to compare categories and why,
+referencing Cleveland &amp; McGill’s hierarchy.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>cut_counts <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> <span class="fu">count</span>(cut)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co"># Bar chart -- fill in the missing aesthetic and geom</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>p_bar <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cut_counts, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(cut, n), <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Bar Chart: Diamond Cut Quality&quot;</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co"># Pie chart -- fill in the missing coord function</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a>p_pie <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cut_counts, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> n, <span class="at">fill =</span> cut)) <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a>  <span class="fu">___</span>(<span class="at">theta =</span> <span class="st">&quot;y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Pie Chart: Diamond Cut Quality&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Cut&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a>  <span class="fu">theme_void</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a>p_bar <span class="sc">+</span> p_pie</span></code></pre></div>
+<p><strong>Exercise 2: Colorblind-Friendly Redesign</strong></p>
+<p>The plot below uses a red-green color scheme that is not accessible
+to colorblind viewers. Fill in the blanks to redesign it using the
+viridis palette and redundant shape coding.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># Original: NOT colorblind-friendly</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;4&quot;</span> <span class="ot">=</span> <span class="st">&quot;red&quot;</span>, <span class="st">&quot;f&quot;</span> <span class="ot">=</span> <span class="st">&quot;green&quot;</span>, <span class="st">&quot;r&quot;</span> <span class="ot">=</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Original: Poor color choice&quot;</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Drive&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co"># Redesign: fill in the blanks for colorblind-friendly version</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv, <span class="at">shape =</span> ___)) <span class="sc">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;___&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Redesign: Colorblind-Friendly with Redundant Coding&quot;</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Engine Displacement (L)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Drive&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;Drive&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>After creating your redesign, test it using the <a
+href="https://www.color-blindness.com/coblis-color-blindness-simulator/">Coblis
+colorblind simulator</a> by uploading a screenshot of your plot. Write
+1-2 sentences about what you observe.</p>
+<p><strong>Exercise 3: Data-Ink Ratio Makeover</strong></p>
+<p>The following code produces a chart overloaded with chartjunk. Fill
+in the blanks in the redesigned version to maximize the data-ink ratio
+while keeping the chart readable.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>df_dept <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  <span class="at">department =</span> <span class="fu">c</span>(<span class="st">&quot;Marketing&quot;</span>, <span class="st">&quot;Engineering&quot;</span>, <span class="st">&quot;Sales&quot;</span>, <span class="st">&quot;HR&quot;</span>, <span class="st">&quot;Finance&quot;</span>),</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="at">budget =</span> <span class="fu">c</span>(<span class="dv">320</span>, <span class="dv">580</span>, <span class="dv">410</span>, <span class="dv">190</span>, <span class="dv">275</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>)</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="co"># Original: full of chartjunk</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>p_junk <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_dept, <span class="fu">aes</span>(<span class="at">x =</span> department, <span class="at">y =</span> budget, <span class="at">fill =</span> department)) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>  <span class="fu">theme_dark</span>() <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>) <span class="sc">+</span></span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Before: Department Budgets&quot;</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Department&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Budget (thousands $)&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Department&quot;</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a><span class="co"># Redesign: fill in the blanks to clean it up</span></span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>p_tufte <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_dept, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(department, budget), <span class="at">y =</span> budget)) <span class="sc">+</span></span>
+<span id="cb16-20"><a href="#cb16-20" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;___&quot;</span>, <span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb16-21"><a href="#cb16-21" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> budget), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>) <span class="sc">+</span></span>
+<span id="cb16-22"><a href="#cb16-22" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb16-23"><a href="#cb16-23" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb16-24"><a href="#cb16-24" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major.___ =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb16-25"><a href="#cb16-25" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb16-26"><a href="#cb16-26" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">___</span>()) <span class="sc">+</span></span>
+<span id="cb16-27"><a href="#cb16-27" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;After: Department Budgets&quot;</span>)</span>
+<span id="cb16-28"><a href="#cb16-28" tabindex="-1"></a></span>
+<span id="cb16-29"><a href="#cb16-29" tabindex="-1"></a>p_junk <span class="sc">+</span> p_tufte</span></code></pre></div>
+<p>Write a brief paragraph explaining what you changed and why each
+change improves the data-ink ratio.</p>
+<p><strong>Exercise 4: Deceptive Graph Analysis</strong></p>
+<p>Find a deceptive or misleading graph published in a real-world source
+(news article, social media, corporate report, or political campaign
+material). Include the image or a link in your R Markdown document. Then
+answer the following:</p>
+<ul>
+<li>What is the chart trying to communicate?</li>
+<li>What deceptive technique(s) does it use? (truncated axis, area
+distortion, cherry-picked timeframe, etc.)</li>
+<li>Estimate the lie factor if applicable. Show your calculation.</li>
+<li>Sketch or code in R how you would redesign the chart to be
+honest.</li>
+</ul>
+<p>A good place to find examples is the <a href="https://viz.wtf/">WTF
+Visualizations</a> archive.</p>
+<p><strong>Exercise 5: Reading Assignment</strong></p>
+<p>Read the following and write three key takeaways from each in your R
+Markdown document:</p>
+<ul>
+<li>Wilke, C.O. – <em>Fundamentals of Data Visualization</em>, Chapters
+1-2</li>
+<li>Healy, K. – <em>Data Visualization: A Practical Introduction</em>,
+Chapter 1</li>
+</ul>
+<p>Focus on: What principles from this week do the authors emphasize?
+Where do they offer different perspectives? How do Tufte’s ideas about
+data-ink relate to what Wilke and Healy recommend?</p>
+</div>
+</div>
+<hr />
+<hr />
+</div>
+<div id="try-it-interactive-sandbox" class="section level2">
+<h2>Try It: Interactive Sandbox</h2>
+<div class="callout-ai">
+<p><strong>AI &amp; This Concept</strong> When prompting AI to build a
+chart, don’t let it choose the encoding by default. Specify
+<em>which</em> preattentive attribute you want to use and <em>why</em>.
+AI tools tend to over-rely on color — use this sandbox to decide for
+yourself which attribute works best for your data.</p>
+</div>
+<div class="sandbox-section">
+<div class="sandbox-header">
+<p><span class="sandbox-icon">🧪</span> Preattentive Processing Explorer
+— Which Attribute Pops Out?</p>
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/b52f3a3d-3ee1-4191-9f7f-ba83cea3347d/" height="580" allowfullscreen>
+</iframe>
+<div class="sandbox-footer">
+<p>Switch between Color, Size, and Shape. Increase the number of
+background points and watch how each attribute handles the crowd. Try
+redundant coding (color + size together) to see why it’s more
+robust.</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="attributions" class="section level2">
+<h2>Attributions</h2>
+<div class="callout-info">
+<p>This course material draws on and is inspired by the work of many
+scholars and practitioners:</p>
+<ul>
+<li><strong>Vivek H. Patil</strong> – foundational course design and
+materials for data visualization at Gonzaga University</li>
+<li><strong>Cleveland, W.S. &amp; McGill, R.</strong> (1984). “Graphical
+Perception: Theory, Experimentation, and Application to the Development
+of Graphical Methods.” <em>Journal of the American Statistical
+Association</em>, 79(387), 531–554.</li>
+<li><strong>Tufte, E.R.</strong> – <em>The Visual Display of
+Quantitative Information</em> (Graphics Press, 1983, 2001)</li>
+<li><strong>Playfair, W.</strong> – <em>The Commercial and Political
+Atlas</em> (1786)</li>
+<li><strong>Snow, J.</strong> – <em>On the Mode of Communication of
+Cholera</em> (1855)</li>
+<li><strong>Minard, C.J.</strong> – <em>Carte figurative des pertes
+successives en hommes de l’Armee Francaise dans la campagne de Russie
+1812-1813</em> (1869)</li>
+<li><strong>Ware, C.</strong> – <em>Information Visualization:
+Perception for Design</em> (Morgan Kaufmann)</li>
+<li><strong>Few, S.</strong> – Perceptual Edge research and publications
+on dashboard and visualization design</li>
+<li><strong>Cairo, A.</strong> – <em>The Truthful Art</em> and <em>The
+Functional Art</em></li>
+<li><strong>Wilke, C.O.</strong> – <em>Fundamentals of Data
+Visualization</em> (O’Reilly, 2019)</li>
+<li><strong>Healy, K.</strong> – <em>Data Visualization: A Practical
+Introduction</em> (Princeton University Press, 2018)</li>
+</ul>
+</div>
+<div class="page-nav">
+<p><a href="week01.html">← Week 1: Introduction</a>
+<a href="week03.html">Week 3 →</a></p>
+</div>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

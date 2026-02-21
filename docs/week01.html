@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week 1: Introduction to Data Visualization &amp; R</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week 1: Introduction to Data Visualization
+&amp; R</h1>
+
+</div>
+
+
+<div class="hero-banner">
+<div class="week-badge">
+1
+</div>
+<h1>
+Introduction to Data Visualization &amp; R
+</h1>
+<p>
+Why we visualize data, the power of graphical representation, and
+getting started with R
+</p>
+</div>
+<div id="learning-objectives" class="section level2 objectives">
+<h2>Learning Objectives</h2>
+<p>By the end of this week, you will be able to:</p>
+<ul>
+<li>Articulate why data visualization is essential for understanding
+data</li>
+<li>Define visualization using Kosara’s framework</li>
+<li>Explain the lessons of Anscombe’s Quartet and the Datasaurus
+Dozen</li>
+<li>Install and configure R, RStudio, and essential packages</li>
+<li>Create a basic R Markdown document</li>
+<li>Produce simple plots using ggplot2</li>
+</ul>
+</div>
+<div id="why-visualize-data" class="section level2">
+<h2>Why Visualize Data?</h2>
+<p>Data visualization is far more than making pretty pictures. It is one
+of the most powerful tools we have for making sense of information. But
+what exactly counts as a “visualization”?</p>
+<p>Robert Kosara offers a useful three-part definition. For something to
+qualify as a <strong>visualization</strong>, it must be:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Based on non-visual data</strong> – it transforms abstract
+data into a visual form</li>
+<li><strong>Produce an image</strong> – the result is something we can
+see</li>
+<li><strong>The result must be readable and recognizable</strong> – a
+viewer should be able to read back the original data relationships from
+the image</li>
+</ol>
+<p>This definition helps us distinguish true data visualization from
+decoration or illustration. A chart that distorts the underlying data
+may be an image, but it fails the third criterion. An artistic rendering
+that is not grounded in data fails the first.</p>
+<div class="figure">
+<img src="images/01/funvis.jpg" alt="Visualization can be fun and engaging while remaining informative." width="70%" />
+<p class="caption">
+Visualization can be fun and engaging while remaining informative.
+</p>
+</div>
+<p>Visualization serves many purposes. It can <strong>explore</strong>
+data, revealing patterns we did not expect. It can
+<strong>explain</strong> findings to an audience. And it can
+<strong>convince</strong> – making a persuasive case grounded in
+evidence.</p>
+<div class="figure">
+<img src="images/01/convincing.png" alt="Effective visualizations are convincing because they communicate clearly." width="70%" />
+<p class="caption">
+Effective visualizations are convincing because they communicate
+clearly.
+</p>
+</div>
+<div class="callout-ignatian">
+<p><strong>Ignatian Reflection: Seeing Truthfully</strong></p>
+<p>St. Ignatius emphasized the importance of seeing the world as it
+truly is – not as we wish it to be. Data visualization, at its best,
+serves this same goal. When we create honest, clear graphics, we
+practice a form of truthful seeing. When we distort or mislead with
+data, we obscure truth. As you learn visualization this semester,
+consider: <em>How can the charts I create help others see the world more
+clearly and act more justly?</em></p>
+</div>
+</div>
+<div id="anscombes-quartet" class="section level2">
+<h2>Anscombe’s Quartet</h2>
+<p>In 1973, statistician Francis Anscombe constructed four small
+datasets that would become one of the most famous examples in all of
+statistics. Each dataset has nearly identical summary statistics – the
+same means, standard deviations, and correlations. Yet when you plot
+them, they tell completely different stories.</p>
+<p>This is the fundamental lesson: <strong>summary statistics alone can
+be deeply misleading</strong>. You must always visualize your data.</p>
+<p>Let us examine this directly. We will work through this step by step
+so you can run each chunk on its own and knit after each one.</p>
+<div id="step-1-load-the-tidyverse" class="section level3">
+<h3>Step 1: Load the tidyverse</h3>
+<p>First, we load the <code>tidyverse</code> package, which gives us
+access to <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>,
+and other tools we will use throughout the course.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<div id="step-2-reshape-the-anscombe-data" class="section level3">
+<h3>Step 2: Reshape the Anscombe data</h3>
+<p>The built-in <code>anscombe</code> dataset stores the four sets in
+wide format. We reshape it into tidy (long) format so that each row
+represents one observation with its set label.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>anscombe_tidy <span class="ot">&lt;-</span> anscombe <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(),</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;set&quot;</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>               <span class="at">names_pattern =</span> <span class="st">&quot;(.)(.)&quot;</span>)</span></code></pre></div>
+<p>Take a quick look at the first few rows to see what the tidy data
+looks like:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">head</span>(anscombe_tidy, <span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 3
+##    set       x     y
+##    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 1        10  8.04
+##  2 2        10  9.14
+##  3 3        10  7.46
+##  4 4         8  6.58
+##  5 1         8  6.95
+##  6 2         8  8.14
+##  7 3         8  6.77
+##  8 4         8  5.76
+##  9 1        13  7.58
+## 10 2        13  8.74
+## 11 3        13 12.7 
+## 12 4         8  7.71</code></pre>
+</div>
+<div id="step-3-compute-summary-statistics" class="section level3">
+<h3>Step 3: Compute summary statistics</h3>
+<p>Now we compute the summary statistics for each of the four sets.
+Watch how similar they are:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>anscombe_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">group_by</span>(set) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="at">mean_x =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>    <span class="at">mean_y =</span> <span class="fu">mean</span>(y),</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>    <span class="at">sd_x   =</span> <span class="fu">sd</span>(x),</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>    <span class="at">sd_y   =</span> <span class="fu">sd</span>(y),</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>    <span class="at">cor_xy =</span> <span class="fu">cor</span>(x, y)</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 6
+##   set   mean_x mean_y  sd_x  sd_y cor_xy
+##   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 1          9   7.50  3.32  2.03  0.816
+## 2 2          9   7.50  3.32  2.03  0.816
+## 3 3          9   7.5   3.32  2.03  0.816
+## 4 4          9   7.50  3.32  2.03  0.817</code></pre>
+<p>The numbers are strikingly similar across all four sets. If you only
+looked at these statistics, you would conclude the four datasets are
+essentially the same.</p>
+</div>
+<div id="step-4-plot-the-four-datasets" class="section level3">
+<h3>Step 4: Plot the four datasets</h3>
+<p>Now let us see what the data actually look like:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe_tidy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>set, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anscombe&#39;s Quartet&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Same statistics, completely different stories&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<div class="figure">
+<img src="week01_files/figure-html/anscombe-plot-1.png" alt="Anscombe's Quartet: four datasets with nearly identical summary statistics but very different visual patterns." width="768" />
+<p class="caption">
+Anscombe’s Quartet: four datasets with nearly identical summary
+statistics but very different visual patterns.
+</p>
+</div>
+<p>Set 1 shows a straightforward linear relationship. Set 2 reveals a
+curved pattern that a linear model misses entirely. Set 3 has a perfect
+linear relationship broken by a single outlier. Set 4 shows that one
+extreme point can create the illusion of a relationship where none
+exists.</p>
+<p>The lesson is clear: <strong>always plot your data</strong>.</p>
+<div class="callout-info">
+<p><strong>Attribution:</strong> Anscombe, F.J. (1973). “Graphs in
+Statistical Analysis.” <em>The American Statistician</em>, 27(1),
+17–21.</p>
+</div>
+</div>
+</div>
+<div id="the-datasaurus-dozen" class="section level2">
+<h2>The Datasaurus Dozen</h2>
+<p>If Anscombe’s Quartet made the case with four datasets, the
+Datasaurus Dozen drives it home with thirteen. Created by Matejka and
+Fitzmaurice in 2017, these datasets all share the same summary
+statistics to two decimal places – yet their shapes range from a star to
+a circle to a dinosaur.</p>
+<div class="figure">
+<img src="images/01/DinoSequential.gif" alt="The Datasaurus Dozen: thirteen datasets with identical summary statistics and wildly different distributions." width="80%" />
+<p class="caption">
+The Datasaurus Dozen: thirteen datasets with identical summary
+statistics and wildly different distributions.
+</p>
+</div>
+<p>We can use the <code>datasauRus</code> package to plot all thirteen
+datasets at once:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">library</span>(datasauRus)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">ggplot</span>(datasaurus_dozen, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dataset, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;The Datasaurus Dozen&quot;</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Never trust summary statistics alone&quot;</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Source: datasauRus package (Matejka &amp; Fitzmaurice, 2017)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<div class="figure">
+<img src="week01_files/figure-html/datasaurus-plot-1.png" alt="All thirteen Datasaurus Dozen datasets share nearly identical summary statistics despite their wildly different shapes." width="960" />
+<p class="caption">
+All thirteen Datasaurus Dozen datasets share nearly identical summary
+statistics despite their wildly different shapes.
+</p>
+</div>
+<p>Every single one of these panels has the same mean of x, mean of y,
+standard deviation of x, standard deviation of y, and correlation
+between x and y. The message is unmistakable: visualization is not
+optional.</p>
+</div>
+<div id="why-r" class="section level2">
+<h2>Why R?</h2>
+<p><strong>R</strong> is a programming language and environment designed
+for statistical computing and graphics. It was created in the early
+1990s by Ross Ihaka and Robert Gentleman at the University of Auckland,
+New Zealand, as an open-source implementation of the S language.</p>
+<div class="figure">
+<img src="images/01/Rlogo.png" alt="The R Project for Statistical Computing." width="20%" />
+<p class="caption">
+The R Project for Statistical Computing.
+</p>
+</div>
+<p>Since then, R has grown into one of the most widely used tools for
+data analysis and visualization in the world. The Comprehensive R
+Archive Network (CRAN) hosts thousands of contributed packages. The
+chart below is generated live from CRAN data – a nice preview of what
+you will learn to build in this course.</p>
+<div class="figure">
+<img src="week01_files/figure-html/cran-growth-1.png" alt="The growth of CRAN packages over time, generated from live CRAN data." width="768" />
+<p class="caption">
+The growth of CRAN packages over time, generated from live CRAN data.
+</p>
+</div>
+<p>Why do we use R for this course rather than Excel, Tableau, or
+Python?</p>
+<ul>
+<li><strong>Built for statistics and graphics.</strong> R was designed
+from the ground up for data analysis and visualization. The
+<code>ggplot2</code> package implements a principled <em>grammar of
+graphics</em> that makes it possible to build complex, layered
+visualizations systematically.</li>
+<li><strong>Reproducibility.</strong> R scripts and R Markdown documents
+create a complete record of your analysis, from raw data to final
+graphic. Anyone can re-run your code and get the same results.</li>
+<li><strong>Community.</strong> R has an enormous and welcoming
+community. If you have a question, someone has likely answered it on
+Stack Overflow or in a blog post.</li>
+<li><strong>It is free and open source.</strong> No licenses, no fees,
+no barriers.</li>
+</ul>
+<div class="callout-tip">
+<p><strong>You do not need to be a programmer.</strong> Many students in
+this course have no prior coding experience, and that is perfectly fine.
+R has a learning curve, but the payoff is enormous. We will learn just
+enough R to create effective visualizations – and you may find that you
+enjoy it more than you expected.</p>
+</div>
+</div>
+<div id="setting-up-your-environment" class="section level2">
+<h2>Setting Up Your Environment</h2>
+<p>To get started, you need two pieces of software:</p>
+<ol style="list-style-type: decimal">
+<li><strong>R</strong> – the language itself. Download it from <a
+href="https://cran.r-project.org/">CRAN</a>.</li>
+<li><strong>RStudio</strong> – an integrated development environment
+(IDE) that makes working with R much easier. Download the free desktop
+version from <a
+href="https://posit.co/download/rstudio-desktop/">Posit</a>.</li>
+</ol>
+<p>Install R first, then RStudio. Once both are installed, open RStudio
+and run the following code in the console to install the packages we
+will use throughout the course:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="st">&quot;tidyverse&quot;</span>,       <span class="co"># data manipulation and ggplot2</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="st">&quot;datasauRus&quot;</span>,      <span class="co"># Datasaurus Dozen datasets</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="st">&quot;rmarkdown&quot;</span>,       <span class="co"># R Markdown documents</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="st">&quot;knitr&quot;</span>,           <span class="co"># document rendering</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="st">&quot;scales&quot;</span>,          <span class="co"># scale functions for visualization</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="st">&quot;viridis&quot;</span>,         <span class="co"># colorblind-friendly palettes</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="st">&quot;RColorBrewer&quot;</span>,    <span class="co"># color palettes</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="st">&quot;patchwork&quot;</span>,       <span class="co"># combining multiple plots</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  <span class="st">&quot;plotly&quot;</span>,          <span class="co"># interactive visualizations</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="st">&quot;gapminder&quot;</span>,       <span class="co"># global development data</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>  <span class="st">&quot;palmerpenguins&quot;</span>,  <span class="co"># penguin measurement data</span></span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>  <span class="st">&quot;sf&quot;</span>,              <span class="co"># spatial data</span></span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  <span class="st">&quot;leaflet&quot;</span>,         <span class="co"># interactive maps</span></span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>  <span class="st">&quot;DT&quot;</span>,              <span class="co"># interactive tables</span></span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  <span class="st">&quot;gganimate&quot;</span>,       <span class="co"># animated plots</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  <span class="st">&quot;ggthemes&quot;</span>,        <span class="co"># additional ggplot2 themes</span></span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a>  <span class="st">&quot;ggrepel&quot;</span>,         <span class="co"># non-overlapping text labels</span></span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>  <span class="st">&quot;treemapify&quot;</span>,      <span class="co"># treemap geom for ggplot2</span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a>  <span class="st">&quot;GGally&quot;</span>           <span class="co"># ggplot2 extensions</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a>))</span></code></pre></div>
+<div class="callout-info">
+<p><strong>About RStudio:</strong> RStudio is not a separate programming
+language – it is an interface for working with R. Think of R as the
+engine and RStudio as the dashboard. When you open RStudio, you will see
+four panes: the Source editor (top-left), the Console (bottom-left), the
+Environment (top-right), and the Files/Plots/Help viewer (bottom-right).
+We will become very familiar with this layout over the semester.</p>
+</div>
+<div class="callout-error">
+<p><strong>Common Week 1 Errors and How to Fix Them</strong></p>
+<p>If you run into problems this week, check here first before posting
+on the Canvas Discussion board. These are the most common issues
+students encounter when getting started.</p>
+<p><strong>1. “Error in library(tidyverse) : there is no package called
+‘tidyverse’”</strong></p>
+<p>This means the package has not been installed yet. R does not come
+with tidyverse pre-installed. Run the install command first:</p>
+<pre><code>install.packages(&quot;tidyverse&quot;)</code></pre>
+<p>You only need to install a package once. After that, you load it with
+<code>library(tidyverse)</code> each time you start a new session.</p>
+<p><strong>2. “could not find function ‘ggplot’”</strong></p>
+<p>This means you forgot to load the tidyverse at the top of your script
+or R Markdown document. Add <code>library(tidyverse)</code> to your
+setup chunk and run it before your plotting code. Every R Markdown
+document should have a setup chunk near the top that loads the packages
+you need.</p>
+<p><strong>3. The Knit button is greyed out or produces an
+error</strong></p>
+<p>Check that your file is saved with the <code>.Rmd</code> extension,
+not <code>.R</code>. R scripts (<code>.R</code> files) cannot be knitted
+– only R Markdown files (<code>.Rmd</code>) can. In RStudio, go to File
+&gt; Save As and make sure the filename ends in <code>.Rmd</code>.</p>
+<p><strong>4. “object ‘x’ not found”</strong></p>
+<p>This usually means one of two things: (a) you have a typo in a
+variable name, or (b) you did not run an earlier code chunk that creates
+the variable. In R Markdown, chunks run in order from top to bottom when
+you knit. Make sure every chunk that creates a variable appears before
+any chunk that uses it. Also check for capitalization – R is
+case-sensitive, so <code>myData</code> and <code>mydata</code> are
+different objects.</p>
+<p><strong>5. Pandoc error when knitting</strong></p>
+<p>If you see an error mentioning “pandoc” or “LaTeX,” your RStudio
+installation may be out of date. Go to <a
+href="https://posit.co/download/rstudio-desktop/">posit.co/download/rstudio-desktop/</a>
+and install the latest version of RStudio, which bundles a current
+version of Pandoc. If you are trying to knit to PDF, install the
+<code>tinytex</code> package by running
+<code>install.packages("tinytex")</code> followed by
+<code>tinytex::install_tinytex()</code>. For this course, knitting to
+HTML is sufficient.</p>
+</div>
+</div>
+<div id="introduction-to-r-markdown" class="section level2">
+<h2>Introduction to R Markdown</h2>
+<p>R Markdown is a document format that lets you combine narrative text,
+code, and output (including graphics) in a single file. When you “knit”
+an R Markdown document, R executes all the code chunks and weaves the
+results together with your text into a finished document – an HTML page,
+a PDF, a Word document, or even a presentation.</p>
+<p>An R Markdown file (<code>.Rmd</code>) has three main components:</p>
+<div id="yaml-header" class="section level3">
+<h3>YAML Header</h3>
+<p>The YAML header appears at the very top of the file, enclosed in
+triple dashes (<code>---</code>). It controls document-level settings
+such as the title, author, date, and output format.</p>
+</div>
+<div id="markdown-text" class="section level3">
+<h3>Markdown Text</h3>
+<p>The body of the document uses Markdown syntax for formatting. You can
+create headings with <code>#</code>, <strong>bold text</strong> with
+double asterisks, <em>italics</em> with single asterisks, lists, links,
+and more.</p>
+</div>
+<div id="code-chunks" class="section level3">
+<h3>Code Chunks</h3>
+<p>R code is embedded in fenced code chunks that begin with
+<code>```{r}</code> and end with <code>```</code>. You can control each
+chunk’s behavior using options like <code>echo</code> (show/hide the
+code), <code>eval</code> (run or skip execution),
+<code>fig.width</code>, and <code>fig.height</code>.</p>
+<p>Here is a minimal R Markdown template to get you started:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># This is what a basic .Rmd file looks like:</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co"># title: &quot;My First Visualization&quot;</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co"># author: &quot;Your Name&quot;</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co"># date: &quot;2026-01-15&quot;</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co"># output: html_document</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co"># ---</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="co"># ## Introduction</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co"># This is my first R Markdown document.</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co"># ```{r setup, message=FALSE, warning=FALSE}</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co"># ```</span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co"># ## A Simple Plot</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co"># ```{r first-plot, fig.width=6, fig.height=4}</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co"># ggplot(mpg, aes(x = displ, y = hwy, color = class)) +</span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="co">#   geom_point(size = 2) +</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co">#   labs(title = &quot;Engine Displacement vs. Highway MPG&quot;,</span></span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="co">#        x = &quot;Engine Displacement (L)&quot;,</span></span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="co">#        y = &quot;Highway MPG&quot;,</span></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="co">#        color = &quot;Vehicle Class&quot;) +</span></span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="co"># ```</span></span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="co"># ## Conclusion</span></span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="co"># Visualization reveals patterns that numbers alone cannot.</span></span></code></pre></div>
+<div class="callout-tip">
+<p><strong>Tip:</strong> Use the <strong>Knit</strong> button in RStudio
+(or the keyboard shortcut Ctrl+Shift+K) to render your R Markdown
+document. Start by knitting frequently – it is much easier to catch
+errors when you have only added a small amount of new content.</p>
+</div>
+</div>
+</div>
+<div id="your-first-ggplot2-visualization" class="section level2">
+<h2>Your First ggplot2 Visualization</h2>
+<p>Before jumping into the exercises, let us build one more plot
+together from scratch. This will reinforce the core pattern of ggplot2:
+<strong>data + aesthetic mapping + geometry</strong>.</p>
+<div id="step-1-load-the-data-and-packages" class="section level3">
+<h3>Step 1: Load the data and packages</h3>
+<p>We will use the <code>mpg</code> dataset that comes with ggplot2. It
+contains fuel economy data for 38 popular car models.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+</div>
+<div id="step-2-create-a-basic-scatter-plot" class="section level3">
+<h3>Step 2: Create a basic scatter plot</h3>
+<p>The <code>ggplot()</code> function initializes a plot. We map
+<code>displ</code> (engine displacement) to the x-axis and
+<code>hwy</code> (highway miles per gallon) to the y-axis. Then we add
+<code>geom_point()</code> to draw the points.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="week01_files/figure-html/first-ggplot-basic-1.png" width="672" /></p>
+</div>
+<div id="step-3-add-color-and-polish" class="section level3">
+<h3>Step 3: Add color and polish</h3>
+<p>Now we map the <code>class</code> variable to color, increase the
+point size, and add informative labels.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Engine Size vs. Highway Fuel Economy&quot;</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Larger engines tend to have lower fuel economy&quot;</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Engine Displacement (liters)&quot;</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;Vehicle Class&quot;</span></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<div class="figure">
+<img src="week01_files/figure-html/first-ggplot-polished-1.png" alt="A polished scatter plot mapping engine size to highway fuel economy, colored by vehicle class." width="768" />
+<p class="caption">
+A polished scatter plot mapping engine size to highway fuel economy,
+colored by vehicle class.
+</p>
+</div>
+<p>Notice the pattern: we start simple and layer on complexity. This is
+the ggplot2 philosophy, and we will build on it throughout the
+course.</p>
+</div>
+</div>
+<div id="exercises" class="section level2">
+<h2>Exercises</h2>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Week 1 Exercises</p>
+</div>
+<div class="exercise-body">
+<p><strong>Exercise 1: Install R and RStudio</strong></p>
+<p>Download and install R from <a
+href="https://cran.r-project.org/">CRAN</a> and RStudio from <a
+href="https://posit.co/download/rstudio-desktop/">Posit</a>. Open
+RStudio and verify that the console displays the R version. Run the
+<code>install.packages()</code> command from the Setting Up section
+above to install the course packages. Take a screenshot of your RStudio
+console showing the R version and paste it into your R Markdown document
+for this week.</p>
+<p><strong>Exercise 2: Create and Knit Your First R Markdown
+Document</strong></p>
+<p>In RStudio, go to File &gt; New File &gt; R Markdown. Give it a title
+like “Week 1 Practice” and your name as the author. Click OK, then click
+the Knit button to render the default template. Examine the output and
+note how the code chunks, text, and results are woven together. Then
+delete the default content below the YAML header and replace it with the
+following. Fill in the blanks (<code>___</code>) and knit again:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Paste this into your .Rmd file (below the YAML header):</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="co"># ## About Me</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="co"># My name is ___ and I am studying ___ at Gonzaga University.</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co"># ## A Quick Plot</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co"># ```{r about-me-plot, message=FALSE, warning=FALSE}</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="co"># ggplot(mpg, aes(x = ___, y = ___)) +</span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="co">#   geom_point(color = &quot;#002967&quot;) +</span></span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="co">#   labs(title = &quot;My First ggplot&quot;,</span></span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="co">#        x = &quot;___&quot;,</span></span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="co">#        y = &quot;___&quot;) +</span></span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co">#   theme_minimal()</span></span>
+<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co"># ```</span></span>
+<span id="cb17-18"><a href="#cb17-18" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-19"><a href="#cb17-19" tabindex="-1"></a><span class="co"># ## What I Learned</span></span>
+<span id="cb17-20"><a href="#cb17-20" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-21"><a href="#cb17-21" tabindex="-1"></a><span class="co"># One thing I learned from the Week 1 materials is ___.</span></span></code></pre></div>
+<div class="callout-tip">
+<p><strong>Hint for the blanks:</strong> Pick any two numeric columns
+from the <code>mpg</code> dataset. You can see all available columns by
+running <code>glimpse(mpg)</code> in the console. Good choices include
+<code>displ</code>, <code>hwy</code>, <code>cty</code>, and
+<code>year</code>. Make sure your axis labels match the variables you
+chose.</p>
+</div>
+<p><strong>Exercise 3: Reproduce and Modify Anscombe’s
+Quartet</strong></p>
+<p>Copy the Anscombe code from this page into a new R Markdown document.
+Knit it to make sure it works. Then modify the plot in the following
+ways – fill in the blanks:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>anscombe_tidy <span class="ot">&lt;-</span> anscombe <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(),</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;.value&quot;</span>, <span class="st">&quot;set&quot;</span>),</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>               <span class="at">names_pattern =</span> <span class="st">&quot;(.)(.)&quot;</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># Modify the plot: change the point color, add a different title,</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># and use a different theme</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe_tidy, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;___&quot;</span>, <span class="at">size =</span> ___, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;___&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>set, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;___&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a>  <span class="fu">theme___</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<div class="callout-tip">
+<p><strong>Hint:</strong> For colors, try any valid color name like
+<code>"steelblue"</code>, <code>"darkred"</code>, or
+<code>"forestgreen"</code>. For the theme, try
+<code>theme_classic()</code>, <code>theme_light()</code>, or
+<code>theme_bw()</code>. Run <code>?theme_minimal</code> in the console
+to see a list of built-in themes.</p>
+</div>
+<p><strong>Exercise 4: Explore a New Dataset</strong></p>
+<p>The <code>palmerpenguins</code> package includes measurements of
+three penguin species. Use the template below to create a scatter plot.
+Fill in the blanks to map the correct variables and add labels:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co"># First, take a look at the data</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="fu">glimpse</span>(penguins)</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># Now create a scatter plot of bill length vs. bill depth,</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co"># colored by species</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___, <span class="at">color =</span> ___)) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Palmer Penguins: Bill Dimensions&quot;</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;___&quot;</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;___&quot;</span></span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<div class="callout-tip">
+<p><strong>Hint:</strong> The bill measurement columns are
+<code>bill_length_mm</code> and <code>bill_depth_mm</code>. The species
+column is <code>species</code>. Your axis labels should describe what
+the variable measures, including units.</p>
+</div>
+<p>After creating the plot, write 2-3 sentences in your R Markdown
+document describing what patterns you see. Do the three species cluster
+differently?</p>
+<p><strong>Exercise 5: Read Healy Chapter 1</strong></p>
+<p>Read Chapter 1 (“Look at Data”) of Kieran Healy’s <em>Data
+Visualization: A Practical Introduction</em>. As you read, write down
+three key takeaways in your R Markdown document. What surprised you?
+What confirmed something you already suspected?</p>
+</div>
+</div>
+<hr />
+<hr />
+</div>
+<div id="try-it-interactive-sandbox" class="section level2">
+<h2>Try It: Interactive Sandbox</h2>
+<div class="callout-ai">
+<p><strong>AI &amp; This Concept</strong> Before accepting any
+AI-generated analysis at face value, always ask it to <em>plot the data
+first</em>. Summary statistics alone hide the real story — and AI tools
+summarize by default. The sandbox below shows exactly why this
+matters.</p>
+</div>
+<div class="sandbox-section">
+<div class="sandbox-header">
+<p><span class="sandbox-icon">🧪</span> Datasaurus Explorer — Same
+Stats, Different Shapes</p>
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/8bbb857b-cc04-4c9a-8491-4afb0c7f5aee/" height="560" allowfullscreen>
+</iframe>
+<div class="sandbox-footer">
+<p>Running in your browser via WebAssembly — no login or install
+required. Select any of the 13 datasets from the dropdown and watch the
+summary statistics stay identical while the shape changes
+completely.</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="attributions" class="section level2">
+<h2>Attributions</h2>
+<p>This course material draws on and is inspired by the work of many
+scholars and practitioners:</p>
+<ul>
+<li><strong>Vivek H. Patil</strong> – foundational course design and
+materials for data visualization at Gonzaga University</li>
+<li><strong>Anscombe, F.J.</strong> (1973). “Graphs in Statistical
+Analysis.” <em>The American Statistician</em>, 27(1), 17–21.</li>
+<li><strong>Matejka, J. &amp; Fitzmaurice, G.</strong> (2017). “Same
+Stats, Different Graphs: Generating Datasets with Varied Appearance and
+Identical Statistics through Simulated Annealing.” <em>ACM SIGCHI
+Conference on Human Factors in Computing Systems</em>.</li>
+<li><strong>Kosara, R.</strong> – writings on the definition and theory
+of visualization (<a
+href="https://eagereyes.org/">eagereyes.org</a>)</li>
+<li><strong>Muenchen, R.A.</strong> – “The Popularity of Data Science
+Software” and analysis of R’s growth</li>
+<li><strong>Wilke, C.O.</strong> – <em>Fundamentals of Data
+Visualization</em> (O’Reilly, 2019)</li>
+<li><strong>Healy, K.</strong> – <em>Data Visualization: A Practical
+Introduction</em> (Princeton University Press, 2018)</li>
+</ul>
+<div class="page-nav">
+<p><span></span> <a href="week02.html">Week 2: Visual Perception &amp;
+Design →</a></p>
+</div>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

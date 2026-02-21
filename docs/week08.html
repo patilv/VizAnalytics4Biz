@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week 8: Capstone — Visualization in Practice</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Week 8: Capstone — Visualization in
+Practice</h1>
+
+</div>
+
+
+<div class="hero-banner">
+<div class="week-badge">
+8
+</div>
+<h1>
+Capstone: Visualization in Practice
+</h1>
+<p>
+Bringing it all together — business applications, social good, ethics,
+and your portfolio
+</p>
+</div>
+<div id="learning-objectives" class="section level2 objectives">
+<h2>Learning Objectives</h2>
+<p>By the end of this week, you will be able to:</p>
+<ul>
+<li>Apply visualization skills to real-world business problems</li>
+<li>Understand visualization for social good and justice</li>
+<li>Navigate ethical challenges in data visualization</li>
+<li>Build a visualization portfolio that demonstrates range and
+depth</li>
+<li>Complete the final capstone project synthesizing all eight weeks of
+learning</li>
+</ul>
+</div>
+<p>We have arrived at the final week. Over the past seven weeks you have
+built an extraordinary toolkit: you can perceive visual patterns, apply
+design principles, construct layered graphics with ggplot2, choose
+appropriate chart types, wrangle messy data into tidy form, add
+interactivity, and map geographic data. In Week 6, you also saw a
+demonstration of Shiny – R’s framework for building reactive web
+applications. This week we bring it all together. We ask the questions
+that matter most: <strong>What will you do with these skills? Who will
+benefit? And how will you ensure your work is honest, inclusive, and
+purposeful?</strong></p>
+<p>This is a capstone in the truest sense – not just a final project,
+but a moment of integration. The technical skills you have acquired are
+powerful, but power without direction is hollow. This week we connect
+your craft to purpose: business value, social good, and ethical
+responsibility.</p>
+<hr />
+<div id="common-errors-capstone-troubleshooting"
+class="section level2 callout-error">
+<h2>Common Errors – Capstone Troubleshooting</h2>
+<p>These are the most common issues students encounter when working on
+their final R Markdown capstone documents. Save yourself hours of
+frustration by reading these before you start.</p>
+<p><strong>“My R Markdown won’t knit”</strong></p>
+<p>Check for unmatched backticks, missing <code>library()</code> calls,
+or chunks that depend on objects created in earlier chunks that errored
+out. If Chunk 3 creates an object called <code>my_data</code> but Chunk
+3 has an error, then Chunk 5 which uses <code>my_data</code> will also
+fail. Fix errors from the top of your document downward.</p>
+<p><strong>“My plot looks different when knitted vs. in
+RStudio”</strong></p>
+<p>The knitted version uses the <code>fig.width</code> and
+<code>fig.height</code> values from the chunk options, not your RStudio
+plot pane dimensions. Set these explicitly in each chunk header:
+<code>```{r my-plot, fig.width=10, fig.height=6}</code>. The default is
+often too small for complex multi-panel dashboards.</p>
+<p><strong>“Interactive widgets don’t show in PDF”</strong></p>
+<p>Interactive widgets (<code>plotly</code>, <code>DT</code>,
+<code>leaflet</code>) only work in HTML output. If you need interactive
+elements in your capstone, make sure your YAML header says
+<code>output: html_document</code>, not
+<code>output: pdf_document</code>. You cannot have both – choose HTML if
+you want interactivity.</p>
+<p><strong>“My code works when I run it line by line but not when I
+knit”</strong></p>
+<p>Knitting runs in a <strong>fresh R session</strong>. It does not have
+access to objects you created in the console, packages you loaded
+manually, or data files you read in outside the <code>.Rmd</code> file.
+Make sure every <code>library()</code> call and every data loading step
+is inside a code chunk in your <code>.Rmd</code> file. A good test:
+restart R (Session &gt; Restart R), then click “Knit.” If it fails, you
+have a missing dependency somewhere in your document.</p>
+</div>
+<hr />
+<div id="business-applications-of-data-visualization"
+class="section level2">
+<h2>1. Business Applications of Data Visualization</h2>
+<p>In industry, the ability to create clear, compelling visualizations
+is one of the most sought-after analytical skills. Every function of a
+modern organization relies on data visualization to make decisions:</p>
+<ul>
+<li><strong>Marketing:</strong> Customer segmentation plots, A/B test
+result comparisons, campaign performance dashboards, funnel analysis
+charts</li>
+<li><strong>Finance:</strong> Revenue trend lines, risk analysis heat
+maps, stock performance charts, budget variance visualizations</li>
+<li><strong>Operations:</strong> Supply chain monitoring dashboards,
+quality control charts (SPC), process flow visualizations, inventory
+level trackers</li>
+<li><strong>Human Resources:</strong> Employee engagement survey
+results, diversity and inclusion metrics, attrition analysis,
+compensation benchmarking</li>
+</ul>
+<p>The key insight for business visualization is that <strong>the
+audience is almost always a decision-maker who is short on
+time</strong>. Your chart must answer a question in seconds, not
+minutes. Labels must be clear, colors purposeful, and the main takeaway
+unmistakable.</p>
+<p>Let us build a multi-panel business dashboard that a manager might
+review at a Monday morning meeting. We use <code>patchwork</code> to
+compose four distinct panels into a single cohesive view:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co"># Simulated business data</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>monthly <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="at">month =</span> <span class="fu">factor</span>(month.abb, <span class="at">levels =</span> month.abb),</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  <span class="at">revenue =</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="dv">50</span>, <span class="dv">15</span>)) <span class="sc">+</span> <span class="dv">500</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  <span class="at">customers =</span> <span class="fu">cumsum</span>(<span class="fu">rpois</span>(<span class="dv">12</span>, <span class="dv">20</span>)) <span class="sc">+</span> <span class="dv">200</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  <span class="at">satisfaction =</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">12</span>, <span class="fl">3.5</span>, <span class="fl">4.8</span>), <span class="dv">1</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(monthly, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> revenue, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Monthly Revenue ($K)&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(monthly, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> customers, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Cumulative Customers&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a><span class="co"># Product breakdown</span></span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a>products <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a>  <span class="at">product =</span> <span class="fu">c</span>(<span class="st">&quot;Widget A&quot;</span>, <span class="st">&quot;Widget B&quot;</span>, <span class="st">&quot;Service X&quot;</span>, <span class="st">&quot;Service Y&quot;</span>, <span class="st">&quot;Custom&quot;</span>),</span>
+<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a>  <span class="at">revenue =</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">145</span>, <span class="dv">120</span>, <span class="dv">95</span>, <span class="dv">60</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">product =</span> <span class="fu">fct_reorder</span>(product, revenue))</span>
+<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(products, <span class="fu">aes</span>(<span class="at">x =</span> revenue, <span class="at">y =</span> product)) <span class="sc">+</span></span>
+<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;#C41E3A&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">&quot;$&quot;</span>, revenue, <span class="st">&quot;K&quot;</span>)), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Revenue by Product&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">220</span>) <span class="sc">+</span></span>
+<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(monthly, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> satisfaction, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;#B4975A&quot;</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;#B4975A&quot;</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">4.0</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">4.05</span>, <span class="at">label =</span> <span class="st">&quot;Target: 4.0&quot;</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Customer Satisfaction (1-5)&quot;</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb1-52"><a href="#cb1-52" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" tabindex="-1"></a>(p1 <span class="sc">+</span> p2) <span class="sc">/</span> (p3 <span class="sc">+</span> p4) <span class="sc">+</span></span>
+<span id="cb1-54"><a href="#cb1-54" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb1-55"><a href="#cb1-55" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Q4 Business Dashboard&quot;</span>,</span>
+<span id="cb1-56"><a href="#cb1-56" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Gonzaga Enterprises — Monthly Performance Overview&quot;</span>,</span>
+<span id="cb1-57"><a href="#cb1-57" tabindex="-1"></a>    <span class="at">theme =</span> <span class="fu">theme</span>(</span>
+<span id="cb1-58"><a href="#cb1-58" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb1-59"><a href="#cb1-59" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#475569&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>)</span>
+<span id="cb1-60"><a href="#cb1-60" tabindex="-1"></a>    )</span>
+<span id="cb1-61"><a href="#cb1-61" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week08_files/figure-html/business-dashboard-1.png" width="1152" /></p>
+<p>Study this dashboard carefully. Notice how each panel answers a
+distinct question: <em>Is revenue growing? Are we acquiring customers?
+Which products drive revenue? Are customers satisfied?</em> Together,
+the four panels provide a holistic snapshot of business health. The
+consistent color scheme – Gonzaga navy for the primary metrics, Gonzaga
+red for the product breakdown, and Gonzaga gold for satisfaction –
+creates visual coherence.</p>
+<div class="callout-tip">
+<p><strong>Dashboard design principle:</strong> Each panel in a
+dashboard should answer exactly one question. If a panel tries to answer
+two questions, split it into two panels. If a panel does not answer any
+question, remove it. Dashboards are not decoration; they are
+decision-support tools.</p>
+</div>
+<hr />
+</div>
+<div id="visualization-for-social-good" class="section level2">
+<h2>2. Visualization for Social Good</h2>
+<p>Data visualization is not just a business tool. It is a tool for
+<strong>justice, advocacy, and human understanding</strong>. Throughout
+history, some of the most powerful visualizations have been created not
+to maximize profit but to expose injustice:</p>
+<ul>
+<li><strong>Florence Nightingale’s rose diagram</strong> (1858) revealed
+that more soldiers died from preventable disease than from battle
+wounds, leading to hospital sanitation reforms that saved thousands of
+lives.</li>
+<li><strong>W.E.B. Du Bois’s data portraits</strong> (1900) visualized
+the economic and social conditions of Black Americans at the Paris
+Exposition, confronting viewers with the reality of inequality.</li>
+<li><strong>Hans Rosling’s Gapminder visualizations</strong> dismantled
+myths about the “developing world” by showing that the majority of
+humanity lives in middle-income countries with improving health
+outcomes.</li>
+</ul>
+<p>Today, data visualization for social good takes many forms:</p>
+<ul>
+<li>Mapping <strong>food deserts</strong> to advocate for grocery stores
+in underserved areas</li>
+<li>Visualizing <strong>air quality data</strong> near industrial sites
+to support environmental justice</li>
+<li>Tracking <strong>healthcare access disparities</strong> across
+neighborhoods, counties, or countries</li>
+<li>Showing <strong>educational achievement gaps</strong> to direct
+resources where they are needed most</li>
+<li>Mapping <strong>refugee flows</strong> to build empathy and inform
+humanitarian response</li>
+</ul>
+<div class="callout-ignatian">
+<p><strong>Ignatian Connection:</strong> The Jesuit tradition calls us
+to be <em>persons for and with others</em>. When we visualize
+inequality, we are not just making charts – we are making the invisible
+visible. We are using our technical skills in service of justice, which
+is at the heart of the Ignatian mission.</p>
+</div>
+<p>Let us create a visualization that exposes the relationship between
+income, health, and insurance coverage across neighborhoods in a
+hypothetical city. This is the kind of visualization that a community
+organizer, public health official, or city council member could use to
+advocate for change:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># Simulated disparity data for a hypothetical city</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>disparity <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="at">neighborhood =</span> <span class="fu">paste</span>(<span class="st">&quot;District&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="at">median_income =</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">42</span>, <span class="dv">48</span>, <span class="dv">55</span>, <span class="dv">62</span>, <span class="dv">71</span>, <span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">95</span>) <span class="sc">*</span> <span class="dv">1000</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  <span class="at">life_expectancy =</span> <span class="fu">c</span>(<span class="fl">72.1</span>, <span class="fl">73.5</span>, <span class="fl">75.0</span>, <span class="fl">76.2</span>, <span class="fl">77.8</span>, <span class="fl">79.0</span>, <span class="fl">80.5</span>, <span class="fl">81.2</span>, <span class="fl">82.8</span>, <span class="fl">84.1</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="at">pct_uninsured =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>)</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="fu">ggplot</span>(disparity, <span class="fu">aes</span>(<span class="at">x =</span> median_income, <span class="at">y =</span> life_expectancy)) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> pct_uninsured), <span class="at">color =</span> <span class="st">&quot;#C41E3A&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> neighborhood), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">1.3</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;#475569&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">12</span>), <span class="at">name =</span> <span class="st">&quot;% Uninsured&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Income, Life Expectancy, and Insurance Coverage&quot;</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Larger points = higher uninsured rate — a visualization for advocacy&quot;</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Median Household Income&quot;</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Life Expectancy (years)&quot;</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Simulated data for educational purposes&quot;</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-27"><a href="#cb2-27" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>),</span>
+<span id="cb2-28"><a href="#cb2-28" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#64748b&quot;</span>),</span>
+<span id="cb2-29"><a href="#cb2-29" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="at">face =</span> <span class="st">&quot;italic&quot;</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week08_files/figure-html/social-good-example-1.png" width="960" /></p>
+<p>The story this chart tells is stark: <strong>where you live predicts
+how long you live</strong>. Districts with lower median incomes have
+lower life expectancies and higher rates of uninsured residents. The
+bubble size encoding makes the uninsured rate viscerally visible – the
+largest, most alarming circles belong to the poorest neighborhoods. The
+regression line with its confidence band confirms that this is not
+random scatter; it is a systematic pattern.</p>
+<p>This is the power of data visualization for social good. A table of
+numbers might convey the same information, but it would not
+<em>move</em> anyone. The chart makes the injustice visible at a glance,
+and that visibility is the first step toward action.</p>
+<hr />
+</div>
+<div id="ethics-in-data-visualization" class="section level2">
+<h2>3. Ethics in Data Visualization</h2>
+<p>With the power to shape perception comes the <strong>responsibility
+to do so honestly</strong>. Every visualization is an argument – it
+emphasizes certain patterns and downplays others. The choices you make
+about scales, colors, labels, and what data to include or exclude are
+all rhetorical choices. They can illuminate truth or obscure it.</p>
+<div id="common-ethical-pitfalls" class="section level3">
+<h3>Common Ethical Pitfalls</h3>
+<p><strong>Cherry-picking data:</strong> Selecting only the time period,
+subset, or variables that support a predetermined narrative. A stock
+chart that starts at a market low will always show impressive growth. An
+honest chart shows the full context.</p>
+<p><strong>Misleading scales:</strong> Truncating the y-axis to
+exaggerate small differences, using non-zero baselines on bar charts, or
+employing dual y-axes with mismatched scales to create false
+correlations. These are among the most common forms of chart
+deception.</p>
+<p><strong>Ignoring uncertainty:</strong> Presenting point estimates
+without confidence intervals, error bars, or any indication of
+variability. Every estimate has uncertainty; hiding it makes your chart
+look more authoritative than the data warrants.</p>
+<p><strong>Decontextualizing data:</strong> Showing raw counts instead
+of per-capita rates (making large states look worse), comparing absolute
+numbers across populations of vastly different sizes, or removing
+seasonal adjustments from time series data.</p>
+<p><strong>Privacy concerns:</strong> Mapping data at such fine
+geographic resolution that individuals can be identified. Showing
+demographic breakdowns of small groups where members might recognize
+each other’s data points.</p>
+<p><strong>Algorithmic bias in automated visualizations:</strong> When
+visualization tools automatically choose scales, bins, or color
+mappings, they may introduce biases that the creator never intended.</p>
+<div class="callout-warning">
+<p><strong>A cautionary example:</strong> In 2020, the Georgia
+Department of Public Health published a bar chart of COVID-19 cases by
+county where the x-axis dates were not in chronological order. The
+visual impression was that cases were declining, when in fact they were
+not. Whether this was intentional deception or an honest mistake, the
+effect was the same: <strong>the chart lied</strong>. Always check your
+axes.</p>
+</div>
+</div>
+<div id="principles-for-ethical-visualization" class="section level3">
+<h3>Principles for Ethical Visualization</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Be truthful</strong> – Represent the data accurately. Do not
+distort scales, cherry-pick subsets, or hide inconvenient findings.</li>
+<li><strong>Be transparent</strong> – Show your data sources,
+methodology, and any transformations you applied. A reproducible R
+Markdown document is inherently more transparent than a static
+image.</li>
+<li><strong>Be inclusive</strong> – Consider diverse audiences. Use
+colorblind-friendly palettes. Provide alt text for screen readers. Test
+your charts with people who are not experts in your domain.</li>
+<li><strong>Be humble</strong> – Acknowledge uncertainty and
+limitations. Show confidence intervals. Note sample sizes. Admit what
+the data cannot tell you.</li>
+<li><strong>Be purposeful</strong> – Every visualization should serve a
+legitimate need. Ask yourself: <em>Does this chart inform, or does it
+merely impress? Does it help the viewer understand, or does it
+manipulate?</em></li>
+</ol>
+<div class="callout-info">
+<p><strong>Cairo’s five qualities of great visualizations:</strong> In
+<em>The Truthful Art</em>, Alberto Cairo argues that excellent
+visualizations are truthful, functional, beautiful, insightful, and
+enlightening. Notice that truthfulness comes first. Beauty without truth
+is propaganda.</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="building-your-visualization-portfolio" class="section level2">
+<h2>4. Building Your Visualization Portfolio</h2>
+<p>Whether you are heading into an MBA career, a data analytics role, a
+consulting position, or graduate research, a <strong>visualization
+portfolio</strong> is one of the most compelling things you can show a
+potential employer or collaborator. Unlike a resume, which tells people
+what you can do, a portfolio <em>shows</em> them.</p>
+<div id="what-to-include" class="section level3">
+<h3>What to Include</h3>
+<p>Your portfolio should contain <strong>5 to 8 of your best
+visualizations</strong>, each accompanied by:</p>
+<ul>
+<li><strong>The business or research question</strong> the visualization
+answers</li>
+<li><strong>A brief narrative</strong> explaining your design choices
+(why this chart type, why these colors, why this level of detail)</li>
+<li><strong>Technical details:</strong> what tools, data sources, and
+methods you used</li>
+<li><strong>What you learned</strong> or what surprised you in the
+data</li>
+</ul>
+<p>Aim for <strong>range</strong>: include static charts, interactive
+visualizations, at least one map, and ideally a dashboard. If you
+explored Shiny during this semester (you saw a demo in Week 6, and your
+capstone project can optionally include a Shiny component), a reactive
+application would further distinguish your portfolio. Show that you can
+work with different data types (time series, geographic, categorical,
+high-dimensional) and different audiences (executives, analysts, the
+general public).</p>
+</div>
+<div id="where-to-host" class="section level3">
+<h3>Where to Host</h3>
+<ul>
+<li><strong>GitHub Pages</strong> – Free, version-controlled, and
+demonstrates your technical fluency</li>
+<li><strong>RPubs</strong> – One-click publishing from RStudio, ideal
+for R Markdown documents</li>
+<li><strong>Quarto Pub</strong> – The modern successor to RPubs,
+supporting Quarto documents</li>
+<li><strong>Personal website</strong> – Maximum control over
+presentation and branding</li>
+<li><strong>Posit Connect</strong> – Enterprise-grade hosting for Shiny
+apps and R Markdown reports</li>
+</ul>
+</div>
+<div id="a-portfolio-worthy-example" class="section level3">
+<h3>A Portfolio-Worthy Example</h3>
+<p>Here is the kind of polished, publication-ready visualization that
+belongs in a portfolio. It uses the Gapminder dataset to show the
+relationship between wealth and health across continents, with
+population encoded as bubble size:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>    <span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>    <span class="at">avg_gdp =</span> <span class="fu">mean</span>(gdpPercap),</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>    <span class="at">total_pop =</span> <span class="fu">sum</span>(<span class="fu">as.numeric</span>(pop)),</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>    <span class="at">n_countries =</span> <span class="fu">n</span>(),</span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_gdp, <span class="at">y =</span> avg_life, <span class="at">size =</span> total_pop, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(continent, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">(&quot;</span>, n_countries, <span class="st">&quot; countries)&quot;</span>)),</span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">1.5</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>()) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>  <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">25</span>, <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a>    <span class="st">&quot;Africa&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a>    <span class="st">&quot;Americas&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a>    <span class="st">&quot;Asia&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a>    <span class="st">&quot;Europe&quot;</span> <span class="ot">=</span> <span class="st">&quot;#2563eb&quot;</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a>    <span class="st">&quot;Oceania&quot;</span> <span class="ot">=</span> <span class="st">&quot;#10b981&quot;</span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Global Development at a Glance (2007)&quot;</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Bubble size represents total population — a portfolio-ready visualization&quot;</span>,</span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Average GDP per Capita&quot;</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Average Life Expectancy (years)&quot;</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Source: Gapminder Foundation | gapminder.org&quot;</span></span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#64748b&quot;</span>),</span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#94a3b8&quot;</span>, <span class="at">face =</span> <span class="st">&quot;italic&quot;</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week08_files/figure-html/portfolio-example-1.png" width="960" /></p>
+<p>What makes this portfolio-worthy? It is <strong>clean</strong>
+(minimal non-data ink), <strong>purposeful</strong> (every visual
+element encodes information), <strong>branded</strong> (consistent color
+scheme), and <strong>contextualized</strong> (clear title, subtitle, and
+source attribution). If you showed this in a job interview and could
+explain every design decision, you would make a strong impression.</p>
+<hr />
+</div>
+</div>
+<div id="course-review-the-eight-week-journey" class="section level2">
+<h2>5. Course Review – The Eight-Week Journey</h2>
+<p>Let us step back and appreciate how far you have come. Here is the
+arc of our eight weeks together:</p>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="21%" />
+<col width="60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Topic</th>
+<th>Key Skill Acquired</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Introduction to Data Viz &amp; R</td>
+<td>Seeing the importance of visualization (Anscombe, Datasaurus); R
+setup</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Visual Perception &amp; Design</td>
+<td>How the eye processes data; Tufte’s principles, data-ink ratio,
+ethics</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Grammar of Graphics &amp; ggplot2</td>
+<td>Building layered plots with data + aesthetics + geoms</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Chart Types &amp; Variations</td>
+<td>Choosing the right chart: lollipop, ridgeline, treemap, heatmap;
+<strong>Midterm Project due</strong></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Data Wrangling Essentials</td>
+<td>Tidy data, dplyr verbs, the pipe operator, pivoting</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Interactive Visualizations</td>
+<td>plotly, DT, heatmaply, a taste of Shiny</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Geographic Visualization</td>
+<td>Leaflet maps, choropleths, coordinate systems, sf</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Capstone: Viz in Practice</td>
+<td>Business, social good, ethics, portfolio – putting it all to
+use</td>
+</tr>
+</tbody>
+</table>
+<p>This progression was intentional. We started with
+<strong>why</strong> (Weeks 1–2), moved to <strong>how</strong> (Weeks
+3–5), then explored <strong>what else is possible</strong> (Weeks 6–7),
+and now we close with <strong>what for</strong> (Week 8). The technical
+skills are the foundation, but the purpose is the structure you build on
+top.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># Visualizing our 8-week journey</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>journey <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  <span class="at">week =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  <span class="at">topic =</span> <span class="fu">c</span>(<span class="st">&quot;Intro to</span><span class="sc">\n</span><span class="st">Data Viz &amp; R&quot;</span>, <span class="st">&quot;Perception</span><span class="sc">\n</span><span class="st">&amp; Design&quot;</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>            <span class="st">&quot;Grammar of</span><span class="sc">\n</span><span class="st">Graphics&quot;</span>, <span class="st">&quot;Chart Types&quot;</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>            <span class="st">&quot;Data</span><span class="sc">\n</span><span class="st">Wrangling&quot;</span>, <span class="st">&quot;Interactive</span><span class="sc">\n</span><span class="st">Viz&quot;</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>            <span class="st">&quot;Geographic</span><span class="sc">\n</span><span class="st">Viz&quot;</span>, <span class="st">&quot;Capstone&quot;</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>  <span class="at">phase =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;Foundation:</span><span class="sc">\n</span><span class="st">Why&quot;</span>, <span class="dv">2</span>), <span class="fu">rep</span>(<span class="st">&quot;Core Skills:</span><span class="sc">\n</span><span class="st">How&quot;</span>, <span class="dv">3</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>            <span class="fu">rep</span>(<span class="st">&quot;Advanced:</span><span class="sc">\n</span><span class="st">What Else&quot;</span>, <span class="dv">2</span>), <span class="st">&quot;Integration:</span><span class="sc">\n</span><span class="st">What For&quot;</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>  <span class="at">complexity =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>)</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>phase_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>  <span class="st">&quot;Foundation:</span><span class="sc">\n</span><span class="st">Why&quot;</span> <span class="ot">=</span> <span class="st">&quot;#002967&quot;</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>  <span class="st">&quot;Core Skills:</span><span class="sc">\n</span><span class="st">How&quot;</span> <span class="ot">=</span> <span class="st">&quot;#C41E3A&quot;</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>  <span class="st">&quot;Advanced:</span><span class="sc">\n</span><span class="st">What Else&quot;</span> <span class="ot">=</span> <span class="st">&quot;#B4975A&quot;</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a>  <span class="st">&quot;Integration:</span><span class="sc">\n</span><span class="st">What For&quot;</span> <span class="ot">=</span> <span class="st">&quot;#10b981&quot;</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a>)</span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="fu">ggplot</span>(journey, <span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> complexity)) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> week, <span class="at">yend =</span> <span class="dv">0</span>, <span class="at">color =</span> phase), <span class="at">linewidth =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> phase, <span class="at">size =</span> complexity), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> topic), <span class="at">angle =</span> <span class="dv">35</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">3.2</span>, <span class="at">color =</span> <span class="st">&quot;#334155&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">&quot;Week&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)) <span class="sc">+</span></span>
+<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">14</span>)) <span class="sc">+</span></span>
+<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> phase_colors, <span class="at">name =</span> <span class="st">&quot;Phase&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Our Eight-Week Journey in Data Visualization&quot;</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;From foundations through core skills to advanced techniques and integration&quot;</span>,</span>
+<span id="cb4-34"><a href="#cb4-34" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Cumulative Skill Complexity&quot;</span></span>
+<span id="cb4-35"><a href="#cb4-35" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-36"><a href="#cb4-36" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb4-37"><a href="#cb4-37" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-38"><a href="#cb4-38" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">color =</span> <span class="st">&quot;#002967&quot;</span>, <span class="at">size =</span> <span class="dv">15</span>),</span>
+<span id="cb4-39"><a href="#cb4-39" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#64748b&quot;</span>),</span>
+<span id="cb4-40"><a href="#cb4-40" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb4-41"><a href="#cb4-41" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,</span>
+<span id="cb4-42"><a href="#cb4-42" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb4-43"><a href="#cb4-43" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="week08_files/figure-html/course-journey-1.png" width="1056" /></p>
+<p>Each dot in the chart above represents a week of learning. The color
+indicates the phase – foundations in navy, core skills in red, advanced
+techniques in gold, and this final integrative week in green. Notice how
+the complexity builds. You could not have built an interactive dashboard
+in Week 1, and you would not have understood the ethical stakes in Week
+3. Every week was a necessary step on the path to where you stand
+now.</p>
+<hr />
+</div>
+<div id="final-project-guidelines" class="section level2">
+<h2>6. Final Project Guidelines</h2>
+<p>Your capstone project is the culmination of everything you have
+learned this semester. It is your chance to demonstrate mastery,
+creativity, and purpose.</p>
+<div id="timeline" class="section level3">
+<h3>Timeline</h3>
+<table>
+<colgroup>
+<col width="32%" />
+<col width="29%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Milestone</th>
+<th>Due Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Proposal</td>
+<td>End of Week 6</td>
+<td>One-page description of your dataset, research questions, and
+planned visualizations</td>
+</tr>
+<tr class="even">
+<td>Draft</td>
+<td>End of Week 7</td>
+<td>Working R Markdown document with at least 2 visualizations and
+preliminary narrative</td>
+</tr>
+<tr class="odd">
+<td>Final Submission</td>
+<td>End of Week 8</td>
+<td>Complete, polished capstone document (knitted to HTML)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="requirements" class="section level3">
+<h3>Requirements</h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>Choose a dataset meaningful to you or your
+community.</strong> This could be data from your workplace, a social
+issue you care about, open government data, sports statistics,
+environmental data, or anything that excites your curiosity. If you are
+unsure, consult the instructor.</p></li>
+<li><p><strong>Create at least 4 visualizations using different
+techniques.</strong> Your project should include a range of chart types
+from across the semester – for example, a bar chart, a scatter plot, a
+map, and a time series. Do not repeat the same chart type four
+times.</p></li>
+<li><p><strong>Include at least 1 interactive element.</strong> Use
+plotly, leaflet, or DT to give your viewer the ability to explore the
+data on their own terms.</p></li>
+<li><p><strong>Write narrative explaining your design choices.</strong>
+For each visualization, include 2–3 sentences explaining why you chose
+that chart type, what question it answers, and what design decisions you
+made (color, scale, labels).</p></li>
+<li><p><strong>Address ethical considerations.</strong> Include a
+dedicated section reflecting on the ethics of your visualizations. What
+might be misleading? What context is important? Who might be affected by
+how this data is presented?</p></li>
+<li><p><strong>Present your findings in a polished R Markdown
+document.</strong> The document should be well-organized with clear
+headings, readable prose, and professional-quality visualizations. Think
+of this as a document you could share with an employer.</p></li>
+</ol>
+<div class="callout-tip">
+<p><strong>Shiny is optional.</strong> You saw a Shiny demonstration in
+Week 6 and may have experimented with reactive applications on your own.
+You are welcome to include a Shiny component in your capstone – for
+example, a small embedded app or a companion Shiny dashboard – but it is
+<strong>not required</strong>. If you do include Shiny, deploy it to
+shinyapps.io and provide the link in your document.</p>
+</div>
+</div>
+<div id="rubric" class="section level3">
+<h3>Rubric</h3>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="18%" />
+<col width="55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Weight</th>
+<th>What We Are Looking For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data quality and preparation</td>
+<td>20%</td>
+<td>Clean, well-documented data pipeline; appropriate
+transformations</td>
+</tr>
+<tr class="even">
+<td>Visualization effectiveness</td>
+<td>30%</td>
+<td>Correct chart types; clear labels; purposeful use of color and
+layout</td>
+</tr>
+<tr class="odd">
+<td>Code quality</td>
+<td>20%</td>
+<td>Readable, well-commented code; reproducible pipeline; no unnecessary
+complexity</td>
+</tr>
+<tr class="even">
+<td>Narrative and communication</td>
+<td>15%</td>
+<td>Clear writing; each visualization is contextualized; logical
+flow</td>
+</tr>
+<tr class="odd">
+<td>Ethical reflection</td>
+<td>15%</td>
+<td>Thoughtful engagement with ethical considerations; intellectual
+honesty</td>
+</tr>
+</tbody>
+</table>
+<div class="callout-tip">
+<p><strong>Pro tip for the capstone:</strong> Start with the question,
+not the chart. Write down the 3–5 questions you want your visualizations
+to answer <em>before</em> you open RStudio. The best projects are driven
+by curiosity, not by a desire to use a particular technique.</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="ignatian-reflection-seeing-clearly-serving-justly"
+class="section level2">
+<h2>7. Ignatian Reflection – Seeing Clearly, Serving Justly</h2>
+<p>We began this course in Week 1 with the idea that visualization helps
+us <strong>see more clearly</strong>. Anscombe’s quartet showed us that
+raw numbers can hide the truth, while a simple scatter plot reveals it.
+The Datasaurus Dozen proved that summary statistics are not enough – we
+need to <em>look</em> at our data.</p>
+<p>Now, in Week 8, we come full circle. Seeing clearly is not an end in
+itself. In the Ignatian tradition, clear sight is the beginning of
+<strong>discernment</strong> – the process of figuring out what we are
+called to do with what we have seen. And discernment leads to
+<strong>action</strong> – action in service of others, action for the
+greater good.</p>
+<p>The Jesuit phrase <em>Ad Majorem Dei Gloriam</em> – for the greater
+glory of God – is not an abstract motto. It is a challenge: <strong>use
+everything you have been given in service of something larger than
+yourself.</strong> The skills you have built in this course – wrangling
+data, designing charts, building interactive applications – are gifts.
+The question is: What will you do with them?</p>
+<div class="callout-ignatian">
+<p><strong>From “seeing clearly” to “serving justly”:</strong>
+Visualization is not just a technical skill; it is a moral practice.
+Every chart you create frames reality for its viewers. You now have the
+power to illuminate truth, expose injustice, and help decision-makers
+choose wisely. That power carries responsibility. Use it well.</p>
+</div>
+<p>You have learned to see patterns where others see noise. You have
+learned to tell stories with data. You have learned that a well-designed
+chart can change minds, shift resources, and save lives. You have also
+learned that a poorly designed chart – or a dishonest one – can do real
+harm.</p>
+<p>As you leave this course and carry these skills into your careers,
+your communities, and your lives, remember this: <strong>the chart is
+never neutral.</strong> Every design choice is a value choice. Choose
+truth. Choose clarity. Choose compassion.</p>
+<div class="jesuit-quote">
+<blockquote>
+<p>“Go forth and set the world on fire.”</p>
+</blockquote>
+<p><span class="attribution">– St. Ignatius of Loyola</span></p>
+</div>
+<hr />
+</div>
+<div id="exercises-and-final-project" class="section level2">
+<h2>8. Exercises and Final Project</h2>
+<div class="exercise-block">
+<div class="exercise-header">
+<p>Exercises for Week 8</p>
+</div>
+<div class="exercise-body">
+<p><strong>Exercise 1: Business Dashboard</strong></p>
+<p>Create a 4-panel business dashboard using <code>patchwork</code> for
+a business scenario of your choice. Your dashboard should:</p>
+<ul>
+<li>Use a consistent color scheme throughout</li>
+<li>Include at least three different chart types (line, bar, area,
+scatter, etc.)</li>
+<li>Have a clear title and subtitle using
+<code>plot_annotation()</code></li>
+<li>Include meaningful labels, annotations, or reference lines</li>
+<li>Be designed for a specific audience (e.g., a VP of Sales, a Chief
+Marketing Officer, a warehouse manager)</li>
+</ul>
+<p>In a brief paragraph beneath your dashboard, describe: Who is the
+audience? What decisions does this dashboard support? What is the single
+most important takeaway?</p>
+<p><strong>Exercise 2: Visualization for Advocacy</strong></p>
+<p>Find a real social justice issue that matters to you, locate relevant
+data (from government open data portals, the Census Bureau, the World
+Bank, Gapminder, or other public sources), and create a visualization
+that could be used for advocacy. Your visualization should:</p>
+<ul>
+<li>Use real (not simulated) data</li>
+<li>Tell a clear story about inequality, injustice, or unmet need</li>
+<li>Include a descriptive title, subtitle, and source attribution</li>
+<li>Be designed to move a non-technical audience to understanding or
+action</li>
+</ul>
+<p>Write a one-paragraph explanation of what issue you chose, why it
+matters, and how your visualization makes the case.</p>
+<p><strong>Exercise 3: Ethical Reflection</strong></p>
+<p>Find a real-world example of a visualization that was misleading (you
+may search online for “misleading charts,” “bad data visualization,” or
+similar terms). Write a 1-page (approximately 500-word) ethical
+reflection addressing:</p>
+<ul>
+<li>What was misleading about the visualization? (Be specific about the
+design choice.)</li>
+<li>Was the deception likely intentional or accidental?</li>
+<li>What harm could result from viewers trusting this chart?</li>
+<li>How would you redesign the chart to be truthful while still being
+compelling?</li>
+<li>What principle from our ethics discussion (truthful, transparent,
+inclusive, humble, purposeful) was most clearly violated?</li>
+</ul>
+<p><strong>FINAL PROJECT: Capstone</strong></p>
+<p>Complete the capstone project as described in Section 6 above. Submit
+a polished R Markdown document (knitted to HTML) containing:</p>
+<ul>
+<li>At least 4 visualizations using different techniques</li>
+<li>At least 1 interactive element</li>
+<li>Design choice narrative for each visualization</li>
+<li>An ethical reflection section</li>
+<li>Clean, reproducible, well-commented code</li>
+</ul>
+<p>Refer to the rubric in Section 6 for grading criteria. Remember: your
+proposal was due at the end of Week 6, your draft was due at the end of
+Week 7, and this final submission is due at the end of Week 8. This is
+your opportunity to synthesize eight weeks of learning into a single,
+impressive document. Make it something you would be proud to include in
+your portfolio.</p>
+</div>
+</div>
+<hr />
+<hr />
+</div>
+<div id="try-it-interactive-sandbox" class="section level2">
+<h2>Try It: Interactive Sandbox</h2>
+<div class="callout-ai">
+<p><strong>AI &amp; This Concept</strong> AI can assemble a business
+dashboard in seconds. Your irreplaceable contribution is evaluating
+whether the layout, emphasis, and design choices tell the <em>right</em>
+story for your audience. Use this sandbox to develop the vocabulary for
+that judgment — then apply it to your capstone.</p>
+</div>
+<div class="sandbox-section">
+<div class="sandbox-header">
+<p><span class="sandbox-icon">🧪</span> Business Dashboard Composer —
+Design Before You Code</p>
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/0506ada3-1ff9-4913-8fff-69cecf1e070a/" height="620" allowfullscreen>
+</iframe>
+<div class="sandbox-footer">
+<p>Select which panels to include, choose a layout, and switch color
+themes. Toggle the dashboard title on and off. Notice how panel
+selection and layout change what the viewer’s eye goes to first — that’s
+the essence of dashboard design.</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="attributions" class="section level2">
+<h2>Attributions</h2>
+<div class="callout-info">
+<p>This course material draws on and is inspired by the work of many
+scholars and practitioners:</p>
+<ul>
+<li><strong>Cairo, A.</strong> – <em>The Truthful Art</em> (Peachpit
+Press, 2016) and <em>How Charts Lie</em> (W.W. Norton, 2019) –
+foundational texts on visualization ethics and effectiveness</li>
+<li><strong>Schwabish, J.</strong> – <em>Better Data Visualizations</em>
+(Columbia University Press, 2021) – practical guidance for improving
+chart design</li>
+<li><strong>D’Ignazio, C. &amp; Klein, L.F.</strong> – <em>Data
+Feminism</em> (MIT Press, 2020) – a critical framework for thinking
+about power, justice, and data</li>
+<li><strong>Gapminder Foundation</strong> – <a
+href="https://www.gapminder.org/">gapminder.org</a> – data and tools for
+a fact-based worldview</li>
+<li><strong>Wilke, C.O.</strong> – <em>Fundamentals of Data
+Visualization</em> (O’Reilly, 2019; freely available at <a
+href="https://clauswilke.com/dataviz/">clauswilke.com/dataviz</a>)</li>
+<li><strong>Healy, K.</strong> – <em>Data Visualization: A Practical
+Introduction</em> (Princeton University Press, 2018; freely available at
+<a href="https://socviz.co/">socviz.co</a>)</li>
+<li><strong>Wickham, H.</strong> – <em>ggplot2: Elegant Graphics for
+Data Analysis</em> (Springer, 2016) – the definitive reference for the
+grammar of graphics in R</li>
+<li><strong>Bryan, J.</strong> – <code>gapminder</code> R package,
+providing an excerpt of the Gapminder data for teaching</li>
+<li><strong>Pedersen, T.L.</strong> – <code>patchwork</code> R package
+for composing multi-panel plots</li>
+<li><strong>Vivek H. Patil</strong> – foundational course design and
+materials for data visualization at Gonzaga University</li>
+</ul>
+</div>
+<div class="page-nav">
+<p><a href="week07.html">← Week 7</a> <span></span></p>
+</div>
+</div>
+
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -4,5 +4,6 @@
 .Ruserdata
 _site/
 .claude/
+rsconnect/
 .DS_Store
 Thumbs.db

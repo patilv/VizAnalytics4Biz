@@ -102,7 +102,7 @@ You have just seen that different chart types serve different analytical purpose
 <div class="sandbox-header">
 <span class="sandbox-icon">🧪</span> Chart Type Explorer — Pick the Right Tool for the Job
 </div>
-<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/84662c36-158f-47a8-ae95-5f9f7b0e4652/"
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week04-charttypes/"
         height="600" loading="lazy" allowfullscreen></iframe>
 <div class="sandbox-cold-start">
 If the app takes a few seconds to load on first visit, that is normal — the server is waking up.

@@ -147,7 +147,7 @@ You have just explored the principles of effective dashboard design. Now build y
 <div class="sandbox-header">
 <span class="sandbox-icon">🧪</span> Business Dashboard Composer — Design Your Own
 </div>
-<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/0506ada3-1ff9-4913-8fff-69cecf1e070a/"
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week08-dashboards/"
         height="620" loading="lazy" allowfullscreen></iframe>
 <div class="sandbox-cold-start">
 If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
@@ -343,6 +343,39 @@ gapminder %>%
 ```
 
 What makes this portfolio-worthy? It is **clean** (minimal non-data ink), **purposeful** (every visual element encodes information), **branded** (consistent color scheme), and **contextualized** (clear title, subtitle, and source attribution). If you showed this in a job interview and could explain every design decision, you would make a strong impression.
+
+## Try It: Portfolio Showcase Template
+
+You have just seen what a portfolio-worthy visualization looks like. Now experiment with building your own portfolio layout. The sandbox below lets you choose a visual theme, pick chart types, and draft your analysis and reflection — a live preview of what your capstone could look like.
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">&#x1F9EA;</span> Portfolio Showcase Template
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week08-portfolio/"
+        height="650" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**Exploration Tasks:**
+
+1. Switch between the four **portfolio themes** — which one best fits the tone of your capstone project?
+2. Try different **chart types** and notice how the theme colors adapt — does the chart remain readable in every theme?
+3. Type a **project title** and a few sentences of **analysis** — see how the full portfolio layout takes shape.
+4. Write a brief **Ignatian reflection** — even a single sentence helps you practice connecting data work to purpose.
+:::
+
+::: {.callout-info}
+**What You Should Have Noticed:** A portfolio is more than a collection of charts — it is a designed document with a consistent visual identity, clear narrative, and purposeful reflection. The theme, typography, and layout choices all communicate professionalism and intentionality. Use this template as a starting point for your capstone.
+:::
+
+::: {.callout-ai}
+**AI & This Concept**
+When asking AI to help with your capstone portfolio, provide the rubric criteria explicitly: "Help me write a 2-sentence analysis of this scatter plot. The rubric values clear interpretation that tells a data story and draws insight." AI produces better portfolio content when it knows the evaluation criteria.
+:::
 
 ---
 

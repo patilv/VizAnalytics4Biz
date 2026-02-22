@@ -187,7 +187,7 @@ You have just seen how plotly transforms static ggplot2 charts into interactive 
 <div class="sandbox-header">
 <span class="sandbox-icon">🧪</span> ggplotly Toggle Explorer — Static vs. Interactive
 </div>
-<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/f36d9e69-d7b9-47bc-b864-f23de1332b23/"
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week06-interactive/"
         height="600" loading="lazy" allowfullscreen></iframe>
 <div class="sandbox-cold-start">
 If the app takes a few seconds to load on first visit, that is normal — the server is waking up.

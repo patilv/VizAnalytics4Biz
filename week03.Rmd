@@ -71,7 +71,7 @@ You have just learned how ggplot2 builds visualizations layer by layer. Now cons
 <div class="sandbox-header">
 <span class="sandbox-icon">🧪</span> Grammar of Graphics Layer Builder
 </div>
-<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/64046116-7100-479f-a200-f3e7aa34e4a9/"
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week03-layers/"
         height="600" loading="lazy" allowfullscreen></iframe>
 <div class="sandbox-cold-start">
 If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
@@ -327,6 +327,39 @@ Here is a summary of common aesthetic mappings:
 | `shape` | Shape of points (circle, triangle, square, etc.) | `aes(shape = drv)` |
 | `alpha` | Transparency (0 = invisible, 1 = opaque) | `aes(alpha = year)` |
 | `linetype` | Type of line (solid, dashed, dotted) | `aes(linetype = drv)` |
+
+## Try It: Aesthetic Mapping Sandbox
+
+You have just learned how `aes()` maps data variables to visual properties. Now experiment interactively — pick which variables map to color, size, and shape, and watch both the plot and the generated R code update in real time.
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">&#x1F9EA;</span> Aesthetic Mapping Sandbox
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week03-aestheticmapping/"
+        height="600" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**Exploration Tasks:**
+
+1. Start with just X and Y (the defaults). All points are navy — color carries no information.
+2. Set **Color** to `class` — how many vehicle classes can you distinguish at a glance?
+3. Now also set **Size** to `cty` — does adding a third channel help or hurt readability?
+4. Turn on all three optional aesthetics. Read the overload warning — do you agree?
+:::
+
+::: {.callout-info}
+**What You Should Have Noticed:** Each aesthetic channel can encode one variable. Mapping too many variables at once creates cognitive overload — the viewer cannot track more than 3-4 channels simultaneously. The generated code panel shows you exactly what `aes()` call produces each plot, reinforcing the connection between code and visual output.
+:::
+
+::: {.callout-ai}
+**AI & This Concept**
+When prompting AI to build a ggplot, specify your aesthetic mappings explicitly: "Map `class` to color and `cty` to size inside `aes()`." AI tools often default to fixed colors when you say "make it colorful" instead of mapping a data variable. Using the vocabulary — `aes()`, mapped vs. fixed, aesthetic channel — gets better results.
+:::
 
 ---
 

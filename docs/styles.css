@@ -377,3 +377,148 @@ p.caption, .figure-caption {
 @media (max-width: 768px) {
   .sandbox-frame { height: 480px !important; }
 }
+
+/* ==========================================================
+   ENHANCED TOC SIDEBAR
+   ========================================================== */
+
+.tocify {
+  width: 260px !important;
+  border: none;
+  border-left: 3px solid var(--navy);
+  border-radius: 0;
+  background: #fafbfc;
+}
+.tocify ul, .tocify li { list-style: none; }
+.tocify .tocify-item > a {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.88rem;
+  color: #475569;
+  border-left: 3px solid transparent;
+  margin-left: -3px;
+  transition: all 0.2s ease;
+}
+.tocify .tocify-item > a:hover {
+  color: var(--navy);
+  background: #eff6ff;
+  text-decoration: none;
+}
+.tocify .tocify-item.active {
+  background-color: transparent !important;
+}
+.tocify .tocify-item.active > a {
+  color: #fff !important;
+  background: var(--navy) !important;
+  border-left: 3px solid var(--red) !important;
+  font-weight: 600;
+}
+.tocify .tocify-subheader .tocify-item > a {
+  font-size: 0.82rem;
+  padding-left: 1.25rem;
+}
+
+/* ==========================================================
+   SANDBOX LAZY-LOADING & COLD-START
+   ========================================================== */
+
+.sandbox-frame[loading="lazy"] {
+  min-height: 500px;
+  background: #f8fafc url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="%23e2e8f0" stroke-width="3"/><path d="M20 2 a18 18 0 0 1 18 18" fill="none" stroke="%23002967" stroke-width="3" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="1s" repeatCount="indefinite"/></path></svg>') center center no-repeat;
+}
+
+.sandbox-cold-start {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  padding: 0.4rem 1rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ==========================================================
+   MOBILE & RESPONSIVE ENHANCEMENTS
+   ========================================================== */
+
+@media (max-width: 992px) {
+  /* TOC stacks above content on tablets */
+  .col-md-3 { width: 100%; float: none; }
+  .col-md-9 { width: 100%; float: none; }
+  .tocify {
+    width: 100% !important;
+    margin-bottom: 1.5rem;
+    border-left: none;
+    border-bottom: 3px solid var(--navy);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Code blocks get max-height with scroll */
+  pre {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  /* Page nav stacks vertically */
+  .page-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .page-nav a { text-align: center; }
+
+  /* Footer columns stack */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================
+   SMOOTH SCROLL
+   ========================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+/* ==========================================================
+   CODE FOLDING BUTTON — GONZAGA BRANDED
+   ========================================================== */
+
+.code-folding-btn {
+  background: var(--navy) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 0.78rem !important;
+  padding: 0.25rem 0.65rem !important;
+  transition: background 0.2s ease;
+}
+.code-folding-btn:hover {
+  background: var(--navy-light) !important;
+}
+
+/* Global show/hide all code toggle */
+#code-folding-toggle {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+}
+
+/* ==========================================================
+   IMAGE GALLERY (for chapter figures)
+   ========================================================== */
+
+.img-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.img-gallery img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+.img-gallery img:hover {
+  transform: scale(1.02);
+}

@@ -160,7 +160,7 @@ You have just seen that summary statistics can be deeply misleading. Now experie
 <div class="sandbox-header">
 <span class="sandbox-icon">🧪</span> Datasaurus Explorer — Same Stats, Different Shapes
 </div>
-<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/8bbb857b-cc04-4c9a-8491-4afb0c7f5aee/"
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week01-datasaurus/"
         height="560" loading="lazy" allowfullscreen></iframe>
 <div class="sandbox-cold-start">
 If the app takes a few seconds to load on first visit, that is normal — the server is waking up.

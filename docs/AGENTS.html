@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>AGENTS</title>
+
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Visual Analytics & Data Storytelling with R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Weeks
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="week01.html">Week 1: Introduction to Data Viz &amp; R</a>
+    </li>
+    <li>
+      <a href="week02.html">Week 2: Visual Perception &amp; Design</a>
+    </li>
+    <li>
+      <a href="week03.html">Week 3: Grammar of Graphics &amp; ggplot2</a>
+    </li>
+    <li>
+      <a href="week04.html">Week 4: Chart Types &amp; Variations</a>
+    </li>
+    <li>
+      <a href="week05.html">Week 5: Data Wrangling Essentials</a>
+    </li>
+    <li>
+      <a href="week06.html">Week 6: Interactive Visualizations</a>
+    </li>
+    <li>
+      <a href="week07.html">Week 7: Geographic Visualization</a>
+    </li>
+    <li>
+      <a href="week08.html">Week 8: Capstone — Viz in Practice</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/patilv/VizAnalytics4Biz">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+<li role="separator" class="divider"></li>
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<div id="vizanalytics4biz-project-memory" class="section level1">
+<h1>VizAnalytics4Biz — Project Memory</h1>
+<div id="what-this-is" class="section level2">
+<h2>What This Is</h2>
+<p>An async course site on Visual Analytics &amp; Data Storytelling with
+R, aimed at non-coders. 8 weeks of content with 12 interactive Shiny
+apps hosted on Posit Connect, embedded as iframes. Site is hosted on
+GitHub Pages.</p>
+<p><strong>Live URL:</strong> <a
+href="https://patilv.github.io/VizAnalytics4Biz/"
+class="uri">https://patilv.github.io/VizAnalytics4Biz/</a>
+<strong>GitHub repo:</strong> <a
+href="https://github.com/patilv/VizAnalytics4Biz"
+class="uri">https://github.com/patilv/VizAnalytics4Biz</a> <strong>Posit
+Connect server:</strong> analytics.gonzaga.edu (account: <a
+href="mailto:patil@gonzaga.edu" class="email">patil@gonzaga.edu</a>)</p>
+<hr />
+</div>
+<div id="repository-structure" class="section level2">
+<h2>Repository Structure</h2>
+<pre><code>VizAnalytics4Biz/
+├── _site.yml                 ← site config (output_dir: &quot;docs&quot;)
+├── _footer.html              ← shared footer HTML
+├── styles.css                ← custom CSS (Gonzaga branding)
+├── index.Rmd                 ← landing page
+├── syllabus.Rmd
+├── resources.Rmd
+├── week01.Rmd – week08.Rmd   ← weekly chapter content
+├── images/
+│   ├── 01/ – 07/            ← chapter images
+├── apps/                     ← Shiny app source (12 apps)
+│   ├── week01-datasaurus/app.R
+│   ├── week02-preattentive/app.R
+│   ├── week03-layers/app.R
+│   ├── week03-aesthetics/app.R
+│   ├── week04-charttypes/app.R
+│   ├── week04-samestory/app.R
+│   ├── week05-pipeline/app.R
+│   ├── week05-tidydata/app.R
+│   ├── week06-interactive/app.R
+│   ├── week07-geography/app.R
+│   ├── week08-dashboard/app.R
+│   └── week08-portfolio/app.R
+├── build_site.R              ← renders site to docs/
+├── deploy_app.R              ← helper for Posit Connect deploys
+├── .github/workflows/deploy.yml
+├── .gitignore
+├── AGENTS.md                 ← this file
+├── VizAnalytics4Biz.Rproj
+└── docs/                     ← rendered output (served by GitHub Pages)</code></pre>
+<p><strong>Key point:</strong> <code>_site/</code> is gitignored — it’s
+an intermediate build artifact. Only <code>docs/</code> is
+committed.</p>
+<hr />
+</div>
+<div id="interactive-app-architecture" class="section level2">
+<h2>Interactive App Architecture</h2>
+<p>Each week has 1-2 Shiny apps embedded as iframes pointing to Posit
+Connect:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;sandbox-frame&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;https://analytics.gonzaga.edu/content/</span><span class="er">&lt;</span><span class="st">guid&gt;/&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ot">        height</span><span class="op">=</span><span class="st">&quot;600&quot;</span><span class="ot"> loading</span><span class="op">=</span><span class="st">&quot;lazy&quot;</span><span class="ot"> allowfullscreen</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span></code></pre></div>
+<p>Apps are placed <strong>mid-chapter</strong> at the pedagogically
+appropriate moment (after the concept is introduced, before the coding
+walkthrough), with: - A “Try It” section heading - Exploration tasks in
+a <code>.try-it-box</code> - A “What You Should Have Noticed” debrief
+callout - An AI callout connecting the concept to AI tool usage</p>
+<div id="deployed-app-urls" class="section level3">
+<h3>Deployed App URLs</h3>
+<table>
+<colgroup>
+<col width="34%" />
+<col width="28%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>App Folder</th>
+<th>App Name</th>
+<th>Connect URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>week01-datasaurus</td>
+<td>Datasaurus Explorer</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/8bbb857b-cc04-4c9a-8491-4afb0c7f5aee/"
+class="uri">https://analytics.gonzaga.edu/content/8bbb857b-cc04-4c9a-8491-4afb0c7f5aee/</a></td>
+</tr>
+<tr class="even">
+<td>week02-preattentive</td>
+<td>Preattentive Processing Lab</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/b52f3a3d-3ee1-4191-9f7f-ba83cea3347d/"
+class="uri">https://analytics.gonzaga.edu/content/b52f3a3d-3ee1-4191-9f7f-ba83cea3347d/</a></td>
+</tr>
+<tr class="odd">
+<td>week03-layers</td>
+<td>Grammar of Graphics Layer Builder</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/64046116-7100-479f-a200-f3e7aa34e4a9/"
+class="uri">https://analytics.gonzaga.edu/content/64046116-7100-479f-a200-f3e7aa34e4a9/</a></td>
+</tr>
+<tr class="even">
+<td>week03-aesthetics</td>
+<td>Aesthetic Mapping Sandbox</td>
+<td><em>Not yet deployed</em></td>
+</tr>
+<tr class="odd">
+<td>week04-charttypes</td>
+<td>Chart Type Explorer</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/84662c36-158f-47a8-ae95-5f9f7b0e4652/"
+class="uri">https://analytics.gonzaga.edu/content/84662c36-158f-47a8-ae95-5f9f7b0e4652/</a></td>
+</tr>
+<tr class="even">
+<td>week04-samestory</td>
+<td>Same Data, Different Story</td>
+<td><em>Not yet deployed</em></td>
+</tr>
+<tr class="odd">
+<td>week05-pipeline</td>
+<td>dplyr Pipeline Builder</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/df058898-7f3a-4778-abb6-89ddd9271bf3/"
+class="uri">https://analytics.gonzaga.edu/content/df058898-7f3a-4778-abb6-89ddd9271bf3/</a></td>
+</tr>
+<tr class="even">
+<td>week05-tidydata</td>
+<td>Tidy Data Transformer</td>
+<td><em>Not yet deployed</em></td>
+</tr>
+<tr class="odd">
+<td>week06-interactive</td>
+<td>Interactive Viz Toolkit</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/f36d9e69-d7b9-47bc-b864-f23de1332b23/"
+class="uri">https://analytics.gonzaga.edu/content/f36d9e69-d7b9-47bc-b864-f23de1332b23/</a></td>
+</tr>
+<tr class="even">
+<td>week07-geography</td>
+<td>US Choropleth Map Explorer</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/666be650-fcb9-4ccf-bb37-7e93e573449b/"
+class="uri">https://analytics.gonzaga.edu/content/666be650-fcb9-4ccf-bb37-7e93e573449b/</a></td>
+</tr>
+<tr class="odd">
+<td>week08-dashboard</td>
+<td>Business Dashboard Composer</td>
+<td><a
+href="https://analytics.gonzaga.edu/content/0506ada3-1ff9-4913-8fff-69cecf1e070a/"
+class="uri">https://analytics.gonzaga.edu/content/0506ada3-1ff9-4913-8fff-69cecf1e070a/</a></td>
+</tr>
+<tr class="even">
+<td>week08-portfolio</td>
+<td>Portfolio Showcase Template</td>
+<td><em>Not yet deployed</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="re-deploying-an-app-after-changes" class="section level3">
+<h3>Re-deploying an app after changes</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;deploy_app.R&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">deploy_app</span>(<span class="st">&quot;week01-datasaurus&quot;</span>, <span class="at">title =</span> <span class="st">&quot;VizBiz Week 1: Datasaurus Explorer&quot;</span>)</span></code></pre></div>
+<p>Or manually:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">library</span>(rsconnect)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>rsconnect<span class="sc">::</span><span class="fu">deployApp</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="at">appDir      =</span> <span class="st">&quot;apps/week01-datasaurus&quot;</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="at">appName     =</span> <span class="st">&quot;vizbiz-week01-datasaurus&quot;</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  <span class="at">appTitle    =</span> <span class="st">&quot;VizBiz Week 1: Datasaurus Explorer&quot;</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  <span class="at">account     =</span> <span class="st">&quot;patil@gonzaga.edu&quot;</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="at">server      =</span> <span class="st">&quot;analytics.gonzaga.edu&quot;</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  <span class="at">forceUpdate =</span> <span class="cn">TRUE</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="build-deploy-workflow" class="section level2">
+<h2>Build &amp; Deploy Workflow</h2>
+<div id="updating-content-normal-edit-cycle" class="section level3">
+<h3>Updating content (normal edit cycle)</h3>
+<ol style="list-style-type: decimal">
+<li><p>Edit <code>.Rmd</code> files at the project root</p></li>
+<li><p>Run <code>source("build_site.R")</code> — renders the site to
+<code>docs/</code></p></li>
+<li><p>Commit and push:</p>
+<pre><code>git add docs/ *.Rmd styles.css _site.yml _footer.html
+git commit -m &quot;Update site content&quot;
+git push</code></pre></li>
+<li><p>GitHub Pages serves <code>docs/</code> from the <code>main</code>
+branch automatically</p></li>
+</ol>
+</div>
+<div id="deploying-shiny-apps" class="section level3">
+<h3>Deploying Shiny apps</h3>
+<p>Apps are hosted independently on Posit Connect. After editing an
+app:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;deploy_app.R&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">deploy_app</span>(<span class="st">&quot;week03-aesthetics&quot;</span>, <span class="at">title =</span> <span class="st">&quot;VizBiz Week 3: Aesthetic Mapping Sandbox&quot;</span>)</span></code></pre></div>
+<p>Then update the iframe URL in the corresponding <code>.Rmd</code>
+file if the GUID changed.</p>
+</div>
+<div id="testing-locally" class="section level3">
+<h3>Testing locally</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>httpuv<span class="sc">::</span><span class="fu">runStaticServer</span>(<span class="st">&quot;docs&quot;</span>, <span class="at">port =</span> <span class="dv">7474</span>, <span class="at">background =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">browseURL</span>(<span class="st">&quot;http://localhost:7474&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># Stop when done:</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>httpuv<span class="sc">::</span><span class="fu">stopAllServers</span>()</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="github-pages-configuration" class="section level2">
+<h2>GitHub Pages Configuration</h2>
+<ul>
+<li><strong>Source:</strong> Deploy from branch <code>main</code>,
+folder <code>/docs</code></li>
+<li>Settings page: <a
+href="https://github.com/patilv/VizAnalytics4Biz/settings/pages"
+class="uri">https://github.com/patilv/VizAnalytics4Biz/settings/pages</a></li>
+<li>The <code>deploy.yml</code> workflow exists as a manual-trigger
+backup</li>
+</ul>
+<hr />
+</div>
+<div id="key-files" class="section level2">
+<h2>Key Files</h2>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>_site.yml</code></td>
+<td>Site config; sets <code>output_dir: "docs"</code>, toc, code
+folding</td>
+</tr>
+<tr class="even">
+<td><code>styles.css</code></td>
+<td>Gonzaga-branded CSS (navy/red/gold), TOC, sandbox, responsive</td>
+</tr>
+<tr class="odd">
+<td><code>build_site.R</code></td>
+<td>Renders site with <code>rmarkdown::render_site(".")</code></td>
+</tr>
+<tr class="even">
+<td><code>deploy_app.R</code></td>
+<td>Helper to deploy any app to Posit Connect</td>
+</tr>
+<tr class="odd">
+<td><code>.github/workflows/deploy.yml</code></td>
+<td>Manual-trigger GitHub Pages deploy (backup)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="app-standards" class="section level2">
+<h2>App Standards</h2>
+<p>All 12 Shiny apps follow these conventions: - <strong>Theme:</strong>
+<code>bs_theme(bootswatch = "flatly", primary = "#002967")</code> with
+Google Inter font - <strong>Layout:</strong>
+<code>bslib::page_sidebar()</code> with sidebar on light gray
+(<code>#f1f5f9</code>) - <strong>Spinners:</strong>
+<code>shinycssloaders::withSpinner(color = "#002967", type = 6)</code>
+with graceful fallback - <strong>Instruction accordion:</strong>
+Collapsible “How to Use This Explorer” at top of sidebar - <strong>Error
+handling:</strong> <code>req()</code> + <code>validate()</code> on all
+reactive outputs - <strong>Footer:</strong> “Gonzaga University |
+Dr. Vivek H. Patil” - <strong>Colors:</strong> NAVY
+<code>#002967</code>, RED <code>#C41E3A</code>, GOLD
+<code>#B4975A</code></p>
+<hr />
+</div>
+<div id="notes" class="section level2">
+<h2>Notes</h2>
+<ul>
+<li>The repo was restructured in Feb 2026: moved from
+<code>SrcCode/</code> subdirectory to flat root layout, expanded from 8
+to 12 apps.</li>
+<li>No individual file exceeds 50MB, so Git LFS is not needed.</li>
+<li>The 4 new apps (week03-aesthetics, week04-samestory,
+week05-tidydata, week08-portfolio) need initial deployment to Posit
+Connect before their iframes will work.</li>
+</ul>
+</div>
+</div>
+
+<div id="rmd-source-code">IyBWaXpBbmFseXRpY3M0Qml6IOKAlCBQcm9qZWN0IE1lbW9yeQ0KDQojIyBXaGF0IFRoaXMgSXMNCkFuIGFzeW5jIGNvdXJzZSBzaXRlIG9uIFZpc3VhbCBBbmFseXRpY3MgJiBEYXRhIFN0b3J5dGVsbGluZyB3aXRoIFIsIGFpbWVkIGF0IG5vbi1jb2RlcnMuIDggd2Vla3Mgb2YgY29udGVudCB3aXRoIDEyIGludGVyYWN0aXZlIFNoaW55IGFwcHMgaG9zdGVkIG9uIFBvc2l0IENvbm5lY3QsIGVtYmVkZGVkIGFzIGlmcmFtZXMuIFNpdGUgaXMgaG9zdGVkIG9uIEdpdEh1YiBQYWdlcy4NCg0KKipMaXZlIFVSTDoqKiBodHRwczovL3BhdGlsdi5naXRodWIuaW8vVml6QW5hbHl0aWNzNEJpei8NCioqR2l0SHViIHJlcG86KiogaHR0cHM6Ly9naXRodWIuY29tL3BhdGlsdi9WaXpBbmFseXRpY3M0Qml6DQoqKlBvc2l0IENvbm5lY3Qgc2VydmVyOioqIGFuYWx5dGljcy5nb256YWdhLmVkdSAoYWNjb3VudDogcGF0aWxAZ29uemFnYS5lZHUpDQoNCi0tLQ0KDQojIyBSZXBvc2l0b3J5IFN0cnVjdHVyZQ0KDQpgYGANClZpekFuYWx5dGljczRCaXovDQrilJzilIDilIAgX3NpdGUueW1sICAgICAgICAgICAgICAgICDihpAgc2l0ZSBjb25maWcgKG91dHB1dF9kaXI6ICJkb2NzIikNCuKUnOKUgOKUgCBfZm9vdGVyLmh0bWwgICAgICAgICAgICAgIOKGkCBzaGFyZWQgZm9vdGVyIEhUTUwNCuKUnOKUgOKUgCBzdHlsZXMuY3NzICAgICAgICAgICAgICAgIOKGkCBjdXN0b20gQ1NTIChHb256YWdhIGJyYW5kaW5nKQ0K4pSc4pSA4pSAIGluZGV4LlJtZCAgICAgICAgICAgICAgICAg4oaQIGxhbmRpbmcgcGFnZQ0K4pSc4pSA4pSAIHN5bGxhYnVzLlJtZA0K4pSc4pSA4pSAIHJlc291cmNlcy5SbWQNCuKUnOKUgOKUgCB3ZWVrMDEuUm1kIOKAkyB3ZWVrMDguUm1kICAg4oaQIHdlZWtseSBjaGFwdGVyIGNvbnRlbnQNCuKUnOKUgOKUgCBpbWFnZXMvDQrilIIgICDilJzilIDilIAgMDEvIOKAkyAwNy8gICAgICAgICAgICDihpAgY2hhcHRlciBpbWFnZXMNCuKUnOKUgOKUgCBhcHBzLyAgICAgICAgICAgICAgICAgICAgIOKGkCBTaGlueSBhcHAgc291cmNlICgxMiBhcHBzKQ0K4pSCICAg4pSc4pSA4pSAIHdlZWswMS1kYXRhc2F1cnVzL2FwcC5SDQrilIIgICDilJzilIDilIAgd2VlazAyLXByZWF0dGVudGl2ZS9hcHAuUg0K4pSCICAg4pSc4pSA4pSAIHdlZWswMy1sYXllcnMvYXBwLlINCuKUgiAgIOKUnOKUgOKUgCB3ZWVrMDMtYWVzdGhldGljcy9hcHAuUg0K4pSCICAg4pSc4pSA4pSAIHdlZWswNC1jaGFydHR5cGVzL2FwcC5SDQrilIIgICDilJzilIDilIAgd2VlazA0LXNhbWVzdG9yeS9hcHAuUg0K4pSCICAg4pSc4pSA4pSAIHdlZWswNS1waXBlbGluZS9hcHAuUg0K4pSCICAg4pSc4pSA4pSAIHdlZWswNS10aWR5ZGF0YS9hcHAuUg0K4pSCICAg4pSc4pSA4pSAIHdlZWswNi1pbnRlcmFjdGl2ZS9hcHAuUg0K4pSCICAg4pSc4pSA4pSAIHdlZWswNy1nZW9ncmFwaHkvYXBwLlINCuKUgiAgIOKUnOKUgOKUgCB3ZWVrMDgtZGFzaGJvYXJkL2FwcC5SDQrilIIgICDilJTilIDilIAgd2VlazA4LXBvcnRmb2xpby9hcHAuUg0K4pSc4pSA4pSAIGJ1aWxkX3NpdGUuUiAgICAgICAgICAgICAg4oaQIHJlbmRlcnMgc2l0ZSB0byBkb2NzLw0K4pSc4pSA4pSAIGRlcGxveV9hcHAuUiAgICAgICAgICAgICAg4oaQIGhlbHBlciBmb3IgUG9zaXQgQ29ubmVjdCBkZXBsb3lzDQrilJzilIDilIAgLmdpdGh1Yi93b3JrZmxvd3MvZGVwbG95LnltbA0K4pSc4pSA4pSAIC5naXRpZ25vcmUNCuKUnOKUgOKUgCBBR0VOVFMubWQgICAgICAgICAgICAgICAgIOKGkCB0aGlzIGZpbGUNCuKUnOKUgOKUgCBWaXpBbmFseXRpY3M0Qml6LlJwcm9qDQrilJTilIDilIAgZG9jcy8gICAgICAgICAgICAgICAgICAgICDihpAgcmVuZGVyZWQgb3V0cHV0IChzZXJ2ZWQgYnkgR2l0SHViIFBhZ2VzKQ0KYGBgDQoNCioqS2V5IHBvaW50OioqIGBfc2l0ZS9gIGlzIGdpdGlnbm9yZWQg4oCUIGl0J3MgYW4gaW50ZXJtZWRpYXRlIGJ1aWxkIGFydGlmYWN0LiBPbmx5IGBkb2NzL2AgaXMgY29tbWl0dGVkLg0KDQotLS0NCg0KIyMgSW50ZXJhY3RpdmUgQXBwIEFyY2hpdGVjdHVyZQ0KDQpFYWNoIHdlZWsgaGFzIDEtMiBTaGlueSBhcHBzIGVtYmVkZGVkIGFzIGlmcmFtZXMgcG9pbnRpbmcgdG8gUG9zaXQgQ29ubmVjdDoNCmBgYGh0bWwNCjxpZnJhbWUgY2xhc3M9InNhbmRib3gtZnJhbWUiIHNyYz0iaHR0cHM6Ly9hbmFseXRpY3MuZ29uemFnYS5lZHUvY29udGVudC88Z3VpZD4vIg0KICAgICAgICBoZWlnaHQ9IjYwMCIgbG9hZGluZz0ibGF6eSIgYWxsb3dmdWxsc2NyZWVuPjwvaWZyYW1lPg0KYGBgDQoNCkFwcHMgYXJlIHBsYWNlZCAqKm1pZC1jaGFwdGVyKiogYXQgdGhlIHBlZGFnb2dpY2FsbHkgYXBwcm9wcmlhdGUgbW9tZW50IChhZnRlciB0aGUgY29uY2VwdCBpcyBpbnRyb2R1Y2VkLCBiZWZvcmUgdGhlIGNvZGluZyB3YWxrdGhyb3VnaCksIHdpdGg6DQotIEEgIlRyeSBJdCIgc2VjdGlvbiBoZWFkaW5nDQotIEV4cGxvcmF0aW9uIHRhc2tzIGluIGEgYC50cnktaXQtYm94YA0KLSBBICJXaGF0IFlvdSBTaG91bGQgSGF2ZSBOb3RpY2VkIiBkZWJyaWVmIGNhbGxvdXQNCi0gQW4gQUkgY2FsbG91dCBjb25uZWN0aW5nIHRoZSBjb25jZXB0IHRvIEFJIHRvb2wgdXNhZ2UNCg0KIyMjIERlcGxveWVkIEFwcCBVUkxzDQoNCnwgQXBwIEZvbGRlciB8IEFwcCBOYW1lIHwgQ29ubmVjdCBVUkwgfA0KfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS18DQp8IHdlZWswMS1kYXRhc2F1cnVzIHwgRGF0YXNhdXJ1cyBFeHBsb3JlciB8IGh0dHBzOi8vYW5hbHl0aWNzLmdvbnphZ2EuZWR1L2NvbnRlbnQvOGJiYjg1N2ItY2MwNC00YzlhLTg0OTEtNGFmYjBjN2Y1YWVlLyB8DQp8IHdlZWswMi1wcmVhdHRlbnRpdmUgfCBQcmVhdHRlbnRpdmUgUHJvY2Vzc2luZyBMYWIgfCBodHRwczovL2FuYWx5dGljcy5nb256YWdhLmVkdS9jb250ZW50L2I1MmYzYTNkLTNlZTEtNDE5MS05ZjdmLWJhODNjZWEzMzQ3ZC8gfA0KfCB3ZWVrMDMtbGF5ZXJzIHwgR3JhbW1hciBvZiBHcmFwaGljcyBMYXllciBCdWlsZGVyIHwgaHR0cHM6Ly9hbmFseXRpY3MuZ29uemFnYS5lZHUvY29udGVudC82NDA0NjExNi03MTAwLTQ3OWYtYTIwMC1mM2U3YWEzNGU0YTkvIHwNCnwgd2VlazAzLWFlc3RoZXRpY3MgfCBBZXN0aGV0aWMgTWFwcGluZyBTYW5kYm94IHwgKk5vdCB5ZXQgZGVwbG95ZWQqIHwNCnwgd2VlazA0LWNoYXJ0dHlwZXMgfCBDaGFydCBUeXBlIEV4cGxvcmVyIHwgaHR0cHM6Ly9hbmFseXRpY3MuZ29uemFnYS5lZHUvY29udGVudC84NDY2MmMzNi0xNThmLTQ3YTgtYWU5NS01ZjlmN2IwZTQ2NTIvIHwNCnwgd2VlazA0LXNhbWVzdG9yeSB8IFNhbWUgRGF0YSwgRGlmZmVyZW50IFN0b3J5IHwgKk5vdCB5ZXQgZGVwbG95ZWQqIHwNCnwgd2VlazA1LXBpcGVsaW5lIHwgZHBseXIgUGlwZWxpbmUgQnVpbGRlciB8IGh0dHBzOi8vYW5hbHl0aWNzLmdvbnphZ2EuZWR1L2NvbnRlbnQvZGYwNTg4OTgtN2YzYS00Nzc4LWFiYjYtODlkZGQ5MjcxYmYzLyB8DQp8IHdlZWswNS10aWR5ZGF0YSB8IFRpZHkgRGF0YSBUcmFuc2Zvcm1lciB8ICpOb3QgeWV0IGRlcGxveWVkKiB8DQp8IHdlZWswNi1pbnRlcmFjdGl2ZSB8IEludGVyYWN0aXZlIFZpeiBUb29sa2l0IHwgaHR0cHM6Ly9hbmFseXRpY3MuZ29uemFnYS5lZHUvY29udGVudC9mMzZkOWU2OS1kN2I5LTQ3YmMtYjg2NC1mMjNkZTEzMzJiMjMvIHwNCnwgd2VlazA3LWdlb2dyYXBoeSB8IFVTIENob3JvcGxldGggTWFwIEV4cGxvcmVyIHwgaHR0cHM6Ly9hbmFseXRpY3MuZ29uemFnYS5lZHUvY29udGVudC82NjZiZTY1MC1mY2I5LTRjY2YtYmIzNy03ZTkzZTU3MzQ0OWIvIHwNCnwgd2VlazA4LWRhc2hib2FyZCB8IEJ1c2luZXNzIERhc2hib2FyZCBDb21wb3NlciB8IGh0dHBzOi8vYW5hbHl0aWNzLmdvbnphZ2EuZWR1L2NvbnRlbnQvMDUwNmFkYTMtMWZmOS00OTEzLThmZmYtNjljZWNmMWUwNzBhLyB8DQp8IHdlZWswOC1wb3J0Zm9saW8gfCBQb3J0Zm9saW8gU2hvd2Nhc2UgVGVtcGxhdGUgfCAqTm90IHlldCBkZXBsb3llZCogfA0KDQojIyMgUmUtZGVwbG95aW5nIGFuIGFwcCBhZnRlciBjaGFuZ2VzDQoNCmBgYHINCnNvdXJjZSgiZGVwbG95X2FwcC5SIikNCmRlcGxveV9hcHAoIndlZWswMS1kYXRhc2F1cnVzIiwgdGl0bGUgPSAiVml6Qml6IFdlZWsgMTogRGF0YXNhdXJ1cyBFeHBsb3JlciIpDQpgYGANCg0KT3IgbWFudWFsbHk6DQpgYGByDQpsaWJyYXJ5KHJzY29ubmVjdCkNCnJzY29ubmVjdDo6ZGVwbG95QXBwKA0KICBhcHBEaXIgICAgICA9ICJhcHBzL3dlZWswMS1kYXRhc2F1cnVzIiwNCiAgYXBwTmFtZSAgICAgPSAidml6Yml6LXdlZWswMS1kYXRhc2F1cnVzIiwNCiAgYXBwVGl0bGUgICAgPSAiVml6Qml6IFdlZWsgMTogRGF0YXNhdXJ1cyBFeHBsb3JlciIsDQogIGFjY291bnQgICAgID0gInBhdGlsQGdvbnphZ2EuZWR1IiwNCiAgc2VydmVyICAgICAgPSAiYW5hbHl0aWNzLmdvbnphZ2EuZWR1IiwNCiAgZm9yY2VVcGRhdGUgPSBUUlVFDQopDQpgYGANCg0KLS0tDQoNCiMjIEJ1aWxkICYgRGVwbG95IFdvcmtmbG93DQoNCiMjIyBVcGRhdGluZyBjb250ZW50IChub3JtYWwgZWRpdCBjeWNsZSkNCg0KMS4gRWRpdCBgLlJtZGAgZmlsZXMgYXQgdGhlIHByb2plY3Qgcm9vdA0KMi4gUnVuIGBzb3VyY2UoImJ1aWxkX3NpdGUuUiIpYCDigJQgcmVuZGVycyB0aGUgc2l0ZSB0byBgZG9jcy9gDQozLiBDb21taXQgYW5kIHB1c2g6DQogICBgYGANCiAgIGdpdCBhZGQgZG9jcy8gKi5SbWQgc3R5bGVzLmNzcyBfc2l0ZS55bWwgX2Zvb3Rlci5odG1sDQogICBnaXQgY29tbWl0IC1tICJVcGRhdGUgc2l0ZSBjb250ZW50Ig0KICAgZ2l0IHB1c2gNCiAgIGBgYA0KNC4gR2l0SHViIFBhZ2VzIHNlcnZlcyBgZG9jcy9gIGZyb20gdGhlIGBtYWluYCBicmFuY2ggYXV0b21hdGljYWxseQ0KDQojIyMgRGVwbG95aW5nIFNoaW55IGFwcHMNCg0KQXBwcyBhcmUgaG9zdGVkIGluZGVwZW5kZW50bHkgb24gUG9zaXQgQ29ubmVjdC4gQWZ0ZXIgZWRpdGluZyBhbiBhcHA6DQpgYGByDQpzb3VyY2UoImRlcGxveV9hcHAuUiIpDQpkZXBsb3lfYXBwKCJ3ZWVrMDMtYWVzdGhldGljcyIsIHRpdGxlID0gIlZpekJpeiBXZWVrIDM6IEFlc3RoZXRpYyBNYXBwaW5nIFNhbmRib3giKQ0KYGBgDQpUaGVuIHVwZGF0ZSB0aGUgaWZyYW1lIFVSTCBpbiB0aGUgY29ycmVzcG9uZGluZyBgLlJtZGAgZmlsZSBpZiB0aGUgR1VJRCBjaGFuZ2VkLg0KDQojIyMgVGVzdGluZyBsb2NhbGx5DQoNCmBgYHINCmh0dHB1djo6cnVuU3RhdGljU2VydmVyKCJkb2NzIiwgcG9ydCA9IDc0NzQsIGJhY2tncm91bmQgPSBUUlVFKQ0KYnJvd3NlVVJMKCJodHRwOi8vbG9jYWxob3N0Ojc0NzQiKQ0KIyBTdG9wIHdoZW4gZG9uZToNCmh0dHB1djo6c3RvcEFsbFNlcnZlcnMoKQ0KYGBgDQoNCi0tLQ0KDQojIyBHaXRIdWIgUGFnZXMgQ29uZmlndXJhdGlvbg0KDQotICoqU291cmNlOioqIERlcGxveSBmcm9tIGJyYW5jaCBgbWFpbmAsIGZvbGRlciBgL2RvY3NgDQotIFNldHRpbmdzIHBhZ2U6IGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRpbHYvVml6QW5hbHl0aWNzNEJpei9zZXR0aW5ncy9wYWdlcw0KLSBUaGUgYGRlcGxveS55bWxgIHdvcmtmbG93IGV4aXN0cyBhcyBhIG1hbnVhbC10cmlnZ2VyIGJhY2t1cA0KDQotLS0NCg0KIyMgS2V5IEZpbGVzDQoNCnwgRmlsZSB8IFB1cnBvc2UgfA0KfC0tLS0tLXwtLS0tLS0tLS18DQp8IGBfc2l0ZS55bWxgIHwgU2l0ZSBjb25maWc7IHNldHMgYG91dHB1dF9kaXI6ICJkb2NzImAsIHRvYywgY29kZSBmb2xkaW5nIHwNCnwgYHN0eWxlcy5jc3NgIHwgR29uemFnYS1icmFuZGVkIENTUyAobmF2eS9yZWQvZ29sZCksIFRPQywgc2FuZGJveCwgcmVzcG9uc2l2ZSB8DQp8IGBidWlsZF9zaXRlLlJgIHwgUmVuZGVycyBzaXRlIHdpdGggYHJtYXJrZG93bjo6cmVuZGVyX3NpdGUoIi4iKWAgfA0KfCBgZGVwbG95X2FwcC5SYCB8IEhlbHBlciB0byBkZXBsb3kgYW55IGFwcCB0byBQb3NpdCBDb25uZWN0IHwNCnwgYC5naXRodWIvd29ya2Zsb3dzL2RlcGxveS55bWxgIHwgTWFudWFsLXRyaWdnZXIgR2l0SHViIFBhZ2VzIGRlcGxveSAoYmFja3VwKSB8DQoNCi0tLQ0KDQojIyBBcHAgU3RhbmRhcmRzDQoNCkFsbCAxMiBTaGlueSBhcHBzIGZvbGxvdyB0aGVzZSBjb252ZW50aW9uczoNCi0gKipUaGVtZToqKiBgYnNfdGhlbWUoYm9vdHN3YXRjaCA9ICJmbGF0bHkiLCBwcmltYXJ5ID0gIiMwMDI5NjciKWAgd2l0aCBHb29nbGUgSW50ZXIgZm9udA0KLSAqKkxheW91dDoqKiBgYnNsaWI6OnBhZ2Vfc2lkZWJhcigpYCB3aXRoIHNpZGViYXIgb24gbGlnaHQgZ3JheSAoYCNmMWY1ZjlgKQ0KLSAqKlNwaW5uZXJzOioqIGBzaGlueWNzc2xvYWRlcnM6OndpdGhTcGlubmVyKGNvbG9yID0gIiMwMDI5NjciLCB0eXBlID0gNilgIHdpdGggZ3JhY2VmdWwgZmFsbGJhY2sNCi0gKipJbnN0cnVjdGlvbiBhY2NvcmRpb246KiogQ29sbGFwc2libGUgIkhvdyB0byBVc2UgVGhpcyBFeHBsb3JlciIgYXQgdG9wIG9mIHNpZGViYXINCi0gKipFcnJvciBoYW5kbGluZzoqKiBgcmVxKClgICsgYHZhbGlkYXRlKClgIG9uIGFsbCByZWFjdGl2ZSBvdXRwdXRzDQotICoqRm9vdGVyOioqICJHb256YWdhIFVuaXZlcnNpdHkgfCBEci4gVml2ZWsgSC4gUGF0aWwiDQotICoqQ29sb3JzOioqIE5BVlkgYCMwMDI5NjdgLCBSRUQgYCNDNDFFM0FgLCBHT0xEIGAjQjQ5NzVBYA0KDQotLS0NCg0KIyMgTm90ZXMNCg0KLSBUaGUgcmVwbyB3YXMgcmVzdHJ1Y3R1cmVkIGluIEZlYiAyMDI2OiBtb3ZlZCBmcm9tIGBTcmNDb2RlL2Agc3ViZGlyZWN0b3J5IHRvIGZsYXQgcm9vdCBsYXlvdXQsIGV4cGFuZGVkIGZyb20gOCB0byAxMiBhcHBzLg0KLSBObyBpbmRpdmlkdWFsIGZpbGUgZXhjZWVkcyA1ME1CLCBzbyBHaXQgTEZTIGlzIG5vdCBuZWVkZWQuDQotIFRoZSA0IG5ldyBhcHBzICh3ZWVrMDMtYWVzdGhldGljcywgd2VlazA0LXNhbWVzdG9yeSwgd2VlazA1LXRpZHlkYXRhLCB3ZWVrMDgtcG9ydGZvbGlvKSBuZWVkIGluaXRpYWwgZGVwbG95bWVudCB0byBQb3NpdCBDb25uZWN0IGJlZm9yZSB0aGVpciBpZnJhbWVzIHdpbGwgd29yay4NCg==</div>
+<footer style="background:#002967; color:rgba(255,255,255,.75); padding:2.5rem 0 1.5rem; margin-top:3rem;">
+<div class="container-fluid" style="max-width:1100px; margin:0 auto; padding:0 2rem;">
+  <div class="row">
+    <div class="col-md-5">
+      <h5 style="color:#fff; font-size:.95rem;">Data Visualization &mdash; Gonzaga University</h5>
+      <p style="font-size:.85rem;">School of Business Administration. A course in the Jesuit tradition of intellectual rigor, ethical inquiry, and service to the common good.</p>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">References</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://clauswilke.com/dataviz/" target="_blank" style="color:rgba(255,255,255,.7);">Wilke Textbook</a></li>
+        <li><a href="https://socviz.co/" target="_blank" style="color:rgba(255,255,255,.7);">Healy Textbook</a></li>
+        <li><a href="https://ggplot2-book.org/" target="_blank" style="color:rgba(255,255,255,.7);">ggplot2 Book</a></li>
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h5 style="color:#fff; font-size:.95rem;">Tools</h5>
+      <ul style="list-style:none; padding:0; font-size:.85rem;">
+        <li><a href="https://www.r-project.org/" target="_blank" style="color:rgba(255,255,255,.7);">Download R</a></li>
+        <li><a href="https://posit.co/downloads/" target="_blank" style="color:rgba(255,255,255,.7);">RStudio</a></li>
+        <li><a href="https://www.tidyverse.org/" target="_blank" style="color:rgba(255,255,255,.7);">Tidyverse</a></li>
+      </ul>
+    </div>
+    <div class="col-md-3">
+      <h5 style="color:#fff; font-size:.95rem;">Instructor</h5>
+      <p style="font-size:.85rem;">Dr. Vivek H. Patil<br>
+      <a href="mailto:patil@gonzaga.edu" style="color:rgba(255,255,255,.7);">patil@gonzaga.edu</a><br>
+      <a href="http://patilv.com" target="_blank" style="color:rgba(255,255,255,.7);">patilv.com</a></p>
+    </div>
+  </div>
+  <hr style="border-color:rgba(255,255,255,.15); margin:1.5rem 0 1rem;">
+  <p style="font-size:.78rem; text-align:center; margin:0;">&copy; Gonzaga University School of Business. Course materials by Dr. Vivek H. Patil. <em>Ad Majorem Dei Gloriam.</em></p>
+</div>
+</footer>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("AGENTS.md");
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

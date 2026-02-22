@@ -322,7 +322,7 @@ You have just seen how geographic data can be mapped to colors across regions. N
 <div class="sandbox-header">
 <span class="sandbox-icon">🧪</span> US Choropleth Map Explorer — Color, Palette, Projection
 </div>
-<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/666be650-fcb9-4ccf-bb37-7e93e573449b/"
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week07-geography/"
         height="620" loading="lazy" allowfullscreen></iframe>
 <div class="sandbox-cold-start">
 If the app takes a few seconds to load on first visit, that is normal — the server is waking up.

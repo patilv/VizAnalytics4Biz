@@ -330,7 +330,7 @@ You have just learned the six core dplyr verbs. Now build a data transformation 
 <div class="sandbox-header">
 <span class="sandbox-icon">🧪</span> dplyr Pipeline Builder — Transform Data Step by Step
 </div>
-<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/content/df058898-7f3a-4778-abb6-89ddd9271bf3/"
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week05-pipeline/"
         height="600" loading="lazy" allowfullscreen></iframe>
 <div class="sandbox-cold-start">
 If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
@@ -415,6 +415,39 @@ ggplot(mpg_long, aes(x = fct_reorder(class, mpg), y = mpg, fill = type)) +
 
 ::: {.callout-warning}
 **Common pitfall:** Forgetting to pivot before plotting. If you try to map both `cty` and `hwy` to the y-axis in a single ggplot call, you will run into trouble. The tidy approach is always: **pivot first, then map** the new category column to `fill` or `color`.
+:::
+
+## Try It: Tidy Data Transformer
+
+You have just seen how `pivot_longer()` reshapes wide data into tidy (long) format. Now try it interactively. The sandbox below shows messy (wide) data on the left and the tidy (long) result on the right — color-coded so you can see exactly which columns become which rows.
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🧪</span> Tidy Data Transformer — See pivot_longer() in Action
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week05-tidydata/"
+        height="650" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**Exploration Tasks:**
+
+1. Start with the **Quarterly Sales** dataset. How many rows and columns does the wide table have? How many does the tidy table have? Why did the number of rows increase?
+2. Change the **names_to** label from "quarter" to "time_period" — watch how the generated R code and the tidy table column header update in real time.
+3. **Uncheck one column** (e.g., Q4) from the pivot controls. How does the tidy table change? How many rows disappeared?
+4. Switch to the **City Temperatures** dataset. Notice how the default `names_to` and `values_to` labels change to match the context. Why is "month" a better column name than "quarter" for this dataset?
+:::
+
+::: {.callout-info}
+**What You Should Have Noticed:** Pivoting is a mechanical operation — each selected column in the wide data generates one new row per existing row in the tidy data. The color bands make this mapping visible: a blue column in the wide table becomes blue-tinted rows in the long table. The `names_to` column stores the old column *names*, and the `values_to` column stores the old column *values*. Understanding this mapping is the key to knowing when and how to use `pivot_longer()`.
+:::
+
+::: {.callout-ai}
+**AI & This Concept**
+When asking AI to reshape data, describe what the wide and long versions should look like: "I have columns Q1, Q2, Q3, Q4 and I want a single 'quarter' column with a 'revenue' column for the values." Giving AI a concrete before-and-after description produces much more reliable `pivot_longer()` code than vague requests like "make my data tidy."
 :::
 
 ## 5. Controlling Chart Order with forcats

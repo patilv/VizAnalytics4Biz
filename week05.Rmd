@@ -674,6 +674,32 @@ data %>%
 **For future reference:** Two advanced dplyr features you may encounter in online code examples are `across()` (which applies a function to multiple columns at once) and the `.by` argument (a modern alternative to `group_by()` that automatically ungroups the result). You do not need these for this course, but they are useful to recognize if you see them.
 :::
 
+---
+
+## Challenge: Pipe Dream
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🎮</span> Pipe Dream — Get the verbs in order or the pipeline breaks
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week05-game/"
+        height="700" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round describes a data wrangling goal in plain English
+3. Drag dplyr verb cards into the correct pipeline order, then predict the resulting rows and columns
+4. Complete all 8 rounds, then copy your completion report into the Canvas assignment
+:::
+
+---
+
 ## 9. Exercises
 
 ::: {.exercise-block}

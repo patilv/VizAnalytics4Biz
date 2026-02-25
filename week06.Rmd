@@ -690,6 +690,31 @@ The call to be "men and women for others" also has implications here. Interactiv
 
 ---
 
+## Challenge: Static or Interactive?
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🎮</span> Static or Interactive? — Not everything needs a tooltip
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week06-game/"
+        height="700" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round presents a real-world scenario with audience, medium, purpose, and data complexity
+3. Choose Static or Interactive, then select your reasoning from the options
+4. Two scenarios are deliberately ambiguous — both answers can earn full credit with the right reasoning!
+5. Complete all 10 rounds, then copy your completion report into the Canvas assignment
+:::
+
+---
+
 ## Exercises
 
 ::: {.exercise-block}

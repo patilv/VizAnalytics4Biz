@@ -775,6 +775,30 @@ The Ignatian principle of *magis* -- the "more" -- calls us not to settle for wh
 
 ---
 
+## Challenge: Layer Cake
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🎮</span> Layer Cake — Stack the grammar of graphics in the right order
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week03-game/"
+        height="700" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round shows a target plot and scrambled ggplot2 layer fragments
+3. Drag and drop the layers into the correct order — the app renders your ordering vs. the correct one
+4. Complete all 8 rounds, then copy your completion report into the Canvas assignment
+:::
+
+---
+
 ## Exercises
 
 ::: {.exercise-block}

@@ -1,0 +1,225 @@
+# Resources
+
+*Books, tools, galleries, and inspiration for your data visualization journey*
+
+---
+
+## Course Textbooks (Free Online)
+
+These are the primary and supplementary texts for this course. All are freely available online.
+
+| Book | Author | Link |
+|------|--------|------|
+| *Fundamentals of Data Visualization* | Claus O. Wilke (2019) | [clauswilke.com/dataviz](https://clauswilke.com/dataviz/) |
+| *Data Visualization: A Practical Introduction* | Kieran Healy (2019) | [socviz.co](https://socviz.co/) |
+| *ggplot2: Elegant Graphics for Data Analysis* | Hadley Wickham (3rd ed.) | [ggplot2-book.org](https://ggplot2-book.org/) |
+| *R for Data Science* (2nd ed.) | Wickham, Cetinkaya-Rundel & Grolemund | [r4ds.hadley.nz](https://r4ds.hadley.nz/) |
+| *Interactive Web-Based Data Visualization with R* | Carson Sievert (2019) | [plotly-r.com](https://plotly-r.com/) |
+| *Data Visualization with R* | Rob Kabacoff (2018) | [rkabacoff.github.io/datavis](https://rkabacoff.github.io/datavis/) |
+| *Mastering Shiny* | Hadley Wickham | [mastering-shiny.org](https://mastering-shiny.org/) |
+
+> **Tip:** **Start here:** Wilke's *Fundamentals of Data Visualization* is your go-to reference for design principles, while Healy's *Data Visualization: A Practical Introduction* walks you through the R code to build those designs. Keep both bookmarked.
+
+---
+
+## Recommended Books (Not Free but Excellent)
+
+These titles go deeper into the theory, ethics, and craft of data visualization. Several are available through the Gonzaga library.
+
+| Book | Author | Why Read It |
+|------|--------|-------------|
+| *The Visual Display of Quantitative Information* | Edward Tufte (2001) | The classic text on data graphics — data-ink ratio, chartjunk, lie factor |
+| *The Truthful Art* | Alberto Cairo (2016) | How to create honest, insightful visualizations |
+| *How Charts Lie* | Alberto Cairo (2019) | Understanding how visualizations can mislead |
+| *Better Data Visualizations* | Jonathan Schwabish (2021) | Practical guide with do's and don'ts |
+| *Storytelling with Data* | Cole Nussbaumer Knaflic (2015) | Business-focused data communication |
+| *Data Feminism* | C. D'Ignazio & L.F. Klein (2020) | Data, power, and justice |
+| *Information Visualization: Perception for Design* | Colin Ware (4th ed.) | Deep dive into visual perception science |
+
+> **Note:** **Library access:** Check the [Gonzaga Foley Library catalog](https://www.gonzaga.edu/academics/libraries) for physical and electronic copies of these titles before purchasing.
+
+---
+
+## Software & Tools
+
+### Essential (Required for This Course)
+
+**R**
+The R programming language for statistical computing and graphics.
+[Download R from CRAN](https://cran.r-project.org/)
+
+**RStudio Desktop**
+The integrated development environment (IDE) we use daily.
+[Download RStudio](https://posit.co/download/rstudio-desktop/)
+
+**Tidyverse**
+A collection of R packages designed for data science, including ggplot2, dplyr, and more.
+[tidyverse.org](https://www.tidyverse.org/)
+
+### R Packages We Use
+
+The following packages will be used throughout the semester. Install them all at once with:
+
+```r
+install.packages(c(
+  "tidyverse", "patchwork", "scales", "plotly", "DT",
+  "leaflet", "heatmaply", "gapminder", "palmerpenguins",
+  "datasauRus", "sf", "ggridges", "treemapify", "GGally",
+  "ggthemes", "ggrepel", "viridis", "RColorBrewer",
+  "gganimate", "shiny"
+))
+```
+
+| Package | Purpose |
+|---------|---------|
+| `ggplot2` | Grammar of graphics plotting |
+| `dplyr` | Data manipulation |
+| `tidyr` | Data reshaping (`pivot_longer`, `pivot_wider`) |
+| `readr` | Reading CSV and other flat files |
+| `stringr` | String manipulation |
+| `forcats` | Factor (categorical data) handling |
+| `patchwork` | Combining multiple plots |
+| `scales` | Scale formatting (dollar, percent, comma) |
+| `plotly` | Interactive charts |
+| `DT` | Interactive data tables |
+| `leaflet` | Interactive maps |
+| `heatmaply` | Interactive heatmaps |
+| `gapminder` | Global development data |
+| `palmerpenguins` | Penguin measurement data |
+| `datasauRus` | Datasaurus Dozen datasets |
+| `sf` | Spatial data handling |
+| `ggridges` | Ridgeline plots |
+| `treemapify` | Treemap geom for ggplot2 |
+| `GGally` | ggplot2 extensions (`ggpairs`) |
+| `ggthemes` | Additional themes |
+| `ggrepel` | Non-overlapping text labels |
+| `viridis` | Colorblind-friendly palettes |
+| `RColorBrewer` | Color palettes |
+| `gganimate` | Animated plots |
+| `shiny` | Interactive web applications |
+
+> **Tip:** **Troubleshooting installs:** If a package fails to install, try restarting R first. For packages that require compilation (like `sf`), you may need additional system dependencies. Ask on the course Canvas Discussion board if you get stuck.
+
+### Other Useful Tools
+
+- [Posit Cloud](https://posit.cloud/) — RStudio in the browser (free tier available); great backup if your local install has issues
+- [GitHub](https://github.com/) — version control and code hosting
+- [GitHub Pages](https://pages.github.com/) — free website hosting for your portfolio
+- [RPubs](https://rpubs.com/) — publish R Markdown documents with one click from RStudio
+- [shinyapps.io](https://www.shinyapps.io/) — deploy Shiny apps (free tier supports 5 applications)
+
+---
+
+## Color Resources
+
+Choosing the right color palette is one of the most important decisions in any visualization. These tools will help.
+
+- [ColorBrewer 2.0](https://colorbrewer2.org/) — color palettes for maps and data viz; integrates directly with `scale_color_brewer()` in ggplot2
+- [Viridis Color Palettes](https://cran.r-project.org/web/packages/viridis/) — perceptually uniform, colorblind-friendly palettes
+- [Coolors](https://coolors.co/) — color palette generator; press spacebar to generate new schemes
+- [Color Oracle](https://colororacle.org/) — colorblindness simulator (free desktop app)
+- [Coblis](https://www.color-blindness.com/coblis-color-blindness-simulator/) — color blindness simulator (web-based, upload your chart image)
+- [Adobe Color](https://color.adobe.com/) — color wheel and palette tool with harmony rules
+
+> **Note:** **Accessibility matters:** Approximately 8% of men and 0.5% of women have some form of color vision deficiency. Always test your visualizations with a colorblindness simulator, and consider using the `viridis` palettes as a safe default.
+
+---
+
+## Visualization Galleries & Inspiration
+
+Explore these sites regularly to see what is possible and to develop your visual taste.
+
+- [The R Graph Gallery](https://r-graph-gallery.com/) — hundreds of chart examples in R with reproducible code
+- [From Data to Viz](https://www.data-to-viz.com/) — decision tree for choosing chart types based on your data
+- [Flowing Data](https://flowingdata.com/) — Nathan Yau's data visualization blog and tutorials
+- [Information is Beautiful](https://informationisbeautiful.net/) — David McCandless's award-winning infographics
+- [The Pudding](https://pudding.cool/) — visual essays on culture and society
+- [Our World in Data](https://ourworldindata.org/) — global data with clear, thoughtful charts
+- [Storytelling with Data](https://www.storytellingwithdata.com/) — Cole Nussbaumer Knaflic's blog and community
+- [Nightingale](https://nightingaledvs.com/) — journal of the Data Visualization Society
+- [PolicyViz](https://policyviz.com/) — Jonathan Schwabish's blog on data communication
+
+> **Tip:** **Build your visual vocabulary:** Spend 10 minutes each week browsing one of these galleries. Save examples you find effective (and ineffective) to a folder. When it is time to design your own visualization, you will have a rich library of inspiration to draw from.
+
+---
+
+## Cheat Sheets
+
+Posit (formerly RStudio) publishes excellent one-page reference sheets. Print these out or keep them open in a browser tab while you work.
+
+- [ggplot2 Cheat Sheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf) — the single most useful reference for this course
+- [dplyr Cheat Sheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf) — data wrangling verbs (`filter`, `mutate`, `summarize`, `group_by`)
+- [tidyr Cheat Sheet](https://rstudio.github.io/cheatsheets/tidyr.pdf) — data reshaping (`pivot_longer`, `pivot_wider`)
+- [R Markdown Cheat Sheet](https://rstudio.github.io/cheatsheets/rmarkdown.pdf) — document creation and formatting
+- [Shiny Cheat Sheet](https://rstudio.github.io/cheatsheets/shiny.pdf) — building interactive web applications
+
+> **Note:** **Full collection:** Browse all available cheat sheets at [rstudio.github.io/cheatsheets](https://rstudio.github.io/cheatsheets/).
+
+---
+
+## Data Sources
+
+Need data for a project or assignment? Start here.
+
+| Source | Description |
+|--------|-------------|
+| [Kaggle Datasets](https://www.kaggle.com/datasets) | Thousands of community-contributed datasets across every domain |
+| [Data.gov](https://data.gov/) | U.S. government open data portal |
+| [World Bank Open Data](https://data.worldbank.org/) | Global development indicators (GDP, health, education) |
+| [Gapminder](https://www.gapminder.org/data/) | Global health and economics data, made famous by Hans Rosling |
+| [UCI Machine Learning Repository](https://archive.ics.uci.edu/) | Classic datasets used in statistics and machine learning |
+| [FiveThirtyEight Data](https://data.fivethirtyeight.com/) | Datasets behind FiveThirtyEight's journalism |
+| [TidyTuesday](https://github.com/rfordatascience/tidytuesday) | Weekly data projects for the R community — great for practice |
+| [Census Bureau](https://data.census.gov/) | U.S. demographic and economic data |
+| [WHO Global Health Observatory](https://www.who.int/data/gho) | International health statistics |
+
+> **Tip:** **For your final project:** Look for datasets that have enough observations (at least a few hundred rows) and multiple variables of different types (numeric, categorical, temporal). This gives you the most flexibility for creating interesting, layered visualizations.
+
+---
+
+## Learning R — Additional Resources
+
+If you want more practice or a different explanation of a concept, these resources are excellent.
+
+- [Posit Primers](https://posit.cloud/learn/primers) — interactive R tutorials that run in your browser
+- [Swirl](https://swirlstats.com/) — learn R interactively inside the R console itself
+- [R-bloggers](https://www.r-bloggers.com/) — aggregated blog posts from hundreds of R users
+- [Stack Overflow — R tag](https://stackoverflow.com/questions/tagged/r) — searchable Q&A archive; chances are someone has already asked your question
+- [RStudio Community](https://forum.posit.co/) — Posit's community forum for R and RStudio questions
+- [Cedric Scherer's Blog](https://www.cedricscherer.com/) — advanced ggplot2 tutorials and stunning examples
+
+> **Note:** **How to ask for help:** When posting a question online, always include a **minimal reproducible example** (reprex). Use the `reprex` package in R to format your code and output for easy sharing. This dramatically increases the chances of getting a helpful answer quickly.
+
+---
+
+## Academic References
+
+Key papers and foundational texts referenced throughout this course. These shaped the field of data visualization as we know it today.
+
+- Anscombe, F.J. (1973). "Graphs in Statistical Analysis." *The American Statistician*, 27(1), 17--21.
+  The original demonstration that summary statistics alone can be misleading — four datasets with identical means, variances, and correlations but wildly different patterns.
+
+- Cleveland, W.S. & McGill, R. (1984). "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods." *Journal of the American Statistical Association*, 79(387), 531--554.
+  Foundational empirical research on how accurately people decode visual encodings, establishing the perceptual ranking of position, length, angle, area, and color.
+
+- Tufte, E.R. (1983, 2001). *The Visual Display of Quantitative Information*. Graphics Press.
+  Introduced concepts like the data-ink ratio, chartjunk, the lie factor, and small multiples that remain central to visualization design.
+
+- Wilkinson, L. (1999, 2005). *The Grammar of Graphics*. Springer.
+  The theoretical framework that inspired ggplot2 — decomposing graphics into data, aesthetics, geometric objects, scales, and coordinate systems.
+
+- Wickham, H. (2010). "A Layered Grammar of Graphics." *Journal of Computational and Graphical Statistics*, 19(1), 3--28.
+  Hadley Wickham's adaptation of Wilkinson's grammar into the layered system implemented in ggplot2.
+
+- Wickham, H. (2014). "Tidy Data." *Journal of Statistical Software*, 59(10), 1--23.
+  Defines the tidy data principles (each variable a column, each observation a row, each value a cell) that underpin the entire tidyverse.
+
+- Matejka, J. & Fitzmaurice, G. (2017). "Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing." *ACM CHI Conference on Human Factors in Computing Systems*.
+  The Datasaurus Dozen — a modern extension of Anscombe's Quartet showing that even more complex summary statistics cannot substitute for visualization.
+
+- Shneiderman, B. (1996). "The Eyes Have It: A Task by Data Type Taxonomy for Information Visualizations." *Proceedings of the IEEE Symposium on Visual Languages*, 336--343.
+  Introduced the visual information-seeking mantra: "Overview first, zoom and filter, then details-on-demand."
+
+---
+
+*This page will be updated throughout the semester as we discover new tools and resources. If you find something great, share it on the Canvas Discussion board and it may end up here.*

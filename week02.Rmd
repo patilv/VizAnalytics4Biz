@@ -636,6 +636,30 @@ When designing or evaluating a visualization, run through this checklist:
 
 ---
 
+## Challenge: Design Detective
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🎮</span> Design Detective — Spot the deception before it fools your audience
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week02-game/"
+        height="700" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round shows a deliberately flawed chart — identify the design flaw from the options
+3. Then rate the severity of the flaw (1-5) and compare your rating to the expert panel
+4. Complete all 8 rounds, then copy your completion report into the Canvas assignment
+:::
+
+---
+
 ## Exercises
 
 ::: {.exercise-block}

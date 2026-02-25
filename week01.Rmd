@@ -404,6 +404,30 @@ ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
 
 Notice the pattern: we start simple and layer on complexity. This is the ggplot2 philosophy, and we will build on it throughout the course.
 
+## Challenge: Stats Trap
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🎮</span> Stats Trap — Can you spot the lie hidden in the numbers?
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week01-game/"
+        height="700" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round shows you summary statistics and four scatterplots — pick the one that matches the named dataset
+3. The trick: all four datasets share nearly identical statistics!
+4. Complete all 10 rounds, then copy your completion report into the Canvas assignment
+:::
+
+---
+
 ## Exercises
 
 ::: {.exercise-block}

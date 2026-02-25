@@ -121,12 +121,13 @@ This course uses **Canvas** as the central hub for all course logistics. While y
 
 ### Components
 
-| Component | Weight |
-|-----------|:------:|
-| Weekly Exercises | 35% |
-| Midterm Visualization Project | 20% |
-| Peer Viz Review | 15% |
-| Final Capstone Project | 30% |
+| Component | Weight | Graded By | Frequency |
+|-----------|:------:|-----------|-----------|
+| Game Completion | 15% | Auto-scored (hash verification) | Weekly × 8 |
+| Weekly Exercises | 25% | Peer-reviewed (Canvas) | Weekly × 7 (not Week 8) |
+| Peer Engagement | 10% | Canvas analytics | Ongoing |
+| Midterm Viz Project | 20% | Instructor-graded | Week 4 |
+| Capstone Portfolio | 30% | Instructor-graded | Week 8 |
 
 ### Grading Scale
 
@@ -140,11 +141,85 @@ This course uses **Canvas** as the central hub for all course logistics. While y
 
 ---
 
+## Weekly Cycle: Read → Explore → Play → Code → Review
+
+Each week follows a consistent rhythm designed to build understanding in layers:
+
+| Day | Activity | Time |
+|-----|----------|:----:|
+| Monday | Read chapter + explore sandbox apps | 2--2.5 hrs |
+| Tuesday | Play the weekly game app | 0.5 hr |
+| Wednesday | **Game completion report due** (11:59 PM) | — |
+| Tue--Friday | Complete coding exercises | 1.5--2 hrs |
+| Friday | **Exercise submission due** (11:59 PM) | — |
+| Sat--Sunday | Peer review 2 classmates' exercises | 0.5--0.75 hr |
+| Sunday | **Peer reviews due** (11:59 PM) | — |
+| Anytime | Troubleshooting forum participation | 0.25 hr |
+
+**Total: approximately 5--6 hours per week**, appropriate for a 3-credit graduate course.
+
+---
+
 ## Assignment Descriptions
 
-### Weekly Exercises (35%)
+### Game Completion (15%)
 
-Each week includes hands-on exercises that reinforce the concepts and R skills covered in the module. Exercises are due before the next week's materials are released. They are graded on completion and quality. Expect each exercise set to take approximately 2--3 hours. These exercises are designed to build skills incrementally, so staying current is essential. **Submit:** Knit your `.Rmd` to HTML, publish to [RPubs](https://rpubs.com/), and paste your RPubs link into the corresponding Canvas assignment.
+Each week features a **game app** embedded in the chapter that tests your conceptual understanding of the week's material — no coding required, immediate feedback, and fully replayable. Games cover topics from the Datasaurus Dozen to dashboard evaluation.
+
+| Week | Game | What It Tests |
+|:----:|------|---------------|
+| 1 | Stats Trap | Why summary stats can mislead |
+| 2 | Design Detective | Identifying deceptive chart designs |
+| 3 | Layer Cake | Grammar of graphics layer ordering |
+| 4 | Chart Matchmaker | Choosing the right chart for the question |
+| 5 | Pipe Dream | dplyr verb sequencing and pipeline logic |
+| 6 | Static or Interactive? | When interactivity adds value |
+| 7 | Map ER | Cartographic error identification |
+| 8 | Dashboard Jury | Dashboard design evaluation |
+
+**How it works:**
+
+- Play the game and score at least **50%** to earn full credit
+- The game generates a **completion report** with your name, score, and a verification hash code
+- Click "Copy Report" and paste it into the Canvas assignment (Complete/Incomplete grading)
+- Unlimited replays encouraged — the goal is learning, not perfection
+
+### Weekly Exercises (25%)
+
+Each week includes hands-on R coding exercises that reinforce the module's concepts. These exercises use a fill-in-the-blank format designed to build skills incrementally.
+
+**Submission workflow:**
+
+1. Write your code in an R Markdown (`.Rmd`) file
+2. Knit to HTML
+3. Publish to [RPubs](https://rpubs.com/) (free, one-click from RStudio)
+4. Paste your RPubs link into the Canvas assignment
+
+**Peer review:** Canvas auto-assigns 2 peer reviewers per submission. Reviewers evaluate using a 4-criterion rubric:
+
+- **Chart appropriateness:** Is the chosen chart right for the data?
+- **Readability:** Can you understand the main takeaway within 5 seconds?
+- **One strength:** What specifically works well? (free text)
+- **One suggestion:** What is one concrete improvement? (free text)
+
+Your exercise grade is the average of your peer review scores (lowest dropped). Exercises are due Fridays; peer reviews are due Sundays.
+
+### Peer Engagement (10%)
+
+This component combines two forms of participation:
+
+**Peer exercise reviews** — Quality of the reviews you provide to classmates (thoughtful, specific, constructive feedback earns higher marks).
+
+**Troubleshooting forum** — A single persistent Canvas discussion board for coding questions, debugging help, and tips. Earning points:
+
+- **2 points** for a well-formed question (uses the question template: what you tried, what you expected, what happened)
+- **3 points** for a helpful answer that resolves a classmate's issue
+
+Target: 20 points over the semester (approximately 1--2 quality posts per week). The instructor reviews the forum at midpoint and end of semester to assign scores.
+
+::: {.callout-tip}
+**Troubleshooting question template:** When posting a question, include: (1) What you are trying to do, (2) The code you wrote, (3) The error you got, (4) What you expected to happen, (5) What you already tried. This format helps classmates help you faster.
+:::
 
 ### Midterm Visualization Project (20%)
 
@@ -155,30 +230,7 @@ Due at the end of **Week 4**. Choose a dataset, perform exploratory data analysi
 - Adherence to design principles covered in Weeks 1--4
 - Clear, concise written narrative that connects visualizations to insights
 
-### Peer Viz Review (15%)
-
-Every post in this component is about an actual visualization — either one you found in the wild or one a classmate created. No abstract reading responses. Everything is visual, concrete, and useful.
-
-**Weeks 1--3: Viz in the Wild**
-
-Find one data visualization you encountered outside of class — in a news article, a company report, a social media post, an infographic, or a dashboard. Post it to the weekly **Canvas Discussion** thread with a short critique (3--5 sentences) using the design principles covered that week. What works? What could be improved? What would you change? Reply to one classmate's post with your own take.
-
-**Weeks 4--7: Peer Exercise Review**
-
-After each weekly exercise, review **2 classmates' RPubs submissions** using this structured feedback format:
-
-- **Chart type:** Is the chosen chart appropriate for the data relationship being shown?
-- **Readability:** Can you understand the main takeaway within 5 seconds?
-- **One strength:** What is one specific thing that works well?
-- **One suggestion:** What is one concrete improvement you would recommend?
-
-Post your reviews in the weekly Canvas Discussion thread. This is where you learn the most — evaluating others' design choices sharpens your own eye.
-
-**Week 8: Capstone Draft Review**
-
-Review **1 classmate's capstone draft** (published to RPubs in Week 7) and provide structured feedback on the full project: data choice, chart variety, narrative clarity, ethical reflection, and overall polish. Use the capstone rubric as your guide.
-
-### Final Capstone Project (30%)
+### Capstone Portfolio (30%)
 
 A comprehensive visualization project that demonstrates mastery of the course content. The capstone is your opportunity to bring together everything you have learned into a polished, professional deliverable. Your project must include:
 
@@ -191,10 +243,32 @@ A comprehensive visualization project that demonstrates mastery of the course co
 
 **Submit:** Publish your knitted HTML to [RPubs](https://rpubs.com/) and paste the link into the Capstone assignment on Canvas. If your project includes a Shiny app, also include the deployed shinyapps.io URL.
 
+**Rubric:** Data quality (20%), Visualization effectiveness (30%), Code quality (20%), Narrative (15%), Ethics (15%).
+
 ::: {.callout-info}
 **Capstone Timeline:**
-Proposal due at the end of Week 6 (Canvas). Draft due at the end of Week 7 (Canvas). Final submission during Week 8 (Canvas).
+Proposal due at the end of Week 6 (Canvas). Draft due at the end of Week 7 (peer-reviewed by 1 classmate). Final submission during Week 8 (Canvas).
 :::
+
+---
+
+## AI Study Partner
+
+This course provides an **AI tutor** powered by Google NotebookLM, trained on all course chapters, the syllabus, and supplementary guides. It is your 24/7 study companion for the course material.
+
+::: {.callout-tip}
+**Good uses of the AI tutor:**
+
+- "Explain what `geom_smooth(method = 'lm')` does in plain English"
+- "I got this error: [paste error]. What does it mean?"
+- "Quiz me on preattentive attributes from Week 2"
+- "What's the difference between `color` inside vs. outside `aes()`?"
+- "Help me understand when to use a diverging vs. sequential palette"
+:::
+
+The AI tutor is trained on course materials only — it does **not** have access to exercise solutions, game answers, or grading rubrics. It will guide you using the same concepts and examples from the chapters. This makes it an excellent study tool without undermining the learning process.
+
+**How the course reinforces learning over shortcuts:** The weekly game apps test conceptual understanding with immediate feedback. Students who skip the reading and rely on AI for exercises will find that the games expose gaps in understanding. The combination of reading, games, coding, and peer review creates multiple touchpoints for genuine learning.
 
 ---
 
@@ -202,7 +276,7 @@ Proposal due at the end of Week 6 (Canvas). Draft due at the end of Week 7 (Canv
 
 ### Academic Integrity
 
-All work must be your own. You may use online resources and AI tools for learning and debugging, but the visualization designs and analytical narrative must be original. Cite all data sources, code references, and design inspirations. Plagiarism or misrepresentation of authorship will be handled in accordance with the Gonzaga University Academic Integrity Policy and may result in a failing grade for the assignment or the course.
+All work must be your own. You may use online resources and AI tools (including the course AI tutor) for learning and debugging, but the visualization designs and analytical narrative must be original. Cite all data sources, code references, and design inspirations. Plagiarism or misrepresentation of authorship will be handled in accordance with the Gonzaga University Academic Integrity Policy and may result in a failing grade for the assignment or the course.
 
 ### Late Work
 
@@ -222,7 +296,15 @@ Gonzaga University is committed to providing equal access to educational opportu
 
 ### Communication
 
-The instructor will communicate primarily through **Canvas Announcements** and email. Students are expected to check both regularly. For code questions, post to the **Canvas Q&A Discussion** board so classmates can benefit from the answer. When asking about a coding issue, include a reproducible example (the code, the error message, and what you expected to happen).
+The instructor will communicate primarily through **Canvas Announcements** and email. Students are expected to check both regularly.
+
+**For coding questions and troubleshooting**, use the persistent **Troubleshooting Forum** on Canvas (not a per-week thread — one continuous forum for the entire semester). This is the recommended support pathway:
+
+1. **First:** Check the AI tutor — it can explain errors and concepts from the course materials
+2. **Second:** Search and post to the Troubleshooting Forum — classmates often solve each other's issues quickly (and earn peer engagement credit for doing so)
+3. **Third:** The instructor checks the forum every 24--48 hours and will respond to unresolved questions
+
+When posting a question, use the pinned template: what you are trying to do, the code you wrote, the error you got, what you expected, and what you tried.
 
 ---
 

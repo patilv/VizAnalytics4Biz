@@ -1,0 +1,315 @@
+# Course Syllabus
+
+*Visual Analytics & Data Storytelling with R — Gonzaga University School of Business*
+
+---
+
+## Course Information
+
+> **Note:** **Course:** Visual Analytics & Data Storytelling with R
+> **Schedule:** 8 weeks
+
+---
+
+## Instructor
+
+**Vivek H. Patil**
+Professor of Marketing, School of Business Administration
+
+| | |
+|---|---|
+| **Office** | Jepson 263 |
+| **Email** | [patil@gonzaga.edu](mailto:patil@gonzaga.edu) |
+| **Web** | [patilv.com](https://patilv.com) |
+| **Office Hours** | By appointment |
+
+---
+
+## Course Description
+
+A comprehensive introduction to visual analytics and data storytelling designed for MBA and MSBA students. This course teaches the principles of effective visual communication and the practical skills to create compelling data visualizations using R and the tidyverse ecosystem. Rooted in the Jesuit tradition of rigorous inquiry and ethical practice, students learn to see data clearly, design visualizations truthfully, and use their skills in service of the common good.
+
+> **Tip:** **Why Data Visualization?**
+> In a world awash with data, the ability to communicate insights visually is one of the most valuable skills a business professional can develop. This course equips you with both the theory and the tools to turn raw data into clear, honest, and compelling stories.
+
+---
+
+## Learning Outcomes
+
+By the end of this course, students will be able to:
+
+1. Explain the principles of visual perception that underlie effective data visualization
+2. Apply design principles (Tufte, Cleveland & McGill) to create clear, honest graphics
+3. Write R code using ggplot2 and the tidyverse to produce publication-quality visualizations
+4. Choose appropriate chart types for different data relationships and audiences
+5. Wrangle, reshape, and clean data for visualization using dplyr and tidyr
+6. Create interactive visualizations using plotly, DT, and Leaflet
+7. Understand Shiny's reactive framework and recognize when interactive applications add value
+8. Evaluate visualizations critically for accuracy, ethics, and effectiveness
+9. Communicate data-driven insights to diverse audiences
+
+---
+
+## Required Materials
+
+All textbooks are **free and available online**:
+
+| Book | Author | Link |
+|------|--------|------|
+| *Fundamentals of Data Visualization* | Claus O. Wilke (2019) | [clauswilke.com/dataviz](https://clauswilke.com/dataviz/) |
+| *Data Visualization: A Practical Introduction* | Kieran Healy (2019) | [socviz.co](https://socviz.co/) |
+| *ggplot2: Elegant Graphics for Data Analysis* | Hadley Wickham (3rd ed.) | [ggplot2-book.org](https://ggplot2-book.org/) |
+| *R for Data Science* (2nd ed.) | Wickham, Cetinkaya-Rundel & Grolemund | [r4ds.hadley.nz](https://r4ds.hadley.nz/) |
+
+**Software (all free):**
+
+- **R** — [cran.r-project.org](https://cran.r-project.org/)
+- **RStudio** — [posit.co/downloads](https://posit.co/download/rstudio-desktop/)
+
+> **Note:** All required software is free and open-source. Installation guides will be provided during the first week. Please have R and RStudio installed on your computer before beginning Week 1 materials.
+
+### Canvas (Learning Management System)
+
+This course uses **Canvas** as the central hub for all course logistics. While you will read materials and follow code walkthroughs on this website, all graded work flows through Canvas:
+
+| What | Where |
+|------|-------|
+| **Course materials & code walkthroughs** | This website (linked from Canvas) |
+| **Assignment submissions** | Publish to RPubs, submit the link on Canvas |
+| **Discussion boards & peer critiques** | Canvas Discussions |
+| **Grades & feedback** | Canvas Gradebook |
+| **Announcements & deadlines** | Canvas Announcements |
+| **Midterm & capstone submissions** | Publish to RPubs, submit the link on Canvas |
+
+> **Tip:** **Submission workflow:** For each assignment, you will write your code in an R Markdown (`.Rmd`) file, knit it to HTML, then click the **Publish** button in RStudio to publish it to [RPubs](https://rpubs.com/) (free, one-click). Copy your RPubs URL and paste it into the corresponding Canvas assignment. This way your interactive charts (plotly, leaflet, DT) work perfectly for the reader, and you start building a public portfolio of your work.
+
+---
+
+## Course Schedule
+
+| Week | Topic | Readings |
+|:----:|-------|----------|
+| 1 | Introduction to Data Viz & R | Healy Ch. 1; Wilke Ch. 1-2 |
+| 2 | Visual Perception & Design | Wilke Ch. 1-4; Tufte Ch. 1-3 |
+| 3 | Grammar of Graphics & ggplot2 | Wickham ggplot2 Ch. 1-3; R4DS Ch. 3 |
+| 4 | Chart Types & Variations | Wilke Ch. 6-12; Healy Ch. 4-5 |
+| 5 | Data Wrangling Essentials | R4DS Ch. 5; Wickham "Tidy Data" (2014) |
+| 6 | Interactive Visualizations | Sievert Ch. 1-2; plotly-r.com |
+| 7 | Geographic Visualization | Wilke Ch. 15; Healy Ch. 7 |
+| 8 | Capstone: Viz in Practice | Cairo, "How Charts Lie" Ch. 1 |
+
+---
+
+## Grading
+
+### Components
+
+| Component | Weight | Graded By | Frequency |
+|-----------|:------:|-----------|-----------|
+| Game Completion | 15% | Auto-scored (hash verification) | Weekly x 8 |
+| Weekly Exercises | 25% | Peer-reviewed (Canvas) | Weekly x 7 (not Week 8) |
+| Peer Engagement | 10% | Canvas analytics | Ongoing |
+| Midterm Viz Project | 20% | Instructor-graded | Week 4 |
+| Capstone Portfolio | 30% | Instructor-graded | Week 8 |
+
+### Grading Scale
+
+| Grade | Range | Grade | Range |
+|:-----:|:-----:|:-----:|:-----:|
+| A | 93 -- 100 | C+ | 77 -- 79 |
+| A- | 90 -- 92 | C | 73 -- 76 |
+| B+ | 87 -- 89 | C- | 70 -- 72 |
+| B | 83 -- 86 | D | 60 -- 69 |
+| B- | 80 -- 82 | F | Below 60 |
+
+---
+
+## Weekly Cycle: Read -> Explore -> Play -> Code -> Review
+
+Each week follows a consistent rhythm designed to build understanding in layers:
+
+| Day | Activity | Time |
+|-----|----------|:----:|
+| Monday | Read chapter + explore sandbox apps | 2--2.5 hrs |
+| Tuesday | Play the weekly game app | 0.5 hr |
+| Wednesday | **Game completion report due** (11:59 PM) | -- |
+| Tue--Friday | Complete coding exercises | 1.5--2 hrs |
+| Friday | **Exercise submission due** (11:59 PM) | -- |
+| Sat--Sunday | Peer review 2 classmates' exercises | 0.5--0.75 hr |
+| Sunday | **Peer reviews due** (11:59 PM) | -- |
+| Anytime | Troubleshooting forum participation | 0.25 hr |
+
+**Total: approximately 5--6 hours per week**, appropriate for a 3-credit graduate course.
+
+---
+
+## Assignment Descriptions
+
+### Game Completion (15%)
+
+Each week features a **game app** embedded in the chapter that tests your conceptual understanding of the week's material — no coding required, immediate feedback, and fully replayable. Games cover topics from the Datasaurus Dozen to dashboard evaluation.
+
+| Week | Game | What It Tests |
+|:----:|------|---------------|
+| 1 | Stats Trap | Why summary stats can mislead |
+| 2 | Design Detective | Identifying deceptive chart designs |
+| 3 | Layer Cake | Grammar of graphics layer ordering |
+| 4 | Chart Matchmaker | Choosing the right chart for the question |
+| 5 | Pipe Dream | dplyr verb sequencing and pipeline logic |
+| 6 | Static or Interactive? | When interactivity adds value |
+| 7 | Map ER | Cartographic error identification |
+| 8 | Dashboard Jury | Dashboard design evaluation |
+
+**How it works:**
+
+- Play the game and score at least **50%** to earn full credit
+- The game generates a **completion report** with your name, score, and a verification hash code
+- Click "Copy Report" and paste it into the Canvas assignment (Complete/Incomplete grading)
+- Unlimited replays encouraged — the goal is learning, not perfection
+
+### Weekly Exercises (25%)
+
+Each week includes hands-on R coding exercises that reinforce the module's concepts. These exercises use a fill-in-the-blank format designed to build skills incrementally.
+
+**Submission workflow:**
+
+1. Write your code in an R Markdown (`.Rmd`) file
+2. Knit to HTML
+3. Publish to [RPubs](https://rpubs.com/) (free, one-click from RStudio)
+4. Paste your RPubs link into the Canvas assignment
+
+**Peer review:** Canvas auto-assigns 2 peer reviewers per submission. Reviewers evaluate using a 4-criterion rubric:
+
+- **Chart appropriateness:** Is the chosen chart right for the data?
+- **Readability:** Can you understand the main takeaway within 5 seconds?
+- **One strength:** What specifically works well? (free text)
+- **One suggestion:** What is one concrete improvement? (free text)
+
+Your exercise grade is the average of your peer review scores (lowest dropped). Exercises are due Fridays; peer reviews are due Sundays.
+
+### Peer Engagement (10%)
+
+This component combines two forms of participation:
+
+**Peer exercise reviews** — Quality of the reviews you provide to classmates (thoughtful, specific, constructive feedback earns higher marks).
+
+**Troubleshooting forum** — A single persistent Canvas discussion board for coding questions, debugging help, and tips. Earning points:
+
+- **2 points** for a well-formed question (uses the question template: what you tried, what you expected, what happened)
+- **3 points** for a helpful answer that resolves a classmate's issue
+
+Target: 20 points over the semester (approximately 1--2 quality posts per week). The instructor reviews the forum at midpoint and end of semester to assign scores.
+
+> **Tip:** **Troubleshooting question template:** When posting a question, include: (1) What you are trying to do, (2) The code you wrote, (3) The error you got, (4) What you expected to happen, (5) What you already tried. This format helps classmates help you faster.
+
+### Midterm Visualization Project (20%)
+
+Due at the end of **Week 4**. Choose a dataset, perform exploratory data analysis, and create a portfolio of 3--4 static visualizations with written narrative explaining your design choices. **Submit:** Publish your knitted HTML to [RPubs](https://rpubs.com/) and paste the link into the Midterm assignment on Canvas. Your submission should demonstrate:
+
+- Thoughtful data selection and preparation
+- Appropriate use of chart types for the data relationships you are exploring
+- Adherence to design principles covered in Weeks 1--4
+- Clear, concise written narrative that connects visualizations to insights
+
+### Capstone Portfolio (30%)
+
+A comprehensive visualization project that demonstrates mastery of the course content. The capstone is your opportunity to bring together everything you have learned into a polished, professional deliverable. Your project must include:
+
+- A meaningful dataset relevant to a question you care about
+- At least **4 visualizations** using different techniques (e.g., bar, scatter, map, small multiples)
+- At least **1 interactive element** (plotly, Leaflet, or DT)
+- Written narrative with design rationale explaining why you made each choice
+- An **ethical reflection** on the data, the audience, and the potential impact of your visualizations
+- Presented in a polished R Markdown document or Shiny application
+
+**Submit:** Publish your knitted HTML to [RPubs](https://rpubs.com/) and paste the link into the Capstone assignment on Canvas. If your project includes a Shiny app, also include the deployed shinyapps.io URL.
+
+**Rubric:** Data quality (20%), Visualization effectiveness (30%), Code quality (20%), Narrative (15%), Ethics (15%).
+
+> **Note:** **Capstone Timeline:**
+> Proposal due at the end of Week 6 (Canvas). Draft due at the end of Week 7 (peer-reviewed by 1 classmate). Final submission during Week 8 (Canvas).
+
+---
+
+## AI Study Partner
+
+This course provides an **AI tutor** powered by Google NotebookLM, trained on all course chapters, the syllabus, and supplementary guides. It is your 24/7 study companion for the course material.
+
+> **Tip:** **Good uses of the AI tutor:**
+>
+> - "Explain what `geom_smooth(method = 'lm')` does in plain English"
+> - "I got this error: [paste error]. What does it mean?"
+> - "Quiz me on preattentive attributes from Week 2"
+> - "What's the difference between `color` inside vs. outside `aes()`?"
+> - "Help me understand when to use a diverging vs. sequential palette"
+
+The AI tutor is trained on course materials only — it does **not** have access to exercise solutions, game answers, or grading rubrics. It will guide you using the same concepts and examples from the chapters. This makes it an excellent study tool without undermining the learning process.
+
+**How the course reinforces learning over shortcuts:** The weekly game apps test conceptual understanding with immediate feedback. Students who skip the reading and rely on AI for exercises will find that the games expose gaps in understanding. The combination of reading, games, coding, and peer review creates multiple touchpoints for genuine learning.
+
+---
+
+## Course Policies
+
+### Academic Integrity
+
+All work must be your own. You may use online resources and AI tools (including the course AI tutor) for learning and debugging, but the visualization designs and analytical narrative must be original. Cite all data sources, code references, and design inspirations. Plagiarism or misrepresentation of authorship will be handled in accordance with the Gonzaga University Academic Integrity Policy and may result in a failing grade for the assignment or the course.
+
+### Late Work
+
+Assignments lose **10% per day** late, up to 3 days. After 3 days, assignments receive zero credit unless prior arrangements have been made with the instructor. If you anticipate difficulty meeting a deadline, please reach out as early as possible so we can discuss options.
+
+### Staying on Track
+
+To succeed in this course, students are expected to:
+
+- **Check Canvas and the course website weekly** — New materials are posted at the start of each week. Canvas Announcements will notify you of deadlines and updates.
+- **Participate in Peer Viz Review** — Weekly critique posts and peer exercise reviews are a graded component of this course (15%). Post early in the week to allow time for peer replies.
+- **Submit assignments on time via Canvas** — Time management is critical. Use Canvas calendar reminders and plan your work across the week.
+
+### Accessibility
+
+Gonzaga University is committed to providing equal access to educational opportunities. Students with disabilities should contact **Disability Access Services (DAS)** to arrange accommodations. Please share your accommodation letter with the instructor as early in the term as possible so we can ensure a supportive learning environment.
+
+### Communication
+
+The instructor will communicate primarily through **Canvas Announcements** and email. Students are expected to check both regularly.
+
+**For coding questions and troubleshooting**, use the persistent **Troubleshooting Forum** on Canvas (not a per-week thread — one continuous forum for the entire semester). This is the recommended support pathway:
+
+1. **First:** Check the AI tutor — it can explain errors and concepts from the course materials
+2. **Second:** Search and post to the Troubleshooting Forum — classmates often solve each other's issues quickly (and earn peer engagement credit for doing so)
+3. **Third:** The instructor checks the forum every 24--48 hours and will respond to unresolved questions
+
+When posting a question, use the pinned template: what you are trying to do, the code you wrote, the error you got, what you expected, and what you tried.
+
+---
+
+## Jesuit Mission
+
+> **Ignatian Reflection:** **Our Jesuit Foundation**
+>
+> This course is offered in the Jesuit tradition of Gonzaga University. We are committed to:
+>
+> - **Cura Personalis** — caring for the whole person. We design visualizations that respect the humanity behind every data point.
+> - **Magis** — the pursuit of excellence. We strive not just for charts that work, but charts that illuminate.
+> - **Men and Women for Others** — using our skills in service. Data visualization is a powerful tool for justice and advocacy.
+> - **Discernment** — careful, reflective decision-making. Every design choice is an ethical choice.
+>
+> Data, at its core, represents people, communities, and the world we share. Throughout this course we will return to a central question: **How can we use visualization not only to inform, but to serve?** Whether we are mapping health outcomes, charting educational access, or revealing environmental patterns, we carry a responsibility to represent the truth with care and humility.
+>
+> *Ad Majorem Dei Gloriam* — For the Greater Glory of God.
+
+---
+
+## University Resources
+
+| Resource | Contact |
+|----------|---------|
+| **Writing Center** | [writingcenter@gonzaga.edu](mailto:writingcenter@gonzaga.edu) |
+| **Disability Access Services** | [das@gonzaga.edu](mailto:das@gonzaga.edu) |
+| **Counseling Services** | (509) 313-4054 |
+| **Foley Library** | [foley.gonzaga.edu](https://foley.gonzaga.edu) |
+| **IT Help Desk** | (509) 313-5550 |
+
+> **Tip:** **Library Support:** Foley Library offers research consultations and access to data repositories. Librarians can help you locate datasets for your midterm and capstone projects.

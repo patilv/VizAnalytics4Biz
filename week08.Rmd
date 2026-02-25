@@ -516,6 +516,31 @@ As you leave this course and carry these skills into your careers, your communit
 
 ---
 
+## Challenge: Dashboard Jury
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🎮</span> Dashboard Jury — You are the client. Rate this dashboard.
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week08-game/"
+        height="700" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round displays a multi-panel dashboard — rate it on 5 criteria using sliders
+3. Compare your ratings to the expert panel and see their justifications
+4. After all 6 dashboards, reflect on where you and the experts disagreed most
+5. Copy your completion report (including your reflection) into the Canvas assignment
+:::
+
+---
+
 ## 8. Exercises and Final Project
 
 ::: {.exercise-block}

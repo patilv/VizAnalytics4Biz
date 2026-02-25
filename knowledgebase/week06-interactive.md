@@ -1,0 +1,797 @@
+# Week 6: Interactive Visualizations
+
+*Visual Analytics & Data Storytelling with R — Gonzaga University*
+
+---
+
+## Learning Objectives
+
+By the end of this week, you will be able to:
+
+- Understand the htmlwidgets framework and how it bridges R and JavaScript
+- Convert static ggplot2 plots to interactive visualizations using plotly
+- Create interactive, searchable, and sortable data tables with DT
+- Build interactive heatmaps with dendrograms using heatmaply
+- Articulate when interactivity adds genuine value and when a static chart is the better choice
+- Describe what Shiny is and how it differs from htmlwidgets
+
+## The htmlwidgets Ecosystem
+
+Until now, every visualization we have built has been static -- a fixed image rendered into our HTML document. Static charts are powerful, but they have a fundamental limitation: **the designer must decide in advance what the viewer will see**. If a scatterplot has 500 points and a viewer wants to know which observation is that outlier in the upper-left corner, they are out of luck. If a table has 200 rows and the viewer wants to sort by a particular column, they cannot.
+
+**Interactive visualizations** solve this problem. They let the viewer explore the data on their own terms -- hovering to see details, zooming into regions of interest, filtering to subsets, sorting and searching. This shift from designer-controlled to viewer-controlled exploration is one of the most important developments in modern data visualization.
+
+The `htmlwidgets` framework makes this accessible to R users without requiring any JavaScript knowledge. The idea is simple and elegant:
+
+1. You write R code using familiar R syntax
+2. The htmlwidgets package translates your R objects into JavaScript libraries (like Plotly.js, DataTables, Leaflet.js)
+3. The result is a self-contained HTML widget that renders interactively in R Markdown documents, Shiny apps, and the RStudio viewer
+
+The key packages in the htmlwidgets ecosystem include:
+
+| Package | Purpose | JavaScript Library |
+|---------|---------|-------------------|
+| `plotly` | Interactive charts (scatter, bar, line, etc.) | Plotly.js |
+| `DT` | Interactive data tables | DataTables |
+| `leaflet` | Interactive maps | Leaflet.js |
+| `heatmaply` | Interactive heatmaps with dendrograms | Plotly.js |
+| `dygraphs` | Interactive time series | Dygraphs |
+| `highcharter` | Highcharts-style interactive charts | Highcharts |
+| `visNetwork` | Interactive network graphs | vis.js |
+
+> **Tip:** **Getting started:** Install the packages we will use this week by running:
+>
+> ```r
+> install.packages(c("plotly", "DT", "heatmaply", "gapminder"))
+> ```
+>
+> These only need to be installed once. After that, you load them with `library()` as usual.
+
+Today we focus on three of the most broadly useful packages: `plotly` for interactive charts, `DT` for interactive tables, and `heatmaply` for interactive heatmaps. At the end, we will also take a brief look at Shiny -- the full application framework that takes interactivity to the next level.
+
+---
+
+## plotly -- Interactive Charts from ggplot2
+
+The `plotly` package is the workhorse of interactive visualization in R. Its most powerful feature is the `ggplotly()` function, which takes any ggplot2 object and converts it into an interactive Plotly chart. Hovering reveals data values, the toolbar allows zooming and panning, and the legend toggles series on and off.
+
+Let us start with a scatterplot. We build a standard ggplot2 chart and then pass it through `ggplotly()`:
+
+```r
+library(tidyverse)
+library(plotly)
+
+p <- ggplot(mpg, aes(x = displ, y = hwy, color = class,
+                     text = paste("Model:", model))) +
+  geom_point(size = 2, alpha = 0.7) +
+  scale_color_brewer(palette = "Set2") +
+  labs(title = "Engine Displacement vs. Highway MPG",
+       x = "Engine Displacement (L)", y = "Highway MPG") +
+  theme_minimal(base_size = 13)
+
+ggplotly(p, tooltip = c("text", "x", "y"))
+```
+
+Hover over any point to see the car model, engine size, and highway mileage. Click a class name in the legend to toggle that group on or off. Use the toolbar in the upper right to zoom, pan, or reset the view.
+
+Notice the `text` aesthetic in the `aes()` call. This is a plotly-specific trick: we create a custom text string using `paste()`, and then pass `tooltip = c("text", "x", "y")` to `ggplotly()` to control exactly what appears when the viewer hovers. This level of customization is what makes interactive charts so much more informative than static ones.
+
+### Interactive Bar Charts
+
+Bar charts also benefit from interactivity, especially when you want to show exact counts on hover:
+
+```r
+bar_data <- mpg %>%
+  count(class) %>%
+  mutate(class = fct_reorder(class, n))
+
+p_bar <- ggplot(bar_data, aes(x = n, y = class, fill = class,
+                              text = paste(class, ":", n, "vehicles"))) +
+  geom_col() +
+  scale_fill_brewer(palette = "Dark2") +
+  labs(title = "Vehicle Count by Class", x = "Count", y = NULL) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none")
+
+ggplotly(p_bar, tooltip = "text")
+```
+
+Hover over any bar to see the exact count. The `fct_reorder()` call from the `forcats` package (loaded with tidyverse) orders the bars by count, making the chart easier to read -- a design principle we learned from Tufte.
+
+### Interactive Time Series
+
+Time series data is where interactivity truly shines. Static time series charts can show overall trends, but hovering lets viewers pinpoint exact values at specific dates:
+
+```r
+econ_plot <- economics %>%
+  ggplot(aes(x = date, y = unemploy / 1000,
+             text = paste("Date:", format(date, "%B %Y"),
+                          "<br>Unemployed:", round(unemploy / 1000, 1), "million"))) +
+  geom_line(color = "#002967", linewidth = 0.6) +
+  labs(title = "U.S. Unemployment Over Time",
+       x = NULL, y = "Unemployed (millions)") +
+  theme_minimal(base_size = 13)
+
+ggplotly(econ_plot, tooltip = "text")
+```
+
+Try zooming into the 2008-2010 period by clicking and dragging across that region. You can see the sharp spike in unemployment during the Great Recession. Double-click to reset the zoom. This kind of exploration is impossible with a static chart.
+
+> **Note:** **The ggplotly() workflow:** The beauty of `ggplotly()` is that you can develop your chart using standard ggplot2 syntax -- getting the aesthetics, scales, and theme exactly right -- and then add interactivity as a final step. If you decide interactivity is not needed, simply remove the `ggplotly()` wrapper and you have your static chart back.
+
+---
+
+## The plotly Native API
+
+While `ggplotly()` is the fastest path to interactivity, the plotly package also has its own native API through the `plot_ly()` function. This gives you finer control over hover templates, animations, and chart types that do not have direct ggplot2 equivalents.
+
+The following example recreates the famous Gapminder bubble chart. Each bubble represents a country, sized by population and colored by continent. The hover template uses plotly's formatting syntax for precise control:
+
+```r
+library(gapminder)
+
+gapminder %>%
+  filter(year == 2007) %>%
+  plot_ly(
+    x = ~gdpPercap,
+    y = ~lifeExp,
+    size = ~pop,
+    color = ~continent,
+    text = ~country,
+    type = "scatter",
+    mode = "markers",
+    marker = list(sizemode = "diameter", opacity = 0.6),
+    hovertemplate = paste(
+      "<b>%{text}</b><br>",
+      "GDP per Capita: $%{x:,.0f}<br>",
+      "Life Expectancy: %{y:.1f} years",
+      "<extra></extra>"
+    )
+  ) %>%
+  layout(
+    title = list(text = "Gapminder 2007: Wealth vs. Health"),
+    xaxis = list(title = "GDP per Capita (log scale)", type = "log"),
+    yaxis = list(title = "Life Expectancy (years)")
+  )
+```
+
+Hover over the bubbles to identify individual countries. Notice how the log scale on the x-axis spreads out the lower-income countries, making the relationship between wealth and health visible across the full range.
+
+The `<extra></extra>` tag in the hover template suppresses the default trace name that plotly adds to the hover box. The `%{x:,.0f}` and `%{y:.1f}` are d3 format strings that control number formatting -- commas for thousands and one decimal place, respectively.
+
+> **Tip:** **When to use plot_ly() vs. ggplotly():** Use `ggplotly()` when you already have a ggplot2 chart or when you want the familiar grammar of graphics workflow. Use `plot_ly()` when you need features that ggplotly does not support well, such as custom hover templates, 3D charts, or animations. For most classroom and professional work, `ggplotly()` is sufficient.
+
+---
+
+## Try It: Interactive Visualization Explorer
+
+You have just seen how plotly transforms static ggplot2 charts into interactive experiences. Now try it yourself. The sandbox lets you toggle between static and interactive versions of the same plot, customize tooltips, and see the difference firsthand.
+
+> **Exploration Tasks:**
+>
+> 1. Start with the **static** view. What information can you extract just by looking?
+> 2. Switch to the **interactive** view — hover over individual points. What additional details does the tooltip reveal?
+> 3. Try zooming into a cluster of points. Does interactivity help you distinguish overlapping data?
+> 4. Customize the tooltip to show different variables. Which tooltip configuration tells the most useful story?
+
+> **Note:** **What You Should Have Noticed:** Interactivity adds a "details on demand" layer that static charts cannot provide. Hover tooltips reveal individual data points without cluttering the overall view. Zoom lets you explore dense regions. But interactivity is not always better — for a presentation or printed report, a well-designed static chart may communicate more effectively.
+
+> **AI & This Concept:** When asking AI to make a chart interactive, be specific about *what* the interactivity should reveal. "Add tooltips showing country name and GDP" is much better than "make it interactive." Also specify the output format — `ggplotly()` for quick conversion, or `plot_ly()` for full control.
+
+---
+
+## DT -- Interactive Data Tables
+
+Not all data communication happens through charts. Sometimes a well-formatted, searchable, sortable table is the most effective way to present information. The `DT` package wraps the jQuery DataTables library, giving you interactive tables with filtering, pagination, sorting, and search -- all from a single R function call.
+
+```r
+library(DT)
+
+mpg_summary <- mpg %>%
+  group_by(manufacturer, class) %>%
+  summarise(
+    models = n(),
+    avg_hwy = round(mean(hwy), 1),
+    avg_cty = round(mean(cty), 1),
+    .groups = "drop"
+  )
+
+datatable(
+  mpg_summary,
+  caption = "Vehicle Summary by Manufacturer and Class",
+  filter = "top",
+  options = list(
+    pageLength = 10,
+    autoWidth = TRUE,
+    columnDefs = list(
+      list(className = "dt-center", targets = 2:4)
+    )
+  ),
+  rownames = FALSE
+) %>%
+  formatStyle(
+    "avg_hwy",
+    background = styleColorBar(range(mpg_summary$avg_hwy), "#002967"),
+    backgroundSize = "98% 88%",
+    backgroundRepeat = "no-repeat",
+    backgroundPosition = "center"
+  ) %>%
+  formatStyle(
+    "avg_cty",
+    background = styleColorBar(range(mpg_summary$avg_cty), "#C41E3A"),
+    backgroundSize = "98% 88%",
+    backgroundRepeat = "no-repeat",
+    backgroundPosition = "center"
+  )
+```
+
+Try the following interactions with this table:
+
+- **Search**: Type a manufacturer name in the global search box (upper right)
+- **Filter**: Use the filter boxes at the top of each column to narrow down the data
+- **Sort**: Click any column header to sort ascending or descending
+- **Navigate**: Use the pagination controls to move between pages
+
+The `formatStyle()` function adds in-cell bar charts -- the blue bars show relative highway MPG and the red bars show relative city MPG. This technique, sometimes called "data bars," combines the precision of a table with the visual comparison power of a chart.
+
+> **Tip:** **DT formatting options:** The DT package supports extensive formatting: `formatCurrency()`, `formatPercentage()`, `formatRound()`, `formatDate()`, and `formatStyle()` with conditional coloring. These let you build publication-quality tables that highlight the most important patterns.
+
+---
+
+## heatmaply -- Interactive Heatmaps
+
+Heatmaps are one of the most effective ways to display patterns in multivariate data. A heatmap encodes values as colors in a matrix, making it easy to spot clusters, correlations, and outliers. The `heatmaply` package extends this by adding interactivity (hover for exact values) and hierarchical clustering with dendrograms.
+
+```r
+library(heatmaply)
+
+mtcars_scaled <- mtcars %>%
+  select(mpg, cyl, disp, hp, wt, qsec) %>%
+  scale()
+
+heatmaply(
+  mtcars_scaled,
+  main = "Motor Trend Cars -- Scaled Variables",
+  xlab = "Variables",
+  ylab = "Cars",
+  colors = viridis::magma(100),
+  k_row = 3,
+  k_col = 2,
+  margins = c(60, 120),
+  fontsize_row = 7,
+  fontsize_col = 10
+)
+```
+
+Hover over any cell to see the exact scaled value for that car and variable. The dendrograms on the left and top show hierarchical clustering -- cars with similar profiles are grouped together, and variables that behave similarly are grouped together.
+
+The `k_row = 3` and `k_col = 2` arguments cut the dendrograms into 3 row clusters and 2 column clusters, highlighted by the colored branches. You can immediately see, for instance, that high-horsepower, heavy cars (like the Maserati Bora and Ford Pantera L) cluster together on one end, while fuel-efficient, lightweight cars (like the Toyota Corolla and Honda Civic) cluster on the opposite end.
+
+> **Note:** **Why scale the data?** The `scale()` function standardizes each column to have mean 0 and standard deviation 1. Without scaling, variables measured on different scales (e.g., horsepower in hundreds vs. quarter-mile time in seconds) would be incomparable in a heatmap. Scaling puts all variables on the same footing.
+
+### Correlation Heatmap
+
+A particularly useful application of heatmaply is visualizing correlation matrices:
+
+```r
+cor_matrix <- mtcars %>%
+  select(mpg, cyl, disp, hp, drat, wt, qsec, gear, carb) %>%
+  cor() %>%
+  round(2)
+
+heatmaply_cor(
+  cor_matrix,
+  main = "Correlation Matrix -- mtcars",
+  colors = colorRampPalette(c("#002967", "white", "#C41E3A"))(100),
+  margins = c(40, 40),
+  fontsize_row = 10,
+  fontsize_col = 10
+)
+```
+
+Hover over any cell to see the exact correlation coefficient. The Gonzaga navy-to-white-to-red color scale makes it easy to distinguish strong negative correlations (navy) from strong positive correlations (red), with white indicating near-zero correlation.
+
+Several patterns jump out: `mpg` is strongly negatively correlated with `cyl`, `disp`, `hp`, and `wt` (heavier, more powerful cars get worse mileage). `cyl`, `disp`, and `wt` are strongly positively correlated with each other (larger engines go in heavier cars). These clusters of correlated variables are exactly what the dendrogram captures.
+
+---
+
+## When to Use Interactivity
+
+Interactive visualizations are powerful, but they are not always the right choice. Adding interactivity has costs: larger file sizes, dependencies on JavaScript libraries, potential accessibility issues, and the risk of overwhelming viewers with options they do not need.
+
+Ben Shneiderman, a pioneer of information visualization, articulated the **visual information-seeking mantra**:
+
+> **"Overview first, zoom and filter, then details on demand."**
+
+This mantra provides a useful framework for deciding when interactivity adds value:
+
+### Use Interactivity When:
+
+- **Exploring data**: You or your audience need to discover patterns, not just confirm them
+- **Many data points**: Scatterplots with hundreds of points benefit from hover-to-identify
+- **Details on demand**: The overview is clear, but viewers need to drill down to specific values
+- **Self-service dashboards**: Different viewers have different questions about the same data
+- **Complex multivariate data**: Heatmaps and parallel coordinates benefit from hover details
+- **Time series with long histories**: Viewers need to zoom into specific time periods
+
+### Prefer Static Charts When:
+
+- **Printed reports**: Paper and PDF cannot render JavaScript widgets
+- **Simple messages**: If the chart makes one clear point, interactivity adds nothing
+- **Small datasets**: A table of 10 rows does not need search and pagination
+- **Presentations you control**: When you are narrating, you choose what the audience sees
+- **Reproducibility is critical**: Static images are more portable and archival
+- **Accessibility**: Screen readers handle static charts with alt text better than interactive widgets
+
+> **Tip:** **A good test:** Ask yourself, "What would a viewer do with interactivity that they cannot do with the static version?" If you cannot answer that question concretely, the static chart is probably better. Interactivity should serve a purpose, not just look impressive.
+
+---
+
+## Putting It All Together
+
+Let us build one more example that combines several of the techniques we have learned. This interactive scatterplot uses the `gapminder` dataset filtered to the most recent year, with careful hover text that tells a story about each country:
+
+```r
+gap_2007 <- gapminder %>%
+  filter(year == 2007) %>%
+  mutate(
+    pop_millions = round(pop / 1e6, 1),
+    gdp_billions = round(gdpPercap * pop / 1e9, 1),
+    hover_label = paste0(
+      "<b>", country, "</b> (", continent, ")<br>",
+      "Life Expectancy: ", round(lifeExp, 1), " years<br>",
+      "GDP per Capita: $", formatC(round(gdpPercap), format = "d", big.mark = ","), "<br>",
+      "Population: ", pop_millions, " million<br>",
+      "Total GDP: $", gdp_billions, " billion"
+    )
+  )
+
+p_combined <- ggplot(gap_2007, aes(
+  x = gdpPercap, y = lifeExp,
+  size = pop_millions, color = continent,
+  text = hover_label
+)) +
+  geom_point(alpha = 0.6) +
+  scale_x_log10(labels = scales::dollar_format()) +
+  scale_size_continuous(range = c(2, 15), guide = "none") +
+  scale_color_manual(values = c(
+    "Africa" = "#C41E3A",
+    "Americas" = "#002967",
+    "Asia" = "#B4975A",
+    "Europe" = "#4A7C59",
+    "Oceania" = "#6B4C9A"
+  )) +
+  labs(
+    title = "Global Health and Wealth in 2007",
+    subtitle = "Each bubble represents a country, sized by population",
+    x = "GDP per Capita (log scale)",
+    y = "Life Expectancy (years)",
+    color = "Continent"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "bottom")
+
+ggplotly(p_combined, tooltip = "text") %>%
+  layout(legend = list(orientation = "h", y = -0.15))
+```
+
+This chart uses several Gonzaga colors: navy for the Americas, red for Africa, and gold for Asia. Hover over any bubble to see the full story for that country. Click a continent name in the legend to isolate just those countries. Zoom into the lower-left cluster to explore the poorest nations.
+
+---
+
+## A Taste of Shiny
+
+Everything we have built so far this week -- plotly charts, DT tables, heatmaply heatmaps -- runs entirely in the browser. The R code produces a self-contained HTML widget, and once it is rendered, no R session is needed. The interactivity is limited to what the JavaScript library provides: hovering, zooming, sorting, filtering within the existing data.
+
+**Shiny** takes interactivity to an entirely different level. A Shiny application is a full web application powered by a live R session running on a server. When a user moves a slider, selects a dropdown option, or checks a box, that input is sent back to the R server, which re-executes R code and sends updated outputs back to the browser. This means you can do things that are impossible with htmlwidgets alone: change which variables are plotted, filter to different subsets of data, fit statistical models on the fly, and even load entirely new datasets based on user choices.
+
+Shiny was created by Joe Cheng at RStudio (now Posit) and has grown into one of the most widely used frameworks for data-driven web applications in the R ecosystem. Thousands of Shiny apps are deployed across academia, government, and industry for everything from clinical trial dashboards to environmental monitoring tools.
+
+> **Note:** **Shiny vs. htmlwidgets -- what is the difference?** We have already seen plotly for hover-and-zoom interactivity added to individual charts. Shiny is fundamentally different -- it gives you a full application framework where users can filter data, switch variables, adjust parameters, and navigate between multiple views. Think of plotly as adding interactivity *to a chart*, and Shiny as building an entire interactive *experience* around your data.
+
+Building Shiny apps is beyond the scope of this course -- it requires understanding reactive programming, server-client architecture, and deployment workflows that deserve their own dedicated study. But it is valuable to **see** what Shiny code looks like and understand the basic structure, so that you know what is possible and can pursue it on your own if it excites you.
+
+### The Minimal Shiny App
+
+Every Shiny app has exactly two components:
+
+- **UI (User Interface):** Defines what the user sees -- the layout, the input widgets (dropdowns, sliders, checkboxes), and the placeholders for outputs (plots, tables, text).
+- **Server:** Contains the R logic -- how inputs are transformed into outputs. This is where your ggplot2, dplyr, and other R code lives.
+
+The UI and server communicate through a **reactive system**. When a user changes an input widget, the server automatically re-runs the relevant code and updates the corresponding output. You never have to write code that says "when the user clicks this, do that" -- Shiny handles the wiring for you.
+
+Here is the simplest possible Shiny app. Read through the code and the annotations -- you do not need to run this, but understanding the structure will deepen your appreciation for how interactive tools are built:
+
+```r
+library(shiny)
+
+# --- UI: what the user sees ---
+ui <- fluidPage(
+  titlePanel("My First Shiny App"),
+  sidebarLayout(
+    sidebarPanel(
+      # Input: a dropdown menu for selecting a variable
+      selectInput("variable", "Choose a variable:",
+                  choices = c("Highway MPG" = "hwy",
+                              "City MPG" = "cty",
+                              "Engine Size" = "displ")),
+      # Input: a slider for the number of histogram bins
+      sliderInput("bins", "Number of bins:",
+                  min = 5, max = 50, value = 20)
+    ),
+    mainPanel(
+      # Output: the histogram will be rendered here
+      plotOutput("histogram")
+    )
+  )
+)
+
+# --- Server: the R logic ---
+server <- function(input, output) {
+  # When the user changes the dropdown or slider, this code re-runs automatically
+  output$histogram <- renderPlot({
+    library(tidyverse)
+    ggplot(mpg, aes(x = .data[[input$variable]])) +
+      geom_histogram(bins = input$bins, fill = "#002967", color = "white") +
+      labs(title = paste("Distribution of", input$variable),
+           x = input$variable, y = "Count") +
+      theme_minimal(base_size = 14)
+  })
+}
+
+# --- Launch the app ---
+shinyApp(ui = ui, server = server)
+```
+
+Let us walk through what happens when this app runs:
+
+1. The UI creates a page with a sidebar containing a dropdown and a slider, and a main panel with a placeholder for a plot.
+2. The server defines how `output$histogram` is rendered -- it builds a ggplot using whichever variable the user selected and however many bins the slider specifies.
+3. When the user changes the dropdown or moves the slider, Shiny automatically re-executes the `renderPlot()` code and updates the histogram.
+
+Here is a static preview of what that app would produce with its default settings (variable = "hwy", bins = 20):
+
+```r
+# Static preview of what the Shiny app would display with default inputs
+ggplot(mpg, aes(x = hwy)) +
+  geom_histogram(bins = 20, fill = "#002967", color = "white") +
+  labs(title = "Distribution of hwy",
+       subtitle = "Static preview -- in the Shiny app, users can change the variable and bin count",
+       x = "hwy", y = "Count") +
+  theme_minimal(base_size = 14)
+```
+
+In the real Shiny app, the user could switch the dropdown to "City MPG" and the histogram would instantly redraw to show the distribution of `cty` instead. They could drag the slider to 40 bins and watch the bars get narrower in real time. That kind of live, server-powered reactivity is what distinguishes Shiny from the htmlwidgets we have been building.
+
+### A More Complete Example: MPG Data Explorer
+
+Here is a more realistic Shiny app that lets users explore the `mpg` dataset with multiple filters and three different views: a scatter plot, a density distribution, and a summary table. Again, read through the code to understand the pattern -- you do not need to build or run this yourself:
+
+```r
+library(shiny)
+library(tidyverse)
+library(plotly)
+library(DT)
+
+# --- UI ---
+ui <- fluidPage(
+  titlePanel("MPG Data Explorer"),
+
+  sidebarLayout(
+    sidebarPanel(
+      h4("Filters"),
+
+      # Dropdown to select a specific manufacturer or all
+      selectInput("manufacturer", "Manufacturer:",
+                  choices = c("All", sort(unique(mpg$manufacturer))),
+                  selected = "All"),
+
+      # Checkboxes for vehicle class (all selected by default)
+      checkboxGroupInput("classes", "Vehicle Classes:",
+                         choices = unique(mpg$class),
+                         selected = unique(mpg$class)),
+
+      # Slider for year range
+      sliderInput("year", "Year:",
+                  min = 1999, max = 2008,
+                  value = c(1999, 2008),
+                  step = 9, sep = ""),
+
+      hr(),
+      helpText("Data from the ggplot2 mpg dataset.",
+               "Select filters above to explore the data.")
+    ),
+
+    mainPanel(
+      # Three tabs for different views of the data
+      tabsetPanel(
+        tabPanel("Scatter Plot",
+                 br(),
+                 plotlyOutput("scatter", height = "450px")),
+        tabPanel("Distribution",
+                 br(),
+                 plotOutput("distribution", height = "450px")),
+        tabPanel("Summary Table",
+                 br(),
+                 DTOutput("summary_table"))
+      )
+    )
+  )
+)
+
+# --- Server ---
+server <- function(input, output) {
+
+  # Reactive expression: filtered data shared by all three outputs.
+  # This computes once and is reused by scatter, distribution, and table.
+  filtered <- reactive({
+    data <- mpg %>%
+      filter(class %in% input$classes)
+
+    if (input$manufacturer != "All") {
+      data <- data %>%
+        filter(manufacturer == input$manufacturer)
+    }
+
+    data
+  })
+
+  # Tab 1: Interactive scatter plot with plotly
+  output$scatter <- renderPlotly({
+    p <- ggplot(filtered(),
+                aes(x = displ, y = hwy, color = class,
+                    text = paste(manufacturer, model))) +
+      geom_point(size = 2, alpha = 0.7) +
+      scale_color_brewer(palette = "Dark2") +
+      labs(x = "Engine Displacement (L)",
+           y = "Highway MPG",
+           color = "Class") +
+      theme_minimal(base_size = 13)
+
+    ggplotly(p, tooltip = "text")
+  })
+
+  # Tab 2: Density plot of highway MPG by class
+  output$distribution <- renderPlot({
+    ggplot(filtered(), aes(x = hwy, fill = class)) +
+      geom_density(alpha = 0.5) +
+      scale_fill_brewer(palette = "Dark2") +
+      labs(title = "Highway MPG Distribution by Vehicle Class",
+           x = "Highway MPG", y = "Density", fill = "Class") +
+      theme_minimal(base_size = 14)
+  })
+
+  # Tab 3: Summary table with interactive features
+  output$summary_table <- renderDT({
+    filtered() %>%
+      group_by(manufacturer, class) %>%
+      summarise(
+        n = n(),
+        avg_hwy = round(mean(hwy), 1),
+        avg_cty = round(mean(cty), 1),
+        avg_displ = round(mean(displ), 1),
+        .groups = "drop"
+      ) %>%
+      datatable(
+        rownames = FALSE,
+        filter = "top",
+        colnames = c("Manufacturer", "Class", "Count",
+                     "Avg Hwy MPG", "Avg City MPG", "Avg Displacement"),
+        options = list(pageLength = 10)
+      )
+  })
+}
+
+# Run the application
+shinyApp(ui, server)
+```
+
+Notice the key patterns:
+
+- **`reactive()`** computes the filtered data once and shares it across all three outputs. When the user changes a filter, Shiny re-runs the reactive expression, and all outputs that depend on it update automatically.
+- **`renderPlotly()`**, **`renderPlot()`**, and **`renderDT()`** are paired with their corresponding UI placeholders (`plotlyOutput()`, `plotOutput()`, `DTOutput()`).
+- The **names must match exactly** -- `output$scatter` in the server corresponds to `plotlyOutput("scatter")` in the UI.
+
+Here is a static preview of the scatter plot this app would produce with all filters at their default values:
+
+```r
+# Static preview of the scatter plot tab from the MPG Explorer app
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 2, alpha = 0.7) +
+  scale_color_brewer(palette = "Dark2") +
+  labs(title = "MPG Data Explorer -- Scatter Plot Tab (Static Preview)",
+       subtitle = "In the Shiny app, users can filter by manufacturer, class, and year",
+       x = "Engine Displacement (L)",
+       y = "Highway MPG",
+       color = "Class") +
+  theme_minimal(base_size = 14)
+```
+
+> **Tip:** **Want to learn more about Shiny?** If this section sparked your curiosity, the best next step is Hadley Wickham's free online book [*Mastering Shiny*](https://mastering-shiny.org/). It walks you through everything from your first app to production deployment, with clear explanations and realistic examples. Building Shiny apps is a natural extension of the ggplot2 and dplyr skills you have already developed in this course.
+
+---
+
+> **Common Errors:** ## Common Errors and Troubleshooting
+>
+> **"Error: could not find function 'ggplotly'"**
+> This means the plotly package is not loaded. Run `install.packages("plotly")` if you have not installed it yet, then add `library(plotly)` to the top of your R Markdown document. Remember: `install.packages()` is a one-time operation, but `library()` must appear in every document that uses the package.
+>
+> **Interactive chart shows as blank**
+> Make sure you have the `htmlwidgets` package installed (`install.packages("htmlwidgets")`). If you are working in R Markdown, try knitting the whole document rather than running the chunk in isolation -- some widgets need the full HTML document context to render properly. Also check that you are viewing the output in a web browser or RStudio's Viewer pane, not in a PDF or Word document.
+>
+> **DT table does not appear**
+> Make sure you are calling `datatable()` from the DT package, not just printing the data frame. A bare `mpg_summary` will produce a plain text table; you need `DT::datatable(mpg_summary)` to get the interactive version. Also verify the DT package is loaded with `library(DT)`.
+>
+> **heatmaply is very slow**
+> heatmaply computes hierarchical clustering, which can be slow on large datasets. Reduce the dataset size before passing it to `heatmaply()` -- use `select()` to limit columns and `sample_n()` or `slice_head()` to limit rows. For most exploratory work, 50-100 rows and 6-10 columns render quickly.
+>
+> **"Error: Column 'text' doesn't exist"**
+> The `text` aesthetic only works inside `aes()` when using `ggplotly()`. Make sure your `text = paste(...)` is inside the `aes()` call, not outside it. For example: `aes(x = displ, y = hwy, text = paste("Model:", model))` is correct, but `geom_point(text = paste("Model:", model))` outside of `aes()` will fail.
+
+---
+
+> **Ignatian Reflection:** **Cura Personalis and Data Exploration**
+>
+> The Ignatian principle of *Cura Personalis* -- care for the whole person -- extends to how we design data experiences. A static chart is a one-size-fits-all communication: the designer decides what you see, and every viewer gets the same fixed image. An interactive visualization, by contrast, respects the individuality of each viewer. It says, "Here is the data -- explore it at your own pace, follow your own questions, and discover what matters to you."
+>
+> This is not interactivity for its own sake. It is a form of intellectual hospitality. Just as a good teacher adapts to the needs of each student, a well-designed interactive visualization adapts to the curiosity of each viewer.
+>
+> At the same time, the Ignatian practice of *discernment* reminds us that more is not always better. Do not add interactivity because you can. Add it because it serves understanding. A simple, clear static chart that makes its point instantly is often more respectful of the viewer's time and attention than a flashy interactive dashboard that demands exploration without rewarding it.
+>
+> The call to be "men and women for others" also has implications here. Interactive dashboards and data tables can **democratize access to data**. When you build a well-designed interactive tool, you empower others to ask their own questions and find their own answers. This is a powerful act of service -- putting data in the hands of those who need it, in a form they can use. Tools like Shiny take this even further, transforming you from a chart-maker into a tool-builder -- someone who creates instruments of inquiry that others can use long after you have finished your analysis.
+
+---
+
+## Challenge: Static or Interactive?
+
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round presents a real-world scenario with audience, medium, purpose, and data complexity
+3. Choose Static or Interactive, then select your reasoning from the options
+4. Two scenarios are deliberately ambiguous — both answers can earn full credit with the right reasoning!
+5. Complete all 10 rounds, then copy your completion report into the Canvas assignment
+
+---
+
+## Exercises
+
+### Week 6 Exercises
+
+**Exercise 1: From Static to Interactive Scatter Plot**
+
+Convert a ggplot2 scatter plot to an interactive plotly chart. Fill in the blanks below to create an interactive version of the `mpg` dataset with custom hover text showing the car manufacturer, model, and fuel economy.
+
+```r
+library(tidyverse)
+library(plotly)
+
+p <- ggplot(mpg, aes(x = displ, y = hwy, color = class,
+                     text = paste("Car:", ___, ___,
+                                  "<br>Highway:", ___, "mpg"))) +
+  geom_point(size = 2, alpha = 0.7) +
+  scale_color_brewer(palette = "Set2") +
+  labs(title = "Engine Size vs. Highway MPG",
+       x = "Engine Displacement (L)", y = "Highway MPG") +
+  theme_minimal(base_size = 13)
+
+ggplotly(p, tooltip = "___")
+```
+
+**Hints:** The `paste()` function combines text strings. Use column names like `manufacturer` and `model` for the car info, and `hwy` for highway MPG. The `tooltip` argument should match the aesthetic name you want to display.
+
+**Exercise 2: Interactive Data Table with Formatting**
+
+Build an interactive DT table from the `gapminder` dataset (2007 only). Fill in the blanks to add column filters, format population with commas, and apply conditional color bars to the life expectancy column.
+
+```r
+library(DT)
+library(gapminder)
+
+gap_2007 <- gapminder %>%
+  filter(year == ___) %>%
+  select(country, continent, lifeExp, pop, gdpPercap)
+
+datatable(
+  gap_2007,
+  caption = "Gapminder 2007 Data",
+  filter = "___",
+  options = list(pageLength = 15),
+  rownames = FALSE
+) %>%
+  formatRound("pop", digits = ___) %>%
+  formatCurrency("___", currency = "$", digits = 0) %>%
+  formatStyle(
+    "lifeExp",
+    background = styleColorBar(range(gap_2007$___), "#002967"),
+    backgroundSize = "98% 88%",
+    backgroundRepeat = "no-repeat",
+    backgroundPosition = "center"
+  )
+```
+
+**Hints:** Filter to year `2007`. Use `filter = "top"` for column-level filters. `formatRound()` with `digits = 0` adds commas to population. Format `gdpPercap` as currency. The `styleColorBar()` needs the range of the column you are styling.
+
+**Exercise 3: Correlation Heatmap**
+
+Choose a dataset with at least 5 numeric variables (you may use `mtcars`, `iris`, or `diamonds`). Compute the correlation matrix and visualize it using `heatmaply_cor()`. Fill in the blanks to create a heatmap with a meaningful color palette.
+
+```r
+library(heatmaply)
+
+my_cor <- ___ %>%
+  select(where(is.numeric)) %>%
+  cor() %>%
+  round(2)
+
+heatmaply_cor(
+  my_cor,
+  main = "Correlation Matrix -- ___",
+  colors = colorRampPalette(c("___", "white", "___"))(100),
+  margins = c(40, 40),
+  fontsize_row = 10,
+  fontsize_col = 10
+)
+```
+
+In a brief paragraph below your code, identify and interpret the two strongest positive correlations and the two strongest negative correlations in your heatmap.
+
+**Hints:** Replace the first blank with your chosen dataset name (e.g., `mtcars`). For the color palette, use two contrasting colors on either end -- Gonzaga navy `"#002967"` and Gonzaga red `"#C41E3A"` work well.
+
+**Exercise 4: Storytelling with Hover Text**
+
+Using the `gapminder` dataset, create an interactive plotly chart where the hover text tells a meaningful story about each data point. Fill in the blanks to create rich, multi-line hover labels.
+
+```r
+library(plotly)
+library(gapminder)
+
+gap_story <- gapminder %>%
+  filter(year == 2007) %>%
+  mutate(
+    pop_millions = round(pop / 1e6, 1),
+    hover_label = paste0(
+      "<b>", ___, "</b><br>",
+      "Continent: ", ___, "<br>",
+      "Life Expectancy: ", round(___, 1), " years<br>",
+      "Population: ", pop_millions, " million"
+    )
+  )
+
+p <- ggplot(gap_story, aes(
+  x = gdpPercap, y = lifeExp,
+  size = pop_millions, color = continent,
+  text = ___
+)) +
+  geom_point(alpha = 0.6) +
+  scale_x_log10(labels = scales::dollar_format()) +
+  scale_size_continuous(range = c(2, 12), guide = "none") +
+  labs(title = "Global Health and Wealth, 2007",
+       x = "GDP per Capita (log scale)",
+       y = "Life Expectancy (years)") +
+  theme_minimal(base_size = 13)
+
+ggplotly(p, tooltip = "___")
+```
+
+Write a one-paragraph reflection on how the hover text changes the viewer's experience compared to a static version of the same chart.
+
+**Hints:** Use column names `country`, `continent`, and `lifeExp` for the hover label. Map `text = hover_label` in the `aes()` call, and set `tooltip = "text"` in `ggplotly()`.
+
+---
+
+## Attributions
+
+This course material draws on and is inspired by the work of many scholars and practitioners:
+
+- **Sievert, C.** -- *Interactive Web-Based Data Visualization with R* (CRC Press, 2020; freely available at [plotly-r.com](https://plotly-r.com/))
+- **htmlwidgets.org** -- framework documentation and gallery of R-to-JavaScript bindings
+- **Shneiderman, B.** -- "The Eyes Have It: A Task by Data Type Taxonomy for Information Visualizations" (1996) -- the visual information-seeking mantra
+- **Rstudio/Posit** -- htmlwidgets showcase and DT package documentation
+- **Galili, T.** -- `heatmaply` package and interactive heatmap documentation
+- **Wickham, H.** -- `ggplot2`: Elegant Graphics for Data Analysis (Springer, 2016)
+- **Bryan, J.** -- `gapminder` R package, providing an excerpt of the Gapminder data
+- **Chang, W., Cheng, J., Allaire, J., Sievert, C., Schloerke, B., Xie, Y., Allen, J., McPherson, J., Dipert, A., & Borges, B.** -- *Shiny: Web Application Framework for R*. [https://shiny.posit.co/](https://shiny.posit.co/)
+- **Wickham, H.** -- *Mastering Shiny*. [https://mastering-shiny.org/](https://mastering-shiny.org/)
+- **Vivek H. Patil** -- foundational course design and materials for data visualization at Gonzaga University
+- **Gonzaga University** -- Ignatian pedagogical framework

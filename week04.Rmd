@@ -394,6 +394,32 @@ St. Ignatius spoke of *Cura Personalis* -- care for the whole person. In the con
 The wrong chart can mislead; the right one illuminates. As you practice building different chart types this week, ask yourself: *Am I choosing this chart because it serves my audience, or because it looks impressive?* The answer to that question is the difference between decoration and communication.
 :::
 
+---
+
+## Challenge: Chart Matchmaker
+
+<div class="sandbox-section">
+<div class="sandbox-header">
+<span class="sandbox-icon">🎮</span> Chart Matchmaker — The right chart for the right question
+</div>
+<iframe class="sandbox-frame" src="https://analytics.gonzaga.edu/week04-game/"
+        height="700" loading="lazy" allowfullscreen></iframe>
+<div class="sandbox-cold-start">
+If the app takes a few seconds to load on first visit, that is normal — the server is waking up.
+</div>
+</div>
+
+::: {.try-it-box}
+**How to Play:**
+
+1. Enter your name and click **Start Game**
+2. Each round presents a business question and data description
+3. Select the best chart type from the grid of 7 options
+4. Complete all 10 rounds, then copy your completion report into the Canvas assignment
+:::
+
+---
+
 ## Exercises
 
 ::: {.exercise-block}
